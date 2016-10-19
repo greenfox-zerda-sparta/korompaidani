@@ -1,0 +1,44 @@
+body {
+  color: #333333;
+  font-family: 'Merriweather', serif;
+  margin: 0;
+}
+/*comment*/
+img {
+  width: 100%;
+}
+
+article {
+  margin-left: auto; /*kozepre igazit vagy: margin: 0 auto;*/
+  margin-right: auto;
+  max-width: 668px;
+
+}
+
+h1,
+h2 {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+h1{
+  font-size: 45px;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+
+h2{
+  color: #666666;
+  font-size: 23px;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+p{
+  font-size: 21px;
+  line-height: 33px;
+}
+
+a{
+  color: #333333;
+}
