@@ -1,0 +1,28 @@
+div {
+  margin-left: 80px;
+}
+h1{
+  color:blue;
+}
+
+h2{
+  color:orange;
+}
+
+.point {
+  color: black;
+  list-style-type: disc;
+}
+
+ul {
+  color: blue;
+  list-style-type: square;
+}
+
+ol{
+    color: black;
+}
+
+.red{
+  color: red;
+}
