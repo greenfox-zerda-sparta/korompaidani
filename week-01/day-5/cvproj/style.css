@@ -1,0 +1,38 @@
+body {
+  color: #333333;
+  font-family: 'Libre Franklin', sans-serif;
+  margin: auto;
+  width: 849px;
+}
+
+.center {
+  padding-right: 70px;
+  padding-left: 70px;
+}
+
+p,
+ul{
+  line-height: 30px;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+
+h1{
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+h3{
+  font-size: 19px;
+  font-style: italic;
+}
+
+h2,
+h3{
+  line-height: 28px;
+}
+
+.bottom{
+  border-top: 5px solid;
+  padding-left: 70px;
+}
