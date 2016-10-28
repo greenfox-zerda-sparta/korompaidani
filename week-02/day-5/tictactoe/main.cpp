@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void convmess(char&f_o_case, bool&launch_contr, char&player_num);
+void conv(char&f_o_case, bool&launch_contr, char&player_num);
 void field_drawer(char* numbase);
 void fill_cell(char* numbase, char player_num);
 int char_to_num(char player_num); // for controlnum function
@@ -11,6 +11,7 @@ void controlnum_arrfiller(int realnum, int* controlnum, int* round_counter);
 bool type_control(int realnum, int* controlnum);
 void failuremess();
 void test(int round_counter, int controlnum[], char numbase[], char player_num);
+char ai(char* numbase);
 
 int main(int argc, char** argv) {
   const int testround = 5;
@@ -23,19 +24,23 @@ int main(int argc, char** argv) {
 
   for ( int i = 0; i < testround; i++){
     i == 0 ? fo = 'f' : fo = 'o';
-    convmess(fo, launch_contr, player_num);
+    conv(fo, launch_contr, player_num);
     controlnum_arrfiller(char_to_num(player_num), controlnum, &round_counter);
     type_control(char_to_num(player_num), controlnum) == launch_contr ? fill_cell(numbase, player_num) : failuremess();
+    cout << "My answer: " << endl;
+    field_drawer(numbase);
+    ai(numbase);
+    cout << "The Computer's answer: " << endl;
     field_drawer(numbase);
   }
-    test(round_counter, controlnum, numbase, player_num);
+  test(round_counter, controlnum, numbase, player_num);
   return 0;
 }
 
-void convmess(char&f_o_case, bool&launch_contr, char&player_num) {
+void conv(char&f_o_case, bool&launch_contr, char&player_num) {
   switch(f_o_case) {
   case 'f':
-    cout << "Hi! Please coise a number between 1-9 and press Enter: ";
+    cout << "Hi! Please give me a number between 1-9 and press Enter: ";
     cin >> player_num;
     cout << endl;
     launch_contr = true;
@@ -108,7 +113,7 @@ bool type_control(int realnum, int* controlnum) {
 };
 
 void failuremess () {
-  cout << endl << "You have to type an other number!" << endl;
+  cout << endl << ">>FAIL<< You have already given this number!" << endl;
 };
 
 void test(int round_counter, int controlnum[], char numbase[], char player_num){
@@ -122,4 +127,14 @@ void test(int round_counter, int controlnum[], char numbase[], char player_num){
   for(int i = 0; i < 9; i++) {
     cout << numbase [i] << " ";
   }
+};
+
+char ai(char* numbase) {
+  int i;
+  for (i = 0; i < 9; i++) {
+    if (numbase[i] != 'X' && numbase[i] != 'O') {
+      break;
+    }
+  }
+  numbase[i] = 'O';
 };
