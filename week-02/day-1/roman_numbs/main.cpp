@@ -19,7 +19,7 @@ int main()
     char m='M';
     int counter=0;
 */
-/*
+
     string rom="";
 
     const int one=3;        ///I
@@ -34,7 +34,7 @@ int main()
 
 
 int term=0;
-    for(int d=0; d<=dec+1; d++){
+
         for(int o=0; o<=one+1; o++)
         {
             rom+="I";
@@ -51,65 +51,7 @@ int term=0;
         cout<<rom<<endl;
         }
 
-
-        string decades=rom;
-
-        rom="X";
-        term=0;
-
-        cout<<rom<<endl;
-
-    }
-
-*/
-
-char romai[10] = {'I','V','X','L','C','D','M','\\\\\\\\0'};
-int arab[8] = {1,5,10,50,100,500,1000};
-char *be = "C";
-    int a,
-    d,
-            osszeg,
-    hossz,
-            hossz2,
-    tomb[20];
-
-    hossz = strlen(be);
-    hossz2 = strlen(romai);
-
-    for(a = 0; a < hossz; a++)
-    {
-        for(d = 0; d < hossz2; d++)
-        {
-        if(romai[d] == be[a])
-break;
-        }
-
-        if(d >= hossz2)
-        {
-        // rossz karakter van a számban
-        }
-
-        tomb[a] = arab[d];
-    }
-
-    for(a = 0; a < hossz; a++)
-    {
-    if(a >= (hossz-1))
-        osszeg += tomb[a];
-        else
-        {
-        if(tomb[a] < tomb[a+1])
-            {
-            osszeg += tomb[a+1]-tomb[a];
-                a++;
-            }
-            else
-            osszeg += tomb[a];
-        }
-    }
-
-
-return osszeg;
-
     return 0;
 }
+
+/*1 11 111 15 51 511 5111*/

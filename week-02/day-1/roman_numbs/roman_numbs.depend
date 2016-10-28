@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1477345003 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-02\day-1\roman_numbs\main.cpp
+1477351676 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-02\day-1\roman_numbs\main.cpp
+	<cstring>
 	<iostream>
 	<string>
 
