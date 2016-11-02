@@ -11,7 +11,7 @@ void superuser_mode(string&missword, char decision);
 
 int main()
 {
-  string missword = "MAY THE FORCE BE WITH YOU";
+  string missword = "ORGANIC";
   char input;
   char decision;
   int counter = 0;
@@ -26,7 +26,7 @@ int main()
     cout << "Please enter one letter: ";
     cin >> input;
     cout << endl << endl;
-    finder_filler(missword, input, display_word, counter);
+    finder_filler(missword, toupper(input), display_word, counter);
     cout << display_word << endl << endl;
     cout << "You have only " << rounds - counter << " chance my friend." << endl << endl;
     user_deciph(missword, userword, counter, rounds);
@@ -76,11 +76,17 @@ void user_deciph(string missword, string userword, int&counter, int rounds) {
 }
 
 void superuser_mode(string&missword, char decision) {
+  string buffer;
   cout << "Would you like to enter into superuser mode? <y/n>\n";
   cin >> decision;
   if(decision == 'y') {
-    cout << "\nPlease enter your idea.\nIt can be only one word or sentence.\nPlease use only uppercase letters:\n";
-    cin >> missword;
+    cout << "\nPlease enter your idea.\nIt can be only one word or sentence.";
+    cin >> buffer;
+    //cout << "buffer length is: " << buffer.length();
+    for(int i = 0; i < buffer.length(); i++) {
+      missword[i] = toupper(buffer[i]);
+    }
+    missword[buffer.length()] = '\0';
     cout << "\nThanks!\n";
   }
 }
