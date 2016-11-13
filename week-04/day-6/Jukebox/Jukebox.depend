@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1479060492 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\main.cpp
+	<iostream>
+	"Song.hpp"
+	"Rock.hpp"
+
+1479058262 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\song.hpp
+	<iostream>
+
+1479024115 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\song.cpp
+	<iostream>
+	"Song.hpp"
+
+1479056299 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\rock.cpp
+	"Rock.h"
+	"Song.hpp"
+	<iostream>
+
+1479024731 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\rock.h
+	"Song.hpp"
+	<iostream>
+
+1479060658 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\rock.hpp
+	"Song.hpp"
+	<iostream>
+
+1479025533 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\reggae.cpp
+	"Reggae.hpp"
+	"Song.hpp"
+	<iostream>
+
+1479025533 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\reggae.hpp
+	"Song.hpp"
+	<iostream>
+
+1479027961 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\pop.cpp
+	"Pop.hpp"
+	"Song.hpp"
+
+1479025571 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\pop.hpp
+	"Song.hpp"
+

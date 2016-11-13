@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Jukebox" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="Jukebox" prefix_auto="1" extension_auto="1" />
+				<Option object_output="C:/Users/korom/OneDrive/Dokumentumok/tanulmányok/greenfox/workdir/korompaidani/week-04/day-6/Jukebox/.objs" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="../Jukebox" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Pop.cpp" />
+		<Unit filename="Pop.hpp" />
+		<Unit filename="Reggae.cpp" />
+		<Unit filename="Reggae.hpp" />
+		<Unit filename="Rock.cpp" />
+		<Unit filename="Rock.hpp" />
+		<Unit filename="Song.cpp" />
+		<Unit filename="Song.hpp" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

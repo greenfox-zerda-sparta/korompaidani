@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1478944798 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\buckys_mother_daughter\daughter.cpp
+	<iostream>
+	"Mother.h"
+	"Daughter.h"
+
+1478944853 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\buckys_mother_daughter\mother.h
+
+1478944869 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\buckys_mother_daughter\daughter.h
+
+1478944837 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\buckys_mother_daughter\main.cpp
+	<iostream>
+	"Mother.h"
+	"Daughter.h"
+
+1478944115 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\buckys_mother_daughter\mother.cpp
+	<iostream>
+	"Mother.h"
+
