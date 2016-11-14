@@ -1,35 +1,9 @@
 #include <iostream>
 #include "Song.hpp"
 #include "Rock.hpp"
+#include "Jukebox.hpp"
 
 using namespace std;
-
-class Jukebox {
-private:
-  Song** songs;
-  int song_counter;
-public:
-  Jukebox();
-  void add_song(Song& song);
-};
-
-Jukebox::Jukebox() {
-  songs = NULL;
-  song_counter = 0;
-};
-
-void Jukebox::add_song(Song& song) {
-  Song** temp = new Song*[song_counter + 1];
-  if (songs!= NULL) {
-    for (int i = 0; i < song_counter; i++) {
-      temp[i] = songs[i];
-    }
-  }
-  temp[song_counter] = &song;
-  delete[] songs;
-  songs = temp;
-  ++song_counter;
-};
 
 int main()
 {
@@ -43,9 +17,13 @@ int main()
 
   Jukebox j1;
 
-  j1.add_song(s1);
 
-  Rock s2("Yellow submarine","The Beatles");
 
+  Rock s2("Mix Sensation Podcast","Stereopalma");
+  s2.add_rate(4);
+  s2.add_rate(2);
+  s2.get_info();
+
+  j1.add_song(s2);
   return 0;
 }

@@ -4,11 +4,7 @@
 
 using namespace std;
 
-Rock::Rock(string in_title, string in_artist) {
-  this->title = in_title;
-  this->artist = in_artist;
-  this->rating = 0;
-  this->rating_counter = 0;
+Rock::Rock(string in_title, string in_artist) : Song(in_title, in_artist) {
   this->genre = "Rock";
 };
 
