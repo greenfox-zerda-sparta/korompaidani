@@ -16,6 +16,11 @@ private:
 public:
   Jukebox();
   void add_song(Song& song);
+  void add_rate(Song& song, int in_rating);
+  void show_box_storage();
+  void get_artist_rating(string in_artist);
+  void get_genre_rating(string in_genre);
+  void get_top_rated_title();
 };
 
 #endif // JUKEBOX_H

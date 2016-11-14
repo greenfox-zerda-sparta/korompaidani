@@ -1,15 +1,17 @@
 # depslib dependency file v1.0
-1479115082 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\main.cpp
+1479129593 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\main.cpp
 	<iostream>
 	"Song.hpp"
 	"Rock.hpp"
+	"Jukebox.hpp"
 
-1479058262 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\song.hpp
+1479121449 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\song.hpp
 	<iostream>
 
-1479057475 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\song.cpp
+1479121449 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\song.cpp
 	<iostream>
 	"Song.hpp"
+	"Util.hpp"
 
 1479114900 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\rock.cpp
 	"Rock.hpp"
@@ -40,7 +42,7 @@
 1479115574 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\pop.hpp
 	"Song.hpp"
 
-1479116005 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\jukebox.cpp
+1479130037 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\jukebox.cpp
 	"Jukebox.hpp"
 	"Song.hpp"
 	"Rock.hpp"
@@ -48,10 +50,18 @@
 	"Reggae.hpp"
 	<iostream>
 
-1479116005 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\jukebox.hpp
+1479129485 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\jukebox.hpp
 	"Song.hpp"
 	"Rock.hpp"
 	"Pop.hpp"
 	"Reggae.hpp"
 	<iostream>
+
+1479118258 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\util.cpp
+	"Util.hpp"
+	<sstream>
+	<string>
+
+1479118247 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\util.hpp
+	<string>
 

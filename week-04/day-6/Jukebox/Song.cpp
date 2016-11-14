@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Song.hpp"
+#include "Util.hpp"
 
 using namespace std;
 
@@ -21,8 +22,8 @@ bool Song::add_rate(int in_rate) {
   }
 };
 
-void Song::get_info() {
-  cout << "The |" << title << "| from |" << artist << "| has |" << this->get_aver_rating() << "|\n";
+string Song::get_info() {
+  return "The |" + this->title + "| from |" + this->artist + "| has |" + float_to_string(this->get_aver_rating()) + "|";
 };
 
 float Song::get_aver_rating() {
@@ -32,4 +33,16 @@ float Song::get_aver_rating() {
   else {
     return 0;
   }
+};
+
+string Song::get_genre() {
+  return genre;
+};
+
+string Song::get_artist() {
+  return artist;
+};
+
+string Song::get_title() {
+  return title;
 };

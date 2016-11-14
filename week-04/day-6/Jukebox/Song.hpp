@@ -15,8 +15,11 @@ protected:
 public:
   Song(string in_title, string in_artist);
   virtual bool add_rate(int in_rate);
-  void get_info();
+  string get_info();
   float get_aver_rating();
+  string get_genre();
+  string get_artist();
+  string get_title();
 };
 
 #endif // SONG_H
