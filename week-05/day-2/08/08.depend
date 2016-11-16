@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1479228030 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-05\day-2\08\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+

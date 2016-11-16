@@ -37,8 +37,6 @@ int main() {
 
   decrypter(read_file(file1));
 
-
-
   // Create a program that decrypts the file called "duplicated-chars.txt",
   // and pritns the decrypred text to the terminal window.
 

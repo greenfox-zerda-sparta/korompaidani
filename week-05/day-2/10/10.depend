@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1479232323 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-05\day-2\10\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Tool.hpp"
+
+1479232350 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-05\day-2\10\tool.cpp
+
+1479232287 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-05\day-2\10\tool.hpp
+	<iostream>
+	<fstream>
+	<string>
+
