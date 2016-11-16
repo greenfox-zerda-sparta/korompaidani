@@ -24,6 +24,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Jukebox.cpp" />
+		<Unit filename="Jukebox.hpp" />
 		<Unit filename="Pop.cpp" />
 		<Unit filename="Pop.hpp" />
 		<Unit filename="Reggae.cpp" />
@@ -32,6 +34,8 @@
 		<Unit filename="Rock.hpp" />
 		<Unit filename="Song.cpp" />
 		<Unit filename="Song.hpp" />
+		<Unit filename="Util.cpp" />
+		<Unit filename="Util.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

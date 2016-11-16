@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1479129593 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\main.cpp
+1479130649 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\main.cpp
 	<iostream>
 	"Song.hpp"
 	"Rock.hpp"
@@ -13,7 +13,7 @@
 	"Song.hpp"
 	"Util.hpp"
 
-1479114900 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\rock.cpp
+1479133339 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\rock.cpp
 	"Rock.hpp"
 	"Song.hpp"
 	<iostream>
@@ -22,27 +22,27 @@
 	"Song.hpp"
 	<iostream>
 
-1479060658 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\rock.hpp
+1479133339 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\rock.hpp
 	"Song.hpp"
 	<iostream>
 
-1479115751 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\reggae.cpp
+1479133339 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\reggae.cpp
 	"Reggae.hpp"
 	"Song.hpp"
 	<iostream>
 
-1479115726 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\reggae.hpp
+1479133339 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\reggae.hpp
 	"Song.hpp"
 	<iostream>
 
-1479115579 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\pop.cpp
+1479133364 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\pop.cpp
 	"Pop.hpp"
 	"Song.hpp"
 
-1479115574 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\pop.hpp
+1479133349 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\pop.hpp
 	"Song.hpp"
 
-1479130037 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\jukebox.cpp
+1479132822 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\jukebox.cpp
 	"Jukebox.hpp"
 	"Song.hpp"
 	"Rock.hpp"
@@ -50,7 +50,7 @@
 	"Reggae.hpp"
 	<iostream>
 
-1479129485 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\jukebox.hpp
+1479132822 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\jukebox.hpp
 	"Song.hpp"
 	"Rock.hpp"
 	"Pop.hpp"

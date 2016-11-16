@@ -36,5 +36,5 @@ string reverse_lines_from_and_print(string filename) {
 int main()
 {
   string file1 = "encrypted.txt";
-  cout << reverse_lines_from_and_print(file1)[4];
+  cout << reverse_lines_from_and_print(file1);
 }

@@ -21,6 +21,7 @@ public:
   void get_artist_rating(string in_artist);
   void get_genre_rating(string in_genre);
   void get_top_rated_title();
+  void get_top_rated_genre();
 };
 
 #endif // JUKEBOX_H

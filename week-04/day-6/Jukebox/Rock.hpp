@@ -7,9 +7,9 @@
 using namespace std;
 
 class Rock : public Song {
-  public:
-    Rock(string in_title, string in_artist);
-    virtual bool add_rate(int in_rate);
+public:
+  Rock(string in_title, string in_artist);
+  virtual bool add_rate(int in_rate);
 };
 
 #endif // ROCK_H

@@ -82,3 +82,7 @@ void Jukebox::get_top_rated_title() {
   }
   cout << "The title of the top rated song is: |" << (*songs)[top_rated_index].get_title() << "|" << endl;
 };
+
+void Jukebox::get_top_rated_genre() {
+
+};

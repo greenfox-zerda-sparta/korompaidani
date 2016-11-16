@@ -2,6 +2,8 @@
 #include "Song.hpp"
 #include "Rock.hpp"
 #include "Jukebox.hpp"
+#include <cstdlib>
+
 
 using namespace std;
 
@@ -27,6 +29,8 @@ int main()
 
   j1.get_genre_rating("Rock");
   j1.get_top_rated_title();
+
+  system("PAUSE");
 
   return 0;
 
