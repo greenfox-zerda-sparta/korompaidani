@@ -83,4 +83,19 @@ string file_to_string_from_to(string filename, int ent_lines, int from, int to) 
   return content;
 }
 
+bool string_to_file(string filename, string input) {
+  ofstream my_file;
+  my_file.open(filename.c_str());
+  if (!my_file.is_open()) {
+    return false;
+  }
+  else {
+    my_file << input;
+    my_file.close();
+    return true;
+  }
+}
+
+//char char_star_to_char(char* input)
+
 #endif // FUNCTIONTOOLS_H
