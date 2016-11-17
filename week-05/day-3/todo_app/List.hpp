@@ -1,15 +1,18 @@
+#include <iostream>
+
 #ifndef LIST_H
 #define LIST_H
-
-#include <iostream>
 
 using namespace std;
 
 class List {
   private:
     int lines;
-    string buffer;
+    string* buffer;
     char user_choise;
+    string filename;
+    string filename_desc;
+    int user_number;
   public:
     List();
 };

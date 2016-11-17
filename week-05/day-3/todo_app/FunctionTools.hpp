@@ -96,6 +96,46 @@ bool string_to_file(string filename, string input) {
   }
 }
 
-//char char_star_to_char(char* input)
+string* char_star_array_to_string_array(char** input, int size) {
+  string* temp_array = new string[size];
+  for (int i = 0; i < size; i++) {
+    temp_array[i] = input[i];
+  }
+  return temp_array;
+}
+
+bool is_it_valid_typing_for_first_element(string input) {
+  if (input.length() == 2) {
+    if (input[0] == '-') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  else {
+    return false;
+  }
+}
+
+bool is_it_valid_typing_for_second_element(string input) {
+  if (input.length() == 1) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+char one_letter_from_string(string input) {
+  if (is_it_valid_typing_for_first_element(input) == true) {
+    return input[1];
+  }
+  else {
+    return '!';
+  }
+}
+
+
 
 #endif // FUNCTIONTOOLS_H
