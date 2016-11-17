@@ -199,7 +199,11 @@ void print_from_string(string input, char checked) {
   string line;
   int i = 1;
   while (getline(iss, line)) {
-    cout << i++ << " - [" << checked << "] " << line << endl;
+    cout << i++ << " - [" << checked << "] ";
+    for (int i = 0; i < line.length() - 1; i ++) {
+      cout << line[i];
+    }
+    cout << endl;
   }
 }
 

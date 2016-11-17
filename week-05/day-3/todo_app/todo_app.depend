@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1479297243 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-05\day-3\todo_app\functiontools.cpp
+
+1479419133 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-05\day-3\todo_app\functiontools.hpp
+	<iostream>
+	<string>
+	<fstream>
+	<sstream>
+
+1479418342 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-05\day-3\todo_app\main.cpp
+	<iostream>
+	<string>
+	"List.hpp"
+	<sstream>
+
+1479417079 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-05\day-3\todo_app\list.cpp
+	"List.hpp"
+	"FunctionTools.hpp"
+
+1479416681 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-05\day-3\todo_app\list.hpp
+	<iostream>
+	<string>
+

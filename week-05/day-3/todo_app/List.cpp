@@ -90,6 +90,9 @@ void List::remove_task() {
   }
 }
 
+void complete_list() {
+}
+
 void List::empty_list() {
   empty_file(filename);
   lines = 0;

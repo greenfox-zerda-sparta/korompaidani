@@ -1,0 +1,13 @@
+    __________________________
+       CLI Todo application
+    ==========================
+     Command line arguments:
+      <press any listed key>
+    ==========================
+    |-l|  Lists all the tasks
+    |-a|  Adds a new task
+    |-r|  Removes an task
+    |-c|  Completes an task
+    |-e|  Empty list
+    ==========================
+    __________________________
