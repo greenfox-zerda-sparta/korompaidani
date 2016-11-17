@@ -99,12 +99,11 @@ bool string_to_file(string filename, string input) {
 
 bool empty_file(string filename) {
   ofstream my_file;
-  my_file.open(filename.c_str());
+  my_file.open(filename.c_str(), std::fstream::out | std::fstream::trunc);
   if (!my_file.is_open()) {
     return false;
   }
   else {
-    my_file << '!';
     my_file.close();
     return true;
   }
