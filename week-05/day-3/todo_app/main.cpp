@@ -11,10 +11,8 @@ int main(int argc, char* argv[])
   string filename = "todo.txt";
 
   List l1(argc, argv);
-  // l1.test();
- // l1.lists_all_the_tasks();
- ///l1.add_new_task();
- l1.remove_task();
+
+ l1.task_manager();
   // l1.test();
 
 

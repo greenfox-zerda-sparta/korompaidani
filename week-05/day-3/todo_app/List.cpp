@@ -36,7 +36,8 @@ void List::test(){
 void List::lists_all_the_tasks() {
   if (my_argc > 0) {
     if (file_to_string_entire(filename)[0] != '!') {
-      cout << file_to_string_entire(filename) << endl;
+      file_buffer = file_to_string_entire(filename);
+      print_from_string(file_buffer, checked);
     }
     else {
       cout << "No todos for today! :)" << endl;
@@ -82,6 +83,16 @@ void List::task_manager() {
     else {
       cout << "Please type only valid command!";
     }
-    //switch ()
+    switch (char_first_element) {
+      case 'l': List::lists_all_the_tasks();
+        break;
+      /*case 'a':
+        break;
+      case 'r':
+        break;
+      case 'c':
+        break;*/
+      default: cout << "something";
+    }
   }
 }
