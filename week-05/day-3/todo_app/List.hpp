@@ -24,6 +24,8 @@ class List {
     void test();
     void lists_all_the_tasks();
     void add_new_task();
+    void remove_task();
+    void task_manager();
 };
 
 #endif // LIST_H

@@ -60,8 +60,8 @@ string file_to_string_from_to(string filename, int ent_lines, int from, int to) 
   string content;
   string line;
   int line_counter = 0;
-  to = adjust_int_to_frame(to, ent_lines);
-  from = adjust_int_to_frame(from, ent_lines);
+  //to = adjust_int_to_frame(to, ent_lines);
+  //from = adjust_int_to_frame(from, ent_lines);
 
   my_file.open(filename.c_str());
   if (!my_file.is_open()) {
@@ -193,6 +193,15 @@ bool is_command_valid(char input, string commands) {
     }
   }
   return false;
+}
+
+void print_from_string(string input, char checked) {
+  istringstream iss(input);
+  string line;
+  int i = 1;
+  while (getline(iss, line)) {
+    cout << i++ << " - [" << checked << "] " << line << endl;
+  }
 }
 
 #endif // FUNCTIONTOOLS_H

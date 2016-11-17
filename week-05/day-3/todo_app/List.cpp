@@ -49,9 +49,9 @@ void List::add_new_task() {
     if (my_argc == 2) {
       lines += 1;
       user_type_buffer = my_argv[1];
-      file_buffer = file_buffer + string_from_int(lines) + " - [" + checked + "] " + user_type_buffer;
+      file_buffer = file_buffer + user_type_buffer;
       string_to_file(filename, file_buffer);
-      cout << file_buffer;
+      print_from_string(file_buffer, checked);
     }
     else {
       cout << "please only one element a time!" << endl;
@@ -59,3 +59,29 @@ void List::add_new_task() {
   }
 }
 
+void List::remove_task() {
+  if (my_argc > 0) {
+    cout << "lines: " << lines << endl;
+    user_type_buffer = my_argv[1];
+    int user_num = int_from_string(user_type_buffer) - 1;
+    file_buffer = file_to_string_from_to(filename, lines, 1, user_num) + file_to_string_from_to(filename, lines, user_num + 2, lines);
+    cout << "lines: " << lines << endl;
+    string_to_file(filename, file_buffer);
+    print_from_string(file_buffer, checked);
+  }
+}
+
+void List::task_manager() {
+  if (my_argc > 0) {
+    char char_first_element = '!';
+    int num_temp;
+    string str_temp;
+    if (is_it_valid_typing_for_first_element(my_argv[0]) == true) {
+      char_first_element = one_letter_from_string(my_argv[0]);
+    }
+    else {
+      cout << "Please type only valid command!";
+    }
+    //switch ()
+  }
+}

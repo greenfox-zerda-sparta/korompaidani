@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "List.hpp"
+#include <sstream>
 
 using namespace std;
 
@@ -11,8 +12,11 @@ int main(int argc, char* argv[])
 
   List l1(argc, argv);
   // l1.test();
-  l1.add_new_task();
+ // l1.lists_all_the_tasks();
+ ///l1.add_new_task();
+ l1.remove_task();
   // l1.test();
+
 
 
   //is_command_valid2('i', "dian") == true ? cout << "true" : cout << "false";
