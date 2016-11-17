@@ -137,4 +137,36 @@ char one_letter_from_string(string input) {
   }
 }
 
+bool is_string_only_number(string input) {
+  int num_checker = 0;
+  for (int i = 0; i < input.length(); i++) {
+   if ((int)input[i] <= 57 && (int)input[i] >= 48) {
+     num_checker++;
+   }
+  }
+  if (num_checker == input.length()) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+int int_from_to_string(string input) {
+  int temp = 0;
+  int digit = 1;
+  for (int i = 0; i < input.length(); i++) {
+    digit *= 10;
+  }
+  digit = digit / 10;
+  for (int i = 0; i < input.length(); i++) {
+    temp += ((int)input[i] - 48) * digit;
+    digit *= 0.1;
+  }
+  return temp;
+}
+
+
+
+
 #endif // FUNCTIONTOOLS_H
