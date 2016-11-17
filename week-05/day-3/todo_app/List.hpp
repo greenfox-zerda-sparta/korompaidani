@@ -10,15 +10,20 @@ class List {
   private:
     string* my_argv;
     int my_argc;
+    string commands;
     char user_choise;
+    int user_number;
+    string user_type_buffer;
     int lines;
-    string buffer;
+    string file_buffer;
     string filename;
     string filename_desc;
-    int user_number;
+    char checked;
   public:
     List(int argc, char**argv);
     void test();
+    void lists_all_the_tasks();
+    void add_new_task();
 };
 
 #endif // LIST_H

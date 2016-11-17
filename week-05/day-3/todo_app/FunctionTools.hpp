@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -96,6 +97,19 @@ bool string_to_file(string filename, string input) {
   }
 }
 
+bool empty_file(string filename) {
+  ofstream my_file;
+  my_file.open(filename.c_str());
+  if (!my_file.is_open()) {
+    return false;
+  }
+  else {
+    my_file << '!';
+    my_file.close();
+    return true;
+  }
+}
+
 string* char_star_array_to_string_array(char** input, int size) {
   string* temp_array = new string[size];
   int j = 0;
@@ -152,7 +166,7 @@ bool is_string_only_number(string input) {
   }
 }
 
-int int_from_to_string(string input) {
+int int_from_string(string input) {
   int temp = 0;
   int digit = 1;
   for (int i = 0; i < input.length(); i++) {
@@ -166,7 +180,19 @@ int int_from_to_string(string input) {
   return temp;
 }
 
+string string_from_int(int input) {
+  stringstream ss;
+  ss << input;
+  return ss.str();
+}
 
-
+bool is_command_valid(char input, string commands) {
+  for (int i = 0; i < commands.length(); i ++) {
+    if (input == commands[i]) {
+      return true;
+    }
+  }
+  return false;
+}
 
 #endif // FUNCTIONTOOLS_H

@@ -10,9 +10,11 @@ int main(int argc, char* argv[])
   string filename = "todo.txt";
 
   List l1(argc, argv);
-  l1.test();
+  // l1.test();
+  l1.add_new_task();
+  // l1.test();
 
 
-  //is_string_only_number_test("129") == true ? cout << "true" : cout << "false";
+  //is_command_valid2('i', "dian") == true ? cout << "true" : cout << "false";
   return 0;
 }
