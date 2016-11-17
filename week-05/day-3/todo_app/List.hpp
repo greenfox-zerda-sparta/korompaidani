@@ -1,4 +1,5 @@
 #include <iostream>
+#include  <string>
 
 #ifndef LIST_H
 #define LIST_H
@@ -13,8 +14,13 @@ class List {
     string filename;
     string filename_desc;
     int user_number;
+    int my_argc;
   public:
-    List();
+
+    void show_my_argc();
+    void argv_to_buffer(char** argv, int argc);
+    void test();
+    List(int argc);
 };
 
 #endif // LIST_H

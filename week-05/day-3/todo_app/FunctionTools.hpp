@@ -98,8 +98,9 @@ bool string_to_file(string filename, string input) {
 
 string* char_star_array_to_string_array(char** input, int size) {
   string* temp_array = new string[size];
-  for (int i = 0; i < size; i++) {
-    temp_array[i] = input[i];
+  int j = 0;
+  for (int i = 1; i <= size; i++) {
+    temp_array[j++] = input[i];
   }
   return temp_array;
 }
@@ -135,7 +136,5 @@ char one_letter_from_string(string input) {
     return '!';
   }
 }
-
-
 
 #endif // FUNCTIONTOOLS_H
