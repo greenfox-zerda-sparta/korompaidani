@@ -26,6 +26,7 @@ class List {
     void add_new_task();
     void remove_task();
     void complete_list();
+    void un_complete_list();
     void empty_list();
     void task_manager();
 

@@ -6,8 +6,9 @@
     ==========================
     |-l|  Lists all the tasks
     |-a|  Adds a new task
-    |-r|  Removes an task
-    |-c|  Completes an task
+    |-r|  Removes a task
+    |-c|  Completes a task
+    |-u|  Uncompletes a task
     |-e|  Empty list
     ==========================
     __________________________

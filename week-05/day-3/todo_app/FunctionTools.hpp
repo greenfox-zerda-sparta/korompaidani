@@ -84,6 +84,34 @@ string file_to_string_from_to(string filename, int ent_lines, int from, int to) 
   return content;
 }
 
+string file_to_string_from_to_with_checker(string filename, int ent_lines, int from, int to, char checked) {
+  ifstream my_file;
+  string content;
+  string line;
+  int line_counter = 0;
+  my_file.open(filename.c_str());
+  if (!my_file.is_open()) {
+      cout << "Cannot open " << filename << '!';
+  }
+  else {
+    while (line_counter != to) {
+      if (line_counter >= from - 1) {
+        getline(my_file, line);
+        string temp_line;
+        line[line.length() - 1] = checked;//checked;
+        content += line + '\n';
+        line_counter++;
+      }
+      else {
+        getline(my_file, line);
+        line_counter++;
+      }
+    }
+    my_file.close();
+  }
+  return content;
+}
+
 bool string_to_file(string filename, string input) {
   ofstream my_file;
   my_file.open(filename.c_str());
@@ -199,7 +227,7 @@ void print_from_string(string input, char checked) {
   string line;
   int i = 1;
   while (getline(iss, line)) {
-    cout << i++ << " - [" << checked << "] ";
+    cout << i++ << " - [" << line[line.length() - 1] << "] ";
     for (int i = 0; i < line.length() - 1; i ++) {
       cout << line[i];
     }

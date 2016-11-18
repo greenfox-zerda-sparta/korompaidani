@@ -2,15 +2,16 @@
 #include "FunctionTools.hpp"
 
 List::List(int argc, char**argv) {
-  lines = 0;
-  my_argc = argc;
-  my_argv = char_star_array_to_string_array(argv, argc);
   filename = "todo.txt";
   filename_desc = "description.txt";
-  commands = "larce";
-  file_buffer = file_to_string_entire(filename);
-  lines = file_line_counter(filename);
+  commands = "larcue";
+  lines = 0;
   checked = ' ';
+  my_argc = argc;
+  my_argv = char_star_array_to_string_array(argv, argc);
+  lines = file_line_counter(filename);
+  file_buffer = file_to_string_from_to(filename, lines, 1, lines);
+
 }
 
 void List::test(){
@@ -36,7 +37,7 @@ void List::test(){
 void List::lists_all_the_tasks() {
   if (my_argc > 0) {
     if (lines != 0) {
-      file_buffer = file_to_string_entire(filename);
+      file_buffer = file_to_string_from_to(filename, lines, 1, lines);
       print_from_string(file_buffer, checked);
     }
     else {
@@ -51,7 +52,7 @@ void List::add_new_task() {
     if (my_argc == 2) {
       lines += 1;
       user_type_buffer = my_argv[1];
-      file_buffer = file_buffer + user_type_buffer;
+      file_buffer = file_buffer + user_type_buffer + checked;
       string_to_file(filename, file_buffer);
       print_from_string(file_buffer, checked);
     }
@@ -90,7 +91,62 @@ void List::remove_task() {
   }
 }
 
-void complete_list() {
+void List::complete_list() {
+  if (my_argc > 0) {
+    user_type_buffer = my_argv[1];
+    int user_num = int_from_string(user_type_buffer) - 1;
+    if (lines == 0) {
+      cout << "The list is empty, you cannot remove items!" << endl;
+      return;
+    }
+    else if (user_num <= lines && user_num >= 0) {
+
+      file_buffer = file_to_string_from_to(filename, lines, 1, user_num);
+      checked = 'x';
+      file_buffer += file_to_string_from_to_with_checker(filename, lines, user_num + 1, user_num + 1, checked);
+      checked = ' ';
+      file_buffer += file_to_string_from_to(filename, lines, user_num + 2, lines);
+      string_to_file(filename, file_buffer);
+      print_from_string(file_buffer, checked);
+      return;
+    }
+    else {
+      if (lines != 1) {
+        cout << "Please type a number between 1 and " << lines << "!" << endl;
+      }
+      else if (lines == 1) {
+        cout << "You have only 1 item. Type \"-r 1\" to remove it!" << endl;
+      }
+    }
+  }
+}
+
+void List::un_complete_list() {
+  if (my_argc > 0) {
+    user_type_buffer = my_argv[1];
+    int user_num = int_from_string(user_type_buffer) - 1;
+    if (lines == 0) {
+      cout << "The list is empty, you cannot remove items!" << endl;
+      return;
+    }
+    else if (user_num <= lines && user_num >= 0) {
+
+      file_buffer = file_to_string_from_to(filename, lines, 1, user_num);
+      file_buffer += file_to_string_from_to_with_checker(filename, lines, user_num + 1, user_num + 1, checked);
+      file_buffer += file_to_string_from_to(filename, lines, user_num + 2, lines);
+      string_to_file(filename, file_buffer);
+      print_from_string(file_buffer, checked);
+      return;
+    }
+    else {
+      if (lines != 1) {
+        cout << "Please type a number between 1 and " << lines << "!" << endl;
+      }
+      else if (lines == 1) {
+        cout << "You have only 1 item. Type \"-r 1\" to remove it!" << endl;
+      }
+    }
+  }
 }
 
 void List::empty_list() {
@@ -125,8 +181,10 @@ void List::task_manager() {
         break;
       case 'r': List::remove_task();
         break;
-      /*case 'c':
-        break;*/
+      case 'c': List::complete_list();
+        break;
+      case 'u': List::un_complete_list();
+        break;
       case 'e': List::empty_list();
         break;
       default: cout << "something";
