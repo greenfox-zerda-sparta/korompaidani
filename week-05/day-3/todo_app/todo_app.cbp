@@ -23,6 +23,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ErrorCodes.cpp" />
+		<Unit filename="ErrorCodes.hpp" />
 		<Unit filename="FunctionTools.cpp" />
 		<Unit filename="FunctionTools.hpp" />
 		<Unit filename="List.cpp" />

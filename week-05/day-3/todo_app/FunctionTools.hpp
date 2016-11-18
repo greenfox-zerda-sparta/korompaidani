@@ -98,7 +98,7 @@ string file_to_string_from_to_with_checker(string filename, int ent_lines, int f
       if (line_counter >= from - 1) {
         getline(my_file, line);
         string temp_line;
-        line[line.length() - 1] = checked;//checked;
+        line[line.length() - 1] = checked;
         content += line + '\n';
         line_counter++;
       }

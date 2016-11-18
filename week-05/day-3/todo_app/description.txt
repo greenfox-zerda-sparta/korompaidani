@@ -9,6 +9,9 @@
     |-r|  Removes a task
     |-c|  Completes a task
     |-u|  Uncompletes a task
+    |-d|  *Delete completeds
     |-e|  Empty list
+    |-h|  Hot keys (help)
     ==========================
+             ver.1.0
     __________________________
