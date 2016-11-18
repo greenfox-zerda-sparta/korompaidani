@@ -91,7 +91,7 @@ string file_to_string_from_to_with_checker(string filename, int ent_lines, int f
   int line_counter = 0;
   my_file.open(filename.c_str());
   if (!my_file.is_open()) {
-      cout << "Cannot open " << filename << '!';
+    cout << "Cannot open " << filename << '!';
   }
   else {
     while (line_counter != to) {

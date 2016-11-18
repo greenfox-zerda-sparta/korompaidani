@@ -23,7 +23,6 @@ void List::lists_all_the_tasks() {
     }
     else {
       err_mess_with_code(1);
-      //cout << "No todos for today! :)" << endl;
       lines = 0;
     }
   }
@@ -40,11 +39,9 @@ void List::add_new_task() {
     }
     else if (my_argc > 2) {
       err_mess_with_code(2);
-      ///cout << "Please only one element a time!" << endl;
     }
     else if (my_argc < 2) {
       err_mess_with_code(3);
-      ///cout << "Please write a new note if you use the \"-a\" command" << endl;
     }
   }
 }
@@ -55,7 +52,6 @@ void List::remove_task() {
     int user_num = int_from_string(user_type_buffer) - 1;
     if (lines == 0) {
       err_mess_with_code(4);
-      ///cout << "The list is empty, you cannot remove items!" << endl;
       return;
     }
     else if (user_num <= lines && user_num >= 0) {
@@ -68,11 +64,9 @@ void List::remove_task() {
     else {
       if (lines != 1) {
         err_mess_with_int(lines);
-        ///cout << "Please type a number between 1 and " << lines << "!" << endl;
       }
       else if (lines == 1) {
         err_mess_with_code(5);
-        ///cout << "You have only 1 item. Type \"-r 1\" to remove it!" << endl;
       }
     }
   }
@@ -84,7 +78,6 @@ void List::complete_list() {
     int user_num = int_from_string(user_type_buffer) - 1;
     if (lines == 0) {
       err_mess_with_code(9);
-      ///cout << "The list is empty, you cannot remove items!" << endl;
       return;
     }
     else if (user_num <= lines && user_num >= 0) {
@@ -108,11 +101,9 @@ void List::complete_list() {
     else {
       if (lines != 1) {
         err_mess_with_int(lines);
-        ///cout << "Please type a number between 1 and " << lines << "!" << endl;
       }
       else if (lines == 1) {
         err_mess_with_code(10);
-        ///cout << "You have only 1 item. Type \"-c 1\" to remove it!" << endl;
       }
     }
   }
@@ -156,7 +147,6 @@ void List::empty_list() {
   empty_file(filename);
   lines = 0;
   message_empty();
-  ///cout << "Your list is empty!" << endl;
 }
 
 void List::task_manager() {
@@ -168,14 +158,12 @@ void List::task_manager() {
       }
       else {
         err_mess_with_code(6);
-        ///cout << "Please type only existing command!" << endl;
         cout << file_to_string_entire(this->filename_desc);
         return;
       }
     }
     else {
       err_mess_with_code(7);
-      ///cout << "Please type command in valid format!" << endl;
       cout << file_to_string_entire(this->filename_desc);
       return;
     }
@@ -196,7 +184,7 @@ void List::task_manager() {
         break;
       case 'h': cout << endl << file_to_string_entire(this->filename_desc) << endl;
         break;
-      default: err_mess_with_code(8);///cout << "Undefinied error!" << endl;
+      default: err_mess_with_code(8);
     }
   }
 }
