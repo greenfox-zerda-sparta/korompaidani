@@ -72,3 +72,32 @@ void Matrix::fill_empty_matrix() {
     }
   }
 }
+
+void Matrix::fill_matrix_by_pos() {
+  for (int o= 0; o < matrix.size(); o++) {
+    for (int i = 0; i < matrix[o].size(); i++) {
+      matrix[o][i] = '.';
+    }
+  }
+  for (int i = 0; i < my_bubbles.size(); i++) {
+    matrix[bubble_pos_x[i]][bubble_pos_y[i]] = my_bubbles[i];
+  }
+}
+
+void Matrix::run_on_x(int which_bubble_index) {
+  if (bubble_pos_x[which_bubble_index] < MATRIX_SIZE - 1) {
+    bubble_pos_x[which_bubble_index]++;
+  }
+  else {
+    bubble_pos_x[which_bubble_index]--;
+  }
+};
+
+void Matrix::run_on_y(int which_bubble_index) {
+  if (bubble_pos_y[which_bubble_index] < MATRIX_SIZE - 1) {
+    bubble_pos_y[which_bubble_index]++;
+  }
+  else {
+    bubble_pos_y[which_bubble_index]--;
+  }
+};

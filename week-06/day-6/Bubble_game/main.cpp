@@ -25,6 +25,19 @@ int main() {
 
   m1.get_bubble_info();
 
+  for (int i = 0; i < 20; i++) {
+    m1.run_on_y(0);
+    m1.run_on_y(1);
+    m1.run_on_y(2);
+    m1.run_on_y(3);
+    m1.run_on_x(4);
+    m1.run_on_x(5);
+    m1.run_on_x(6);
+    m1.run_on_x(7);
+    m1.run_on_x(8);
+    m1.fill_matrix_by_pos();
+    m1.draw_matrix();
+  }
   return 0;
 
 	//Bubble Game!!!!

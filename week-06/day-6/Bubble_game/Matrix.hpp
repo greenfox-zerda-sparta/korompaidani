@@ -16,6 +16,9 @@ class Matrix
     void draw_matrix();
     void get_bubble_info();
     void fill_empty_matrix();
+    void fill_matrix_by_pos();
+    void run_on_x(int which_bubble_index);
+    void run_on_y(int which_bubble_index);
 };
 
 
