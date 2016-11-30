@@ -10,7 +10,6 @@
 
 using namespace std;
 
-
 int main() {
   srand(unsigned(time(0)));
 
@@ -22,7 +21,6 @@ int main() {
 
   m1.fill_empty_matrix();
   m1.draw_matrix();
-
   m1.get_bubble_info();
 
   for (int i = 0; i < 20; i++) {
@@ -37,6 +35,7 @@ int main() {
     m1.run_on_x(8);
     m1.fill_matrix_by_pos();
     m1.draw_matrix();
+    m1.get_bubble_info();
   }
   return 0;
 

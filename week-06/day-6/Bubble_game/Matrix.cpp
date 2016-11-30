@@ -20,6 +20,9 @@ Matrix::Matrix(Bubbles b1) {
   }
   bubble_pos_x.resize(my_bubbles.size(), 0);
   bubble_pos_y.resize(my_bubbles.size(), 0);
+  bubble_dir.resize(my_bubbles.size(), 1);
+  round_x = 0;
+  round_y = 0;
   b1.~Bubbles();
 }
 
@@ -41,13 +44,18 @@ void Matrix::get_bubble_info() {
   cout << endl;
   cout << "bubble pos x =\t\t|";
   for (int  i = 0; i < bubble_pos_x.size(); i++) {
-      cout << bubble_pos_x[i] << "|";
+    cout << bubble_pos_x[i] << "|";
   }
   cout << endl;
   cout << "bubble pos y =\t\t|";
   for (int  i = 0; i < bubble_pos_y.size(); i++) {
     cout << bubble_pos_y[i] << "|";
     }
+  cout << endl;
+  cout << "buble dir =\t\t|";
+  for (int  i = 0; i < bubble_dir.size(); i++) {
+    cout << bubble_dir[i] << "|";
+  }
   cout << endl;
 }
 
@@ -85,19 +93,46 @@ void Matrix::fill_matrix_by_pos() {
 }
 
 void Matrix::run_on_x(int which_bubble_index) {
-  if (bubble_pos_x[which_bubble_index] < MATRIX_SIZE - 1) {
-    bubble_pos_x[which_bubble_index]++;
+  round_x++;
+  if (round_x != 1) {
+    if (bubble_pos_x[which_bubble_index] == MATRIX_SIZE - 1) {
+      bubble_dir[which_bubble_index] = bubble_dir[which_bubble_index] * (-1);
+    }
+    else if (bubble_pos_x[which_bubble_index] == 0) {
+      bubble_dir[which_bubble_index] = bubble_dir[which_bubble_index] * (-1);
+    }
+    bubble_pos_x[which_bubble_index] += bubble_dir[which_bubble_index];
   }
   else {
-    bubble_pos_x[which_bubble_index]--;
+    if (bubble_pos_x[which_bubble_index] == MATRIX_SIZE - 1) {
+      bubble_dir[which_bubble_index] = bubble_dir[which_bubble_index] * (-1);
+    }
+    else if (bubble_pos_x[which_bubble_index] == 0) {
+      bubble_dir[which_bubble_index] = bubble_dir[which_bubble_index];
+    }
+    bubble_pos_x[which_bubble_index] += bubble_dir[which_bubble_index];
   }
-};
+}
 
 void Matrix::run_on_y(int which_bubble_index) {
-  if (bubble_pos_y[which_bubble_index] < MATRIX_SIZE - 1) {
-    bubble_pos_y[which_bubble_index]++;
+  round_y++;
+  if (round_y != 1) {
+    if (bubble_pos_y[which_bubble_index] == MATRIX_SIZE - 1) {
+      bubble_dir[which_bubble_index] = bubble_dir[which_bubble_index] * (-1);
+    }
+    else if (bubble_pos_y[which_bubble_index] == 0) {
+      bubble_dir[which_bubble_index] = bubble_dir[which_bubble_index] * (-1);
+    }
+    bubble_pos_y[which_bubble_index] += bubble_dir[which_bubble_index];
   }
   else {
-    bubble_pos_y[which_bubble_index]--;
+    if (bubble_pos_y[which_bubble_index] == MATRIX_SIZE - 1) {
+      bubble_dir[which_bubble_index] = bubble_dir[which_bubble_index] * (-1);
+    }
+    else if (bubble_pos_y[which_bubble_index] == 0) {
+      bubble_dir[which_bubble_index] = bubble_dir[which_bubble_index];
+    }
+    bubble_pos_y[which_bubble_index] += bubble_dir[which_bubble_index];
   }
-};
+}
+

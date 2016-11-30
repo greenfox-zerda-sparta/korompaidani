@@ -11,6 +11,9 @@ class Matrix
     std::vector<char> my_bubbles;
 	  std::vector<int> bubble_pos_x;
 	  std::vector<int> bubble_pos_y;
+	  std::vector<int> bubble_dir;
+	  int round_y;
+	  int round_x;
   public:
     Matrix(Bubbles b1);
     void draw_matrix();

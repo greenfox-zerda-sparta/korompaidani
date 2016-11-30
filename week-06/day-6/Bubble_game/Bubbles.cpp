@@ -18,7 +18,7 @@ Bubbles::~Bubbles(){
 }
 
 void Bubbles::generate_bubble_chars(int bubble_quant) {
-  char ch = '1';
+  char ch = 'a';
   for (int i = 0; i < bubble_quant; i++) {
     bubbles.push_back(ch++);
   }
