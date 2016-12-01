@@ -1,9 +1,10 @@
 #include "ParkingLot.hpp"
 
-ParkingLot::ParkingLot(int user_row, int user_col, int user_level) {
+ParkingLot::ParkingLot(int user_row, int user_col, int user_level, string user_parking_name) {
   this->row = user_row;
   this->col = user_col;
   this->level = user_level;
+  this->parking_name = user_parking_name;
 
   parking_house.resize(level);
   for(int i = 0; i < level; i++) {
@@ -26,4 +27,20 @@ ParkingLot::ParkingLot(int user_row, int user_col, int user_level) {
 
 Car* ParkingLot::get_cars_from_parking_house(int user_row, int user_col, int user_level) {
   return parking_house[user_row][user_col][user_level];
+}
+
+int ParkingLot::get_row() {
+  return row;
+}
+
+int ParkingLot::get_col() {
+  return col;
+}
+
+int ParkingLot::get_level() {
+  return level;
+}
+
+string ParkingLot::get_parking_name() {
+  return parking_name;
 }

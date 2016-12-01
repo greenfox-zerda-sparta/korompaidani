@@ -1,7 +1,7 @@
 #include "Plate.hpp"
-#include <iostream>
-string letters = "QWERTYUIOPASDFGHJKLZXCVBNM";
-string numbers = "0123456789";
+
+std::string letters = "QWERTYUIOPASDFGHJKLZXCVBNM";
+std::string numbers = "0123456789";
 
 Plate::Plate(unsigned short int id) {
   temp_plate = "   -   ";
@@ -13,6 +13,6 @@ Plate::Plate(unsigned short int id) {
   }
 }
 
-string Plate::get_temp_plate() {
+std::string Plate::get_temp_plate() {
   return temp_plate;
 }

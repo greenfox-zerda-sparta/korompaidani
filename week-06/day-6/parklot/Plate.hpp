@@ -7,14 +7,12 @@
 #include <ctime>
 #include <cstdlib>
 
-using namespace std;
-
 class Plate : Car {
   private:
-    string temp_plate;
+    std::string temp_plate;
   public:
     Plate(unsigned short int);
-    string get_temp_plate();
+    std::string get_temp_plate();
 };
 
 #endif // PLATE_H

@@ -5,22 +5,17 @@
 #include <ctime>
 #include <cstdlib>
 
-#include "Car.hpp"
-#include "Plate.hpp"
 #include "ParkingLot.hpp"
+#include "Register.hpp"
 
 using namespace std;
 
 int main() {
   srand(unsigned(time(0)));
 
-  ParkingLot city_center(4, 4, 8);
+  ParkingLot city_center(4, 4, 8, "City Center Parking House");
 
-  cout << city_center.get_cars_from_parking_house(1, 1, 1)->get_CAR_ID() << endl;
-  cout << city_center.get_cars_from_parking_house(1, 1, 1)->get_type() << endl;
-  cout << city_center.get_cars_from_parking_house(1, 1, 1)->get_color() << endl;
-  cout << city_center.get_cars_from_parking_house(1, 1, 1)->get_car_plate() << endl;
-
+  Register r1(city_center);
   return 0;
 }
 
