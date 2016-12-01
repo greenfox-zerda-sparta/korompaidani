@@ -14,17 +14,12 @@ using namespace std;
 int main() {
   srand(unsigned(time(0)));
 
-  vector<Car*> garage (5);
-  for (int i = 0; i < garage.size(); i++) {
-    garage[i] = new Car();
-    cout << i + 1 << ". garage: " << garage[i]->get_type() << " | " << garage[i]->get_color() << " | " << garage[i]->get_car_plate() << " | " << garage[i]->get_CAR_ID() << endl;
-  }
+  ParkingLot city_center(4, 4, 8);
 
-  Plate p1();
-
-  //cout << p1.get_temp_plate() << endl;
-
-  ParkingLot(4, 4, 8);
+  cout << city_center.get_cars_from_parking_house(1, 1, 1)->get_CAR_ID() << endl;
+  cout << city_center.get_cars_from_parking_house(1, 1, 1)->get_type() << endl;
+  cout << city_center.get_cars_from_parking_house(1, 1, 1)->get_color() << endl;
+  cout << city_center.get_cars_from_parking_house(1, 1, 1)->get_car_plate() << endl;
 
   return 0;
 }

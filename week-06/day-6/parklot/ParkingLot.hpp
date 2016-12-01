@@ -15,6 +15,7 @@ class ParkingLot {
     vector<vector<vector<Car*> > > parking_house;
   public:
     ParkingLot(int, int, int);
+    Car* get_cars_from_parking_house(int, int, int);
 };
 
 #endif // PARKINGLOT_H

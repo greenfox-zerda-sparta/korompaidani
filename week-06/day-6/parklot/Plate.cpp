@@ -1,5 +1,5 @@
 #include "Plate.hpp"
-
+#include <iostream>
 string letters = "QWERTYUIOPASDFGHJKLZXCVBNM";
 string numbers = "0123456789";
 
