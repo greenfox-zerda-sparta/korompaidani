@@ -13,7 +13,7 @@ class Plate : Car {
   private:
     string temp_plate;
   public:
-    Plate(unsigned short int id);
+    Plate(unsigned short int);
     string get_temp_plate();
 };
 

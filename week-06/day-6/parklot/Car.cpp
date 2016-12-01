@@ -15,6 +15,10 @@ car_plate = "";
 ID_COUNTER++;
 }
 
+void Car::set_car_plate(std::string in_plate) {
+  car_plate =  in_plate;
+}
+
 std::string Car::get_type() {
   return type;
 }

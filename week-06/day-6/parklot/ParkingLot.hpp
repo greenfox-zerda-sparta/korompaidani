@@ -1,14 +1,20 @@
 #ifndef PARKINGLOT_H
 #define PARKINGLOT_H
 
+#include "Plate.hpp"
+#include "Car.hpp"
+#include <vector>
 
-class ParkingLot
-{
-  public:
-    ParkingLot();
-    virtual ~ParkingLot();
-  protected:
+using namespace std;
+
+class ParkingLot {
   private:
+    int row;
+    int col;
+    int level;
+    vector<vector<vector<Car*> > > parking_house;
+  public:
+    ParkingLot(int, int, int);
 };
 
 #endif // PARKINGLOT_H

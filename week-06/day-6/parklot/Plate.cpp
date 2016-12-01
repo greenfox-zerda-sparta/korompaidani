@@ -11,7 +11,6 @@ Plate::Plate(unsigned short int id) {
   for (int i = 0; i < 3; i++) {
     temp_plate[i + 4] = numbers[rand() % 10];
   }
-  //get_CAR_ID();
 }
 
 string Plate::get_temp_plate() {

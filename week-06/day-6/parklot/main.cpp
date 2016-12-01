@@ -7,6 +7,7 @@
 
 #include "Car.hpp"
 #include "Plate.hpp"
+#include "ParkingLot.hpp"
 
 using namespace std;
 
@@ -19,9 +20,11 @@ int main() {
     cout << i + 1 << ". garage: " << garage[i]->get_type() << " | " << garage[i]->get_color() << " | " << garage[i]->get_car_plate() << " | " << garage[i]->get_CAR_ID() << endl;
   }
 
-  Plate p1(2);
+  Plate p1();
 
-  cout << p1.get_temp_plate() << endl;
+  //cout << p1.get_temp_plate() << endl;
+
+  ParkingLot(4, 4, 8);
 
   return 0;
 }
