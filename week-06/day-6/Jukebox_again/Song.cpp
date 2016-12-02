@@ -26,3 +26,11 @@ int Song::get_last_rating() {
     return 0;
   }
 };
+
+float Song::get_rating_average() {
+  float temp = 0;
+  for (int i = 0; i < ratings.size(); i++) {
+    temp += (float)ratings[i];
+  }
+  return temp / ratings.size();
+};

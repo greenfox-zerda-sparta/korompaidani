@@ -16,6 +16,7 @@ class Song {
     std::string get_artist();
     std::string get_genre();
     int get_last_rating();
+    float get_rating_average();
 };
 
 #endif // SONG_H
