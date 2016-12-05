@@ -7,11 +7,11 @@
 #include <ctime>
 #include <cstdlib>
 
-class Plate : Car {
+class Plate : public Car {
   private:
     std::string temp_plate;
   public:
-    Plate(unsigned short int);
+    Plate();
     std::string get_temp_plate();
 };
 

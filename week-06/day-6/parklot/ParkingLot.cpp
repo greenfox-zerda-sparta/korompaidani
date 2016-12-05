@@ -18,7 +18,7 @@ ParkingLot::ParkingLot(int user_row, int user_col, int user_level, string user_p
     for (int j = 0; j < parking_house[i].size(); j++) {
       for (int k = 0; k < parking_house[i][j].size(); k++) {
         parking_house[i][j][k] = new Car();
-        Plate pt(parking_house[i][j][k]->get_CAR_ID());
+        Plate pt;
         parking_house[i][j][k]->set_car_plate(pt.get_temp_plate());
       }
     }

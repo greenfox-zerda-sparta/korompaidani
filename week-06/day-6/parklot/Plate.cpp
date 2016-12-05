@@ -3,7 +3,7 @@
 std::string letters = "QWERTYUIOPASDFGHJKLZXCVBNM";
 std::string numbers = "0123456789";
 
-Plate::Plate(unsigned short int id) {
+Plate::Plate() {
   temp_plate = "   -   ";
   for (int i = 0; i < 3; i++) {
     temp_plate[i] = letters[rand() % 26];
