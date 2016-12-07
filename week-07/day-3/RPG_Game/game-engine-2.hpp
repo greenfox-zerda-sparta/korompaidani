@@ -6,6 +6,9 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>  
 
 #define ARROW_UP 0
 #define ARROW_RIGHT 1
@@ -106,6 +109,10 @@ public:
             break;
           case SDLK_RIGHT:
             context->on_key_down(ARROW_RIGHT);
+
+          //  gameover = 1; ide valami game render vagy initet kell behivni
+
+
             break;
           case SDLK_UP:
             context->on_key_down(ARROW_UP);
