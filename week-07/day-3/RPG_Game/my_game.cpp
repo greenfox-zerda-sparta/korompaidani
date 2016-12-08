@@ -14,6 +14,7 @@ my_game::~my_game() {
 void my_game::init(GameContext& context) {
   context.load_file(level->get_floor_pic_path());
   context.load_file(level->get_wall_pic_path());
+  context.load_file(skeleton.get_enemy_pic_path());
   context.load_file(hero.get_character_pic_path('d'));
   context.load_file(hero.get_character_pic_path('u'));
   context.load_file(hero.get_character_pic_path('l'));
@@ -22,6 +23,7 @@ void my_game::init(GameContext& context) {
 
 void my_game::render(GameContext& context) {
   level->level_creator(context);
+  skeleton.enemy_appear(context, *level);
   hero.character_walk(context, *level);
   context.render();
 };
