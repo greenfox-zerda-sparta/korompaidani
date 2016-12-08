@@ -14,6 +14,7 @@ public:
 
   std::string get_wall_pic_dir();
   std::string get_floor_pic_dir();
+  int get_map(int, int);
 
   virtual void drawer(int, int, int);
   void level_creator(GameContext&);

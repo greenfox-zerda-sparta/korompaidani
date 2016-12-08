@@ -28,6 +28,10 @@ std::string level_builder::get_floor_pic_dir() {
   return  floor_pic_dir;
 }
 
+int level_builder::get_map(int x, int y) {
+  return map[y][x];
+}
+
 void level_builder::level_creator(GameContext &context) {
   for (int i = 0; i < map.size(); i++) {
     for (int j = 0; j < map[i].size(); j++) {
