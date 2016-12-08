@@ -4,15 +4,22 @@
 
 class character {
 private:
-  std::string character_pic_down_dir;
+  std::vector<std::vector<int>> location;
+  std::string character_pic_down_path;
+  std::string character_pic_up_path;
+  std::string character_pic_left_path;
+  std::string character_pic_right_path;
+  char choosen_direction;
   int coord_x;
   int coord_y;
 public:
   character();
   ~character();
 
-  std::string get_character_pic_down_dir();
+  std::string get_character_pic_path(char);
 
   void character_walk(GameContext&, level_builder&);
+  void print_map(level_builder&);
+  void print_loc();
 };
 

@@ -110,10 +110,6 @@ public:
             break;
           case SDLK_RIGHT:
             context->on_key_down(ARROW_RIGHT);
-
-          //  gameover = 1; ide valami game render vagy initet kell behivni
-
-
             break;
           case SDLK_UP:
             context->on_key_down(ARROW_UP);
