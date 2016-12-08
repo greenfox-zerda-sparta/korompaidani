@@ -17,9 +17,6 @@ public:
   ~character();
 
   std::string get_character_pic_path(char);
-
   void character_walk(GameContext&, level_builder&);
-  void print_map(level_builder&);
-  void print_loc();
 };
 
