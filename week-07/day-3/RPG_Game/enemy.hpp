@@ -9,6 +9,7 @@ private:
   level_builder* level;
   int coord_x;
   int coord_y;
+  int actual_pos;
   int enemy_hp_counter;
 public:
   enemy(level_builder&);
@@ -16,7 +17,8 @@ public:
   ~enemy();
 
   std::string get_enemy_pic_path();
+  int get_actual_pos();
   void enemy_appear(GameContext&, level_builder&);
-  void enemy_death(int);
+  void enemy_death(int, int);
   void print_level_map(level_builder&);
 };

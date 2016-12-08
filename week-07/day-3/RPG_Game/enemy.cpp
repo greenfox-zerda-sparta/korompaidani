@@ -12,6 +12,7 @@ enemy::enemy() {
   this->enemy_pic_path = "pics/skeleton.bmp";
   this->coord_x = 0;
   this->coord_y = 0;
+  this->actual_pos = 0;
   this->enemy_hp_counter = 0;
 }
 
@@ -23,21 +24,26 @@ std::string enemy::get_enemy_pic_path() {
   return this->enemy_pic_path;
 }
 
+int enemy::get_actual_pos() {
+  return actual_pos;
+}
+
 void enemy::enemy_appear(GameContext &context, level_builder &in_level) {
   if (enemy_hp_counter == 0) {
     coord_y = rand() % 10;
     coord_x = rand() % 10;
     if (in_level.get_map(coord_y, coord_x) != 0) {
       location[coord_y][coord_x] = 1;
-      enemy_hp_counter++;
+      enemy_hp_counter = 1;
     }
   }
+  actual_pos = (coord_x * 10) + coord_y;
   context.draw_sprite(get_enemy_pic_path(), 72 * coord_x, 72 * coord_y);
 }
 
-void enemy::enemy_death(int fight_result) {
-  if (fight_result == 0) {
-    enemy_hp_counter == 0;
+void enemy::enemy_death(int fight_result, int enemy_pos) {
+  if (enemy_pos == actual_pos && fight_result == 9) {
+    enemy_hp_counter = 0;
   }
 }
 

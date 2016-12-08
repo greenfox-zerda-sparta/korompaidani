@@ -12,6 +12,7 @@ character::character() {
   this->choosen_direction = 'd';
   this->coord_x = 0;
   this->coord_y = 0;
+  this->actual_pos = 0;
   this->location[this->coord_y][this->coord_x] = 1;
 }
 
@@ -31,6 +32,10 @@ std::string character::get_character_pic_path(char direction) {
   else if (direction == 'r') {
     return character_pic_right_path;
   }
+}
+
+int character::get_actual_pos() {
+  return actual_pos;
 }
 
 void character::character_walk(GameContext &context, level_builder &level) {
@@ -62,6 +67,16 @@ void character::character_walk(GameContext &context, level_builder &level) {
       choosen_direction = 'r';
     }
   }
+  actual_pos = (coord_x * 10) + coord_y;
   context.draw_sprite(get_character_pic_path(choosen_direction), 72 * coord_x, 72 * coord_y);
+}
+
+int character::character_fight(GameContext &context) {
+  if (context.was_key_pressed(SPACE) == true) {
+    return 9;
+  }
+  else {
+    return 1;
+  }
 }
 

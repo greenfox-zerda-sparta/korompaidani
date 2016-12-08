@@ -12,11 +12,14 @@ private:
   char choosen_direction;
   int coord_x;
   int coord_y;
+  int actual_pos;
 public:
   character();
   ~character();
 
   std::string get_character_pic_path(char);
+  int get_actual_pos();
   void character_walk(GameContext&, level_builder&);
+  int character_fight(GameContext&);
 };
 
