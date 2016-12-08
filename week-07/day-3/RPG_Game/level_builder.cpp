@@ -9,40 +9,20 @@ level_builder::level_builder() {
   for (int i = 0; i < map.size(); i++) {
     map[i].resize(map_size, 0);
   }
-  /*
-  shift = -2;
-  frame_size = map_size;
-  square_drawer();
-  square_drawer();
-  square_drawer();
-  */
+  wall_pic_dir = "pics/wall.bmp";
+  floor_pic_dir = "pics/floor.bmp";
 }
 
 
 level_builder::~level_builder() {
 }
 
-void level_builder::square_drawer() {
-  if (frame_size >= map_size) {
-    frame_size = map_size;
-  }
-  shift += 2;
-  int max_size = frame_size - shift;
-  int min_size = shift;
-  int rand_int = (rand() % (max_size - shift));
+std::string level_builder::get_wall_pic_dir() {
+  return wall_pic_dir;
+}
 
-  for (int i = min_size; i < max_size; i++) {
-    for (int j = min_size; j < max_size; j++) {
-      if (i == min_size || i == max_size - 1) {
-        map[i][j] = 1;
-      }
-      else {
-        if (j == min_size || j == max_size - 1) {
-          map[i][j] = 1;
-        }
-      }
-    }
-  }
+std::string level_builder::get_floor_pic_dir() {
+  return  floor_pic_dir;
 }
 
 void level_builder::level_creator(GameContext &context) {

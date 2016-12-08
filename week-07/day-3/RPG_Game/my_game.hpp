@@ -3,10 +3,12 @@
 #include "character.hpp"
 #include "level_builder.hpp"
 #include "recursive_level.hpp"
+#include "square_level.hpp"
 
 class my_game : public Game {
 private:
   recursive_level rec_level;
+  square_level sq_level;
   character hero;
 public:
   my_game();

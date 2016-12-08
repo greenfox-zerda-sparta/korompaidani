@@ -1,15 +1,17 @@
 #include "character.hpp"
 
-
-
 character::character() {
-  hero_pic_dir = "pics/hero-down.bmp";
+  character_pic_dir = "pics/hero-down.bmp";
   int coord_x = 0;
   int coord_y = 0;
 }
 
 
 character::~character() {
+}
+
+std::string character::get_character_pic_dir() {
+  return character_pic_dir;
 }
 
 void character::hero_walk(GameContext &context) {
