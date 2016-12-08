@@ -52,12 +52,19 @@ void character::print_loc() {
 }
 
 void character::character_walk(GameContext &context, level_builder &level) {
-  std::cout << coord_y << std::endl << std::endl;
+  std::cout << "coord_y = " << coord_y << std::endl << std::endl;
   if (context.was_key_pressed(ARROW_DOWN) == true && coord_y < 9) {
     if ((level.get_map(coord_y + 1, coord_x)) != 0) {
       coord_y++;
       location[coord_y][coord_x] = 1;
       choosen_direction = 'd';
+    }
+  }
+  else if (context.was_key_pressed(ARROW_UP) == true && coord_y > 0) {
+    if ((level.get_map(coord_y - 1, coord_x)) != 0) {
+      coord_y--;
+      location[coord_y][coord_x] = 1;
+      choosen_direction = 'u';
     }
   }
   context.draw_sprite(get_character_pic_path(choosen_direction), 72 * coord_x, 72 * coord_y);
