@@ -12,6 +12,6 @@ public:
 
   std::string get_character_pic_dir();
 
-  void hero_walk(GameContext&);
+  void character_walk(GameContext&);
 };
 

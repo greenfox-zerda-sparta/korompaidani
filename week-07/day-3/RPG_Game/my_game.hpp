@@ -7,8 +7,7 @@
 
 class my_game : public Game {
 private:
-  recursive_level rec_level;
-  square_level sq_level;
+  level_builder* level;
   character hero;
 public:
   my_game();

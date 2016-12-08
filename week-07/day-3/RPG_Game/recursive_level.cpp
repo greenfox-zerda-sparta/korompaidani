@@ -4,13 +4,12 @@ const int STEPS[15] = { 3,3,4,5,4,4,4,5,5,5,5,5,6,6,6 };
 const int COVERABLE = 54;
 
 recursive_level::recursive_level() : level_builder() {
-
 }
 
 recursive_level::~recursive_level() {
 }
 
-void recursive_level::recursive_drawer(int x, int y, int covered) {
+void recursive_level::drawer(int x, int y, int covered) {
   if (!map[x][y]) {
     map[x][y] = 1;
     ++covered;
@@ -22,7 +21,7 @@ void recursive_level::recursive_drawer(int x, int y, int covered) {
   int dir = rand() % 4;
   for (int i = 1; i <= STEPS[stp]; ++i) {
     if (dir == 0) { //right
-      if (++x>9) {
+      if (++x > 9) {
         x = 9;
         dir = rand() % 4;
       }
@@ -65,6 +64,6 @@ void recursive_level::recursive_drawer(int x, int y, int covered) {
       return;
     }
   }
-  recursive_drawer(x, y, covered);
+  drawer(x, y, covered);
   return;
 }

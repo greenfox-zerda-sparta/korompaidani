@@ -8,6 +8,6 @@ private:
 public:
   square_level();
   ~square_level();
-  void square_drawer();
+  virtual void square_drawer();
 };
 

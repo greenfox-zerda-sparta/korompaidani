@@ -5,6 +5,6 @@ class recursive_level : public level_builder {
 public:
   recursive_level();
   ~recursive_level();
-  void recursive_drawer(int, int, int);
+  virtual void drawer(int, int, int);
 };
 
