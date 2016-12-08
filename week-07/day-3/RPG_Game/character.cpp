@@ -52,7 +52,7 @@ void character::print_loc() {
 }
 
 void character::character_walk(GameContext &context, level_builder &level) {
-  std::cout << "coord_y = " << coord_y << std::endl << std::endl;
+  std::cout << "coord_x = " << coord_x << std::endl << std::endl;
   if (context.was_key_pressed(ARROW_DOWN) == true && coord_y < 9) {
     if ((level.get_map(coord_y + 1, coord_x)) != 0) {
       coord_y++;
@@ -65,6 +65,20 @@ void character::character_walk(GameContext &context, level_builder &level) {
       coord_y--;
       location[coord_y][coord_x] = 1;
       choosen_direction = 'u';
+    }
+  }
+  else if (context.was_key_pressed(ARROW_LEFT) == true && coord_x > 0) {
+    if ((level.get_map(coord_y, coord_x - 1)) != 0) {
+      coord_x--;
+      location[coord_y][coord_x] = 1;
+      choosen_direction = 'l';
+    }
+  }
+  else if (context.was_key_pressed(ARROW_RIGHT) == true && coord_x < 9) { ///instead of 9 u have to use variable
+    if ((level.get_map(coord_y, coord_x + 1)) != 0) {
+      coord_x++;
+      location[coord_y][coord_x] = 1;
+      choosen_direction = 'r';
     }
   }
   context.draw_sprite(get_character_pic_path(choosen_direction), 72 * coord_x, 72 * coord_y);
