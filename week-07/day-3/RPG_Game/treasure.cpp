@@ -9,7 +9,8 @@ treasure::treasure() {
   this->coord_x = 0;
   this->coord_y = 0;
   this->actual_pos = 0;
-  this->treasure_catch_counter = 0;
+  this->treasure_catch_checker = 0;
+  this->catch_counter = 0;
 }
 
 treasure::~treasure() {
@@ -19,17 +20,22 @@ std::string treasure::get_treasure_pic_path() {
   return this->treasure_pic_path;
 }
 
+int treasure::get_catch_counter()
+{
+  return catch_counter;
+}
+
 int treasure::get_actual_pos() {
   return actual_pos;
 }
 
 void treasure::appear(GameContext &context, level_builder &in_level) {
-  if (treasure_catch_counter == 0) {
+  if (treasure_catch_checker == 0) {
     coord_y = rand() % 10;
     coord_x = rand() % 10;
     if (in_level.get_map(coord_y, coord_x) != 0) {
       location[coord_y][coord_x] = 1;
-      treasure_catch_counter = 1;
+      treasure_catch_checker = 1;
     }
   }
   actual_pos = (coord_x * 10) + coord_y;
@@ -38,6 +44,7 @@ void treasure::appear(GameContext &context, level_builder &in_level) {
 
 void treasure::picked_up(int fight_result, int hero_pos) {
   if (hero_pos == actual_pos && fight_result == 9) {
-    treasure_catch_counter = 0;
+    treasure_catch_checker = 0;
+    catch_counter++;
   }
 }

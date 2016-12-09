@@ -7,17 +7,20 @@
 #include "enemy.hpp"
 #include "treasure.hpp"
 #include "welcome_srceen.hpp"
+#include "score.hpp"
 
 class my_game : public Game {
 private:
   level_builder* level;
   character hero;
-  enemy skeleton;
+  enemy snake;
   treasure arch;
   welcome_srceen welcome;
+  score my_score;
 public:
   my_game();
   ~my_game();
   void init(GameContext&);
   void render(GameContext&);
+  void test_to_command_line();
 };

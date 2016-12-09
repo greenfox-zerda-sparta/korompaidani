@@ -2,6 +2,7 @@
 
 enemy::enemy(level_builder &in_level) {
   this->level = &in_level;
+  this->death_counter++;
 }
 
 enemy::enemy() {
@@ -28,6 +29,10 @@ int enemy::get_actual_pos() {
   return actual_pos;
 }
 
+int enemy::get_death_counter() {
+  return death_counter;
+}
+
 void enemy::enemy_appear(GameContext &context, level_builder &in_level) {
   if (enemy_hp_counter == 0) {
     coord_y = rand() % 10;
@@ -44,6 +49,7 @@ void enemy::enemy_appear(GameContext &context, level_builder &in_level) {
 void enemy::enemy_death(int fight_result, int hero_pos) {
   if (hero_pos == actual_pos && fight_result == 9) {
     enemy_hp_counter = 0;
+    death_counter++;
   }
 }
 
