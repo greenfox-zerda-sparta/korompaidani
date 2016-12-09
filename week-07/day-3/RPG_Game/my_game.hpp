@@ -5,12 +5,16 @@
 #include "recursive_level.hpp"
 #include "square_level.hpp"
 #include "enemy.hpp"
+#include "treasure.hpp"
+#include "welcome_srceen.hpp"
 
 class my_game : public Game {
 private:
   level_builder* level;
   character hero;
   enemy skeleton;
+  treasure arch;
+  welcome_srceen welcome;
 public:
   my_game();
   ~my_game();

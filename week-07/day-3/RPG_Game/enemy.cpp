@@ -41,8 +41,8 @@ void enemy::enemy_appear(GameContext &context, level_builder &in_level) {
   context.draw_sprite(get_enemy_pic_path(), 72 * coord_x, 72 * coord_y);
 }
 
-void enemy::enemy_death(int fight_result, int enemy_pos) {
-  if (enemy_pos == actual_pos && fight_result == 9) {
+void enemy::enemy_death(int fight_result, int hero_pos) {
+  if (hero_pos == actual_pos && fight_result == 9) {
     enemy_hp_counter = 0;
   }
 }
