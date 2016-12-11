@@ -24,7 +24,7 @@ void my_game::init(GameContext& context) {
 
 void my_game::render(GameContext& context) {
   level->level_creator(context);
-  snake.enemy_appear(context, *level);
+  snake.enemy_appear_and_walk(context, *level);
   arch.appear(context, *level);
   hero.character_walk(context, *level);
   snake.enemy_death(hero.character_fight(context), hero.get_actual_pos());

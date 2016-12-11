@@ -9,6 +9,7 @@ int main(int argc, char* args[]) {
   srand(time(NULL));
   my_game game;
   GameEngine engine(&game, 720, 720);
+  game.test_to_command_line();
   engine.run();
    
   return 0;

@@ -13,6 +13,8 @@ private:
   int actual_pos;
   int enemy_hp_counter;
   int death_counter;
+  unsigned short int pulse;
+  const int MOVING_SPEED;
 public:
   enemy(level_builder&);
   enemy();
@@ -21,7 +23,8 @@ public:
   std::string get_enemy_pic_path();
   int get_actual_pos();
   int get_death_counter();
-  void enemy_appear(GameContext&, level_builder&);
+  void enemy_appear_and_walk(GameContext&, level_builder&);
   void enemy_death(int, int);
   void print_level_map(level_builder&);
+  int increase_pulse();
 };
