@@ -5,6 +5,7 @@
 #include "recursive_level.hpp"
 #include "square_level.hpp"
 #include "enemy.hpp"
+#include "enemy_calling.hpp"
 #include "treasure.hpp"
 #include "welcome_srceen.hpp"
 #include "score.hpp"
@@ -14,6 +15,7 @@ private:
   level_builder* level;
   character hero;
   enemy snake;
+  enemy_calling enemies;
   treasure arch;
   welcome_srceen welcome;
   score my_score;

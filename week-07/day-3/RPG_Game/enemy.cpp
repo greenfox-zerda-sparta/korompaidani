@@ -3,16 +3,16 @@
 char dir[4] = { 'd', 'u', 'l', 'r' };
 int dir_index = rand() % 4;
 
-enemy::enemy() : MOVING_SPEED(50) {
+enemy::enemy() : MOVING_SPEED(40) {
   this->location.resize(10);  ///ha mukodik akkor a getmapsize kell majd ide
   for (int i = 0; i < location.size(); i++) {
     this->location[i].resize(10, 0);
   }
   this->enemy_pic_path = "pics/skeleton.bmp";
-  this->enemy_pic_down_path = "pics/enemy-down.bmp";
-  this->enemy_pic_up_path = "pics/enemy-up.bmp";
-  this->enemy_pic_left_path = "pics/enemy-left.bmp";
-  this->enemy_pic_right_path = "pics/enemy-right.bmp";
+  this->enemy_pic_down_path = "pics/molaram-down.bmp";
+  this->enemy_pic_up_path = "pics/molaram-up.bmp";
+  this->enemy_pic_left_path = "pics/molaram-left.bmp";
+  this->enemy_pic_right_path = "pics/molaram-right.bmp";
   this->coord_x = 0;
   this->coord_y = 0;
   this->actual_pos = 0;
@@ -157,4 +157,19 @@ int enemy::increase_pulse() {
     return temp_pulse;
   }
   return temp_pulse;
+}
+
+void enemy::set_enemy_picture(char enemy_type) {
+  if (enemy_type == 's') {
+    this->enemy_pic_down_path = "pics/snake-down.bmp";
+    this->enemy_pic_up_path = "pics/snake-up.bmp";
+    this->enemy_pic_left_path = "pics/snake-left.bmp";
+    this->enemy_pic_right_path = "pics/snake-right.bmp";
+  }
+  else if (enemy_type == 'm') {
+    this->enemy_pic_down_path = "pics/molaram-down.bmp";
+    this->enemy_pic_up_path = "pics/molaram-up.bmp";
+    this->enemy_pic_left_path = "pics/molaram-left.bmp";
+    this->enemy_pic_right_path = "pics/molaram-right.bmp";
+  }
 }

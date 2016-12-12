@@ -32,4 +32,5 @@ public:
   void enemy_death(int, int);
   void print_level_map(level_builder&);
   int increase_pulse();
+  void set_enemy_picture(char);
 };
