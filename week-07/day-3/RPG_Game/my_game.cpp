@@ -14,7 +14,10 @@ void my_game::init(GameContext& context) {
   context.load_file(welcome.get_welcome_srceen_path());
   context.load_file(level->get_floor_pic_path());
   context.load_file(level->get_wall_pic_path());
-  context.load_file(snake.get_enemy_pic_path());
+  context.load_file(snake.get_enemy_pic_path('d'));
+  context.load_file(snake.get_enemy_pic_path('u'));
+  context.load_file(snake.get_enemy_pic_path('l'));
+  context.load_file(snake.get_enemy_pic_path('r'));
   context.load_file(arch.get_treasure_pic_path());
   context.load_file(hero.get_character_pic_path('d'));
   context.load_file(hero.get_character_pic_path('u'));
@@ -24,7 +27,7 @@ void my_game::init(GameContext& context) {
 
 void my_game::render(GameContext& context) {
   level->level_creator(context);
-  snake.enemy_appear_and_walk(context, *level);
+  snake.enemy_appear(context, *level);
   arch.appear(context, *level);
   hero.character_walk(context, *level);
   snake.enemy_death(hero.character_fight(context), hero.get_actual_pos());
