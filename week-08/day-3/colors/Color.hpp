@@ -6,16 +6,17 @@
 
 class Color {
 private:
-  uint8_t red;
-  uint8_t green;
-  uint8_t blue;
-  std::string int_to_hex(int);
+  unsigned char red;
+  unsigned char green;
+  unsigned char blue;
+  std::string int_to_hex(unsigned char);
   int hex_to_int(std::string);
 public:
   Color();
+  Color(unsigned char, unsigned char, unsigned char);
   ~Color();
-  virtual uint8_t get_red();
-  virtual uint8_t get_green();
-  virtual uint8_t get_blue();
+  virtual unsigned char* get_red();
+  virtual unsigned char* get_green();
+  virtual unsigned char* get_blue();
 };
 
