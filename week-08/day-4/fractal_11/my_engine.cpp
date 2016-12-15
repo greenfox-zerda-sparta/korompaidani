@@ -1,6 +1,6 @@
 #include "my_engine.hpp"
 
-my_engine::my_engine(draw* in_draw) {
+my_engine::my_engine(my_draw* in_draw) {
   this->width = 640;
   this->height = 480;
   this->quit = false;
