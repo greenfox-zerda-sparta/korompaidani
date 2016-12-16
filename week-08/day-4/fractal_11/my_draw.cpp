@@ -13,15 +13,43 @@ int my_draw::fibonacci(int n) {
 }
 
 void my_draw::rectangle(SDL_Renderer *& renderer, int width, int height, int shift_w, int shift_h) {
-  //DrawBy(renderer, width * ((double)1 / 3));
-  DrawTo(renderer, (width * ((double)1)) + shift_w, (height * ((double)1)) + shift_h); // 1 1
-  DrawTo(renderer, (width * ((double)1)) + shift_w, (height * ((double)2 / 3)) + shift_h); // 1 1/3 
-  DrawTo(renderer, (width * ((double)2 / 3)) + shift_w, (height * ((double)2 / 3)) + shift_h); // 1/3 1/3
-  DrawTo(renderer, (width * ((double)2 / 3)) + shift_w, (height * ((double)1)) + shift_h); // 1/3 1
+  MoveTo(shift_w, shift_h);
+  DrawTo(renderer, (width - (width * (double)1)) + shift_w, (height - (height * (double)1)) + shift_h);
+  DrawTo(renderer, (width - (width * (double)1)) + shift_w, (height - (height * (double)2 / 3)) + shift_h);
+  DrawTo(renderer, (width - (width * (double)2 / 3)) + shift_w, (height - (height * (double)2 / 3)) + shift_h);
+  DrawTo(renderer, (width - (width * (double)2 / 3)) + shift_w, (height - (height * (double)1)) + shift_h);
+  DrawTo(renderer, (width - (width * (double)1)) + shift_w, (height - (height * (double)1)) + shift_h);
 }
 
 void my_draw::plus_operator(SDL_Renderer *& renderer, int width, int height) {
-  rectangle(renderer, width, height, -(width * ((double)1 / 3)), -(height * ((double)1 / 3)));
+  rectangle(renderer, width, height, width / 3, height - height);
+  rectangle(renderer, width, height, width - width, height / 3);
+  rectangle(renderer, width, height, width / 3, height * (double)2 / 3);
+  rectangle(renderer, width, height, width * (double)2 / 3, height / 3);
+
+  width = width / 3;
+  height = height / 3;
+
+  rectangle(renderer, width, height, width / 3, height - height);
+  rectangle(renderer, width, height, width - width, height / 3);
+  rectangle(renderer, width, height, width / 3, height * (double)2 / 3);
+  rectangle(renderer, width, height, width * (double)2 / 3, height / 3);
+
+  width = width / 3;
+  height = height / 3;
+
+  rectangle(renderer, width, height, width / 3, height - height);
+  rectangle(renderer, width, height, width - width, height / 3);
+  rectangle(renderer, width, height, width / 3, height * (double)2 / 3);
+  rectangle(renderer, width, height, width * (double)2 / 3, height / 3);
+
+  width = width / 3;
+  height = height / 3;
+
+  rectangle(renderer, width, height, width / 3, height - height);
+  rectangle(renderer, width, height, width - width, height / 3);
+  rectangle(renderer, width, height, width / 3, height * (double)2 / 3);
+  rectangle(renderer, width, height, width * (double)2 / 3, height / 3);
 }
 
 void my_draw::my_drawer(SDL_Renderer* &renderer, int width, int height) {
