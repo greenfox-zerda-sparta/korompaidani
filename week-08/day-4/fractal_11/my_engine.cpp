@@ -2,7 +2,7 @@
 
 my_engine::my_engine(my_draw* in_draw) {
   this->width = 640;
-  this->height = 480;
+  this->height = 640;
   this->quit = false;
   this->canvas = in_draw;
 }
@@ -36,8 +36,7 @@ void my_engine::window_handler() {
 }
 
 void my_engine::render(SDL_Renderer* r) {
-  canvas->DrawTo(r, 200, 400);
-  canvas->DrawBy(r, 90);
+  canvas->my_drawer(r, width, height);
 }
 
 void my_engine::window_close() {
