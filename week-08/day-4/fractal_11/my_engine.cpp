@@ -14,10 +14,10 @@ void my_engine::init() {
   SDL_Init(SDL_INIT_EVERYTHING);
   window = SDL_CreateWindow("SDL2 Fractal", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
   renderer = SDL_CreateRenderer(window, -1, 0);
-  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
 }
 
 void my_engine::window_handler() {
+  bool end_story = true;
   while (!quit) {
     SDL_WaitEvent(&event);
     switch (event.type) {
@@ -25,13 +25,14 @@ void my_engine::window_handler() {
       quit = true;
       break;
     }
-    SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
-    SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-    render(renderer);
-
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderPresent(renderer);
+    if (end_story) {
+      SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+      SDL_RenderClear(renderer);
+      SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+      render(renderer);
+      end_story = false;
+      SDL_RenderPresent(renderer);
+    }
   }
 }
 
