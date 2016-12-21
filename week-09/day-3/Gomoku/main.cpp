@@ -97,13 +97,39 @@ TEST_CASE("Players choise method") {
   CHECK(player2.choise(map, 5, 6));
   CHECK(player1.choise(map, 2, 9));
   ///CHECK(player2.choise(map, 2, 9));
-  print_map_vector(map);
+  ///print_map_vector(map);
 }
 
 TEST_CASE("hello scan class") {
   Map map(19);
   Scan scan;
-  REQUIRE(scan.horizontal(map));
+  //REQUIRE(scan.horizontal(map));
+}
+
+TEST_CASE("map horizontal scan find five 1 next to each other") {
+  Map map(19);
+  Player player1("Joey");
+  player1.choise(map, 2, 9);
+  player1.choise(map, 3, 9);
+  player1.choise(map, 4, 9);
+  player1.choise(map, 5, 9);
+  player1.choise(map, 7, 9);
+
+  player1.choise(map, 1, 4);
+  player1.choise(map, 3, 4);
+  player1.choise(map, 7, 4);
+  player1.choise(map, 11, 4);
+  player1.choise(map, 12, 4);
+
+  player1.choise(map, 2, 18);
+  player1.choise(map, 3, 18);
+  player1.choise(map, 4, 18);
+  player1.choise(map, 5, 18);
+  player1.choise(map, 6, 18);
+
+  Scan scan;
+  CHECK(scan.horizontal(map));
+  print_map_vector(map);
 }
 #endif
 
