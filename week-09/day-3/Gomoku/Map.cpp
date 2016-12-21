@@ -21,3 +21,7 @@ unsigned short int Map::set_map_value_by_coordinates(unsigned short int x, unsig
   }
   return ERR_CODE_9;
 }
+
+std::vector<std::vector <unsigned short int> > Map::get_map() {
+  return map;
+}
