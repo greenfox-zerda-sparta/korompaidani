@@ -15,11 +15,11 @@ unsigned short int Map::get_map_value_by_coordinates(unsigned short int x, unsig
 }
 
 unsigned short int Map::set_map_value_by_coordinates(unsigned short int x, unsigned short int y, int value) {
-  if (this->get_map_value_by_coordinates(x, y) != ERR_CODE_9) {
+  if (this->get_map_value_by_coordinates(x, y) != ERR_CODE_9 && this->get_map_value_by_coordinates(x, y) == 0) {
     map[y][x] = value;
     return value;
   }
-  return ERR_CODE_9;
+  return ERR_CODE_8;
 }
 
 std::vector<std::vector <unsigned short int> > Map::get_map() {

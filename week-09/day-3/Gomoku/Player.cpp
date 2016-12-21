@@ -23,3 +23,11 @@ unsigned short int Player::get_player_num() {
   return this->player_num;
 }
 
+bool Player::choise(Map& map, unsigned short int x, unsigned short int y) {
+  if (map.set_map_value_by_coordinates(x, y, player_num) != ERR_CODE_8) {
+    map.set_map_value_by_coordinates(x, y, player_num);
+    return true;
+  }
+  return false;
+}
+

@@ -12,5 +12,6 @@ public:
   Player(std::string, Player&);
   std::string get_name();
   unsigned short int get_player_num();
+  bool choise(Map&, unsigned short int, unsigned short int);
 };
 

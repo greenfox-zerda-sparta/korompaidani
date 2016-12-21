@@ -42,7 +42,7 @@ TEST_CASE("set map value by coordinates") {
 TEST_CASE("set map value by coordinates edge cases") {
   Map map;
   int my_num = 2;
-  REQUIRE(map.set_map_value_by_coordinates(4, 19, my_num) == ERR_CODE_9);
+  REQUIRE(map.set_map_value_by_coordinates(4, 19, my_num) == ERR_CODE_8);
 }
 
 TEST_CASE("get map visibility test") {
@@ -61,7 +61,7 @@ TEST_CASE("set values and use get map to print map") {
   map.set_map_value_by_coordinates(18, 18, my_num);
   map.set_map_value_by_coordinates(4, 11, my_num);
   
-  print_map_vector(map);
+  ///print_map_vector(map);
 }
 
 TEST_CASE("using Players two different constructors and get theirs name") {
@@ -87,6 +87,16 @@ TEST_CASE("second player2 which constructed with player1 does have the right pla
 
   Player player2("Chandler", player1);
   REQUIRE(player2.get_player_num() == 2);
+}
+
+TEST_CASE("Players choise method") {
+  Map map;
+  Player player1("Joey");
+  Player player2("Chandler", player1);
+  CHECK(player2.choise(map, 5, 6));
+  CHECK(player1.choise(map, 2, 9));
+  CHECK(player2.choise(map, 2, 9));
+  print_map_vector(map);
 }
 
 #endif
