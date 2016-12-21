@@ -2,6 +2,7 @@
 #define CATCH_CONFIG_MAIN
 #include <iostream>
 #include "Map.hpp"
+#include "Player.hpp"
 
 #ifndef CATCH_CONFIG_MAIN
 
@@ -62,6 +63,15 @@ TEST_CASE("set values and use get map to print map") {
   
   print_map_vector(map);
 }
+
+TEST_CASE("using Players two different constructors and get theirs name") {
+  Player player1("Joey");
+  REQUIRE(player1.get_name() == "Joey");
+
+  Player player2("Chandler", player1);
+  REQUIRE(player2.get_name() == "Chandler");
+}
+
 #endif
 
 void print_map_vector(Map& m_map) {
