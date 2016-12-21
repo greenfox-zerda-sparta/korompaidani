@@ -129,8 +129,75 @@ TEST_CASE("map horizontal scan find five 1 next to each other") {
 
   Scan scan;
   CHECK(scan.horizontal(map));
+}
+
+TEST_CASE("map horizontal scan find five 2 next to each other") {
+  Map map(19);
+  Player player0("Phoebe");
+  Player player1("Joey", player0);
+  player0.choise(map, 3, 9);
+  player0.choise(map, 4, 9);
+  player0.choise(map, 5, 9);
+  player0.choise(map, 6, 9);
+
+  player1.choise(map, 2, 18);
+  player1.choise(map, 3, 18);
+  player1.choise(map, 4, 18);
+  player1.choise(map, 5, 18);
+  player1.choise(map, 6, 18);
+
+  Scan scan;
+  CHECK(scan.horizontal(map));
+}
+
+TEST_CASE("do you see who is the winner?") {
+  Map map(19);
+  Player player0("Phoebe");
+  Player player1("Joey", player0);
+  player0.choise(map, 2, 9);
+  player0.choise(map, 3, 9);
+  player1.choise(map, 4, 9);
+  player0.choise(map, 5, 9);
+  player0.choise(map, 6, 9);
+
+  player1.choise(map, 7, 18);
+  player1.choise(map, 8, 18);
+  player1.choise(map, 9, 18);
+  player1.choise(map, 10, 18);
+  player1.choise(map, 11, 18);
+
+  Scan scan;
+  scan.horizontal(map);
+  std::cout << scan.get_win_case().first << std::endl;
+  std::cout << scan.get_win_case().second << std::endl;
+  std::cout << scan.get_win_player_num() << std::endl;
+  CHECK(scan.get_win_case().second == 11);
   print_map_vector(map);
 }
+/*
+TEST_CASE("map vertical scan find five 1 ") {
+  Map map(19);
+  Player player0("Phoebe");
+
+  player0.choise(map, 2, 2);
+  player0.choise(map, 2, 3);
+  player0.choise(map, 2, 4);
+  player0.choise(map, 2, 5);
+  player0.choise(map, 2, 6);
+
+  player0.choise(map, 4, 2);
+  player0.choise(map, 4, 3);
+  player0.choise(map, 4, 4);
+  player0.choise(map, 4, 5);
+  player0.choise(map, 4, 6);
+
+  Scan scan;
+  scan.vertical(map);
+  //CHECK(scan.vertical(map));
+  print_map_vector(map);
+}
+*/
+
 #endif
 
 void print_map_vector(Map& m_map) {

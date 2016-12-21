@@ -2,11 +2,17 @@
 #include "ERROR_CODES.hpp"
 #include "Map.hpp"
 #include "Player.hpp"
+#include <utility>
 
 class Scan {
 private:
+  std::pair<char, int> win_case;
+  unsigned short int win_player_num;
 public:
   Scan();
-  bool horizontal(Map& map);
+  bool horizontal(Map&);
+  bool vertical(Map&);
+  std::pair<char, int> get_win_case();
+  unsigned short int get_win_player_num();
 };
 
