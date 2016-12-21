@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Map.hpp"
 #include "Player.hpp"
+#include "Scan.hpp"
 
 #ifndef CATCH_CONFIG_MAIN
 
@@ -18,42 +19,42 @@ int main(int argc, char* argv[]) {
 void print_map_vector(Map&);
 
 TEST_CASE("get map value by coordinates") {
-  Map map;
+  Map map(19);
   REQUIRE(map.get_map_value_by_coordinates(4, 4) == 0);
 }
 
 TEST_CASE("get map value by coordinates if coords are more than 19") {
-  Map map;
+  Map map(19);
   REQUIRE(map.get_map_value_by_coordinates(4, 19) == ERR_CODE_9);
 }
 
 TEST_CASE("get map value by coordinates if coords are less than 0") {
-  Map map;
+  Map map(19);
   REQUIRE(map.get_map_value_by_coordinates(-1, -1) == ERR_CODE_9);
 }
 
 TEST_CASE("set map value by coordinates") {
-  Map map;
+  Map map(19);
   int my_num = 2;
   map.set_map_value_by_coordinates(4, 5, my_num);
   REQUIRE(map.get_map_value_by_coordinates(4, 5) == my_num);
 }
 
 TEST_CASE("set map value by coordinates edge cases") {
-  Map map;
+  Map map(19);
   int my_num = 2;
   REQUIRE(map.set_map_value_by_coordinates(4, 19, my_num) == ERR_CODE_8);
 }
 
 TEST_CASE("get map visibility test") {
-  Map map;  
+  Map map(19);  
   REQUIRE(map.get_map().size() == 19);
   REQUIRE(map.get_map()[1].size() == 19);
   REQUIRE(map.get_map()[18].size() == 19);
 }
 
 TEST_CASE("set values and use get map to print map") {
-  Map map;
+  Map map(19);
   unsigned int my_num = 5;
   map.set_map_value_by_coordinates(-1, -1, my_num);
   map.set_map_value_by_coordinates(0, 0, my_num);
@@ -90,15 +91,20 @@ TEST_CASE("second player2 which constructed with player1 does have the right pla
 }
 
 TEST_CASE("Players choise method") {
-  Map map;
+  Map map(19);
   Player player1("Joey");
   Player player2("Chandler", player1);
   CHECK(player2.choise(map, 5, 6));
   CHECK(player1.choise(map, 2, 9));
-  CHECK(player2.choise(map, 2, 9));
+  ///CHECK(player2.choise(map, 2, 9));
   print_map_vector(map);
 }
 
+TEST_CASE("hello scan class") {
+  Map map(19);
+  Scan scan;
+  REQUIRE(scan.horizontal(map));
+}
 #endif
 
 void print_map_vector(Map& m_map) {
