@@ -72,6 +72,23 @@ TEST_CASE("using Players two different constructors and get theirs name") {
   REQUIRE(player2.get_name() == "Chandler");
 }
 
+TEST_CASE("using two diff instance and the second can see the first one's playername") {
+  Player player1("Joey");
+  REQUIRE(player1.get_name() == "Joey");
+
+  Player player2("Chandler", player1);
+  ///REQUIRE(player2.get_name() == "Joey");
+  ///it was worked only in this phase and  after that I had to remove this.
+}
+
+TEST_CASE("second player2 which constructed with player1 does have the right player number") {
+  Player player1("Joey");
+  REQUIRE(player1.get_player_num() == 1);
+
+  Player player2("Chandler", player1);
+  REQUIRE(player2.get_player_num() == 2);
+}
+
 #endif
 
 void print_map_vector(Map& m_map) {
