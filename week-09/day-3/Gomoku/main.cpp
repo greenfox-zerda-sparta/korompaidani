@@ -199,10 +199,9 @@ TEST_CASE("check the exit is false value") {
   std::cout << scan.get_win_case().second << std::endl;
   std::cout << scan.get_win_player_num() << std::endl;
   //CHECK(scan.exit_if_false);
-
-  print_map_vector(map);
+  //print_map_vector(map);
 }
-/*
+
 TEST_CASE("map vertical scan find five 1 ") {
   Map map(19);
   Player player0("Phoebe");
@@ -224,7 +223,6 @@ TEST_CASE("map vertical scan find five 1 ") {
   //CHECK(scan.vertical(map));
   print_map_vector(map);
 }
-*/
 
 #endif
 

@@ -48,6 +48,7 @@ bool Scan::vertical(Map& map) {
         }
         lines++;
       }
+      counter = 0;
     }
   }
   return false;
