@@ -1,13 +1,15 @@
 #include "Scan.hpp"
 
 Scan::Scan() {
+  this->win_player_num = 1;
 }
 
 bool Scan::horizontal(Map& map) {
+  bool exit_if_false = true;
   int counter = 0;
   for (int i = 0; i < map.get_map().size(); i++) {
     for (int j = 0; j < map.get_map()[i].size(); j++) {
-      if (map.get_map()[i][j] != 0) {
+      if (map.get_map()[i][j] == win_player_num) {
         counter++;
         if (counter == 5) {
           this->win_case.first = 'h';
@@ -20,6 +22,14 @@ bool Scan::horizontal(Map& map) {
         counter = 0;
       }
     }
+  }
+  if (!exit_if_false) {
+    return false;
+  }
+  else {
+    exit_if_false = false;
+    win_player_num = 2;
+    horizontal(map);
   }
   return false;
 }
