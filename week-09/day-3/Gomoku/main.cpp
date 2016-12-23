@@ -4,16 +4,19 @@
 #include "Map.hpp"
 #include "Player.hpp"
 #include "Scan.hpp"
+//#include "Game_engine.hpp"
+#include "SDLWindow.hpp"
 
-#ifndef CATCH_CONFIG_MAIN
+#ifdef CATCH_CONFIG_MAIN
 
 int main(int argc, char* argv[]) {
-  
+  SDL_Window sdl_window(570, 570);
+  sdl_window.run();
   return 0;
 }
 #endif
 
-#ifdef CATCH_CONFIG_MAIN
+#ifndef CATCH_CONFIG_MAIN
 #include "C:\Users\korom\OneDrive\Programming\TEST\catch.hpp"
 
 void print_map_vector(Map&);
@@ -128,7 +131,7 @@ TEST_CASE("map horizontal scan find five 1 next to each other") {
   player1.choise(map, 6, 18);
 
   Scan scan;
-  CHECK(scan.horizontal(map));
+ // CHECK(scan.horizontal(map));
 }
 
 TEST_CASE("map horizontal scan find five 2 next to each other") {
@@ -175,11 +178,11 @@ TEST_CASE("check the exit is false value") {
   Map map(19);
   Player player0("Phoebe");
   Player player1("Joey", player0);
-  player0.choise(map, 2, 9);
-  player0.choise(map, 3, 9);
-  player1.choise(map, 4, 9);
-  player0.choise(map, 5, 9);
-  player0.choise(map, 6, 9);
+  player1.choise(map, 2, 18);
+  player1.choise(map, 3, 18);
+ //player1.choise(map, 4, 18);
+  player1.choise(map, 5, 18);
+  player1.choise(map, 6, 18);
 
   player1.choise(map, 8, 11);
   player1.choise(map, 9, 11);
@@ -187,40 +190,39 @@ TEST_CASE("check the exit is false value") {
   player1.choise(map, 11, 11);
   player1.choise(map, 12, 11);
 
-  player1.choise(map, 7, 18);
-  player1.choise(map, 8, 18);
-  player1.choise(map, 9, 18);
   player1.choise(map, 10, 18);
   player1.choise(map, 11, 18);
+  player1.choise(map, 12, 18);
+  player1.choise(map, 13, 18);
+  player1.choise(map, 14, 18);
 
   Scan scan;
-  scan.horizontal(map);
-  std::cout << scan.get_win_case().first << std::endl;
-  std::cout << scan.get_win_case().second << std::endl;
-  std::cout << scan.get_win_player_num() << std::endl;
-  //CHECK(scan.exit_if_false);
-  //print_map_vector(map);
+  //scan.horizontal(map);
+  //CHECK(scan.horizontal(map)); 
 }
 
 TEST_CASE("map vertical scan find five 1 ") {
   Map map(19);
   Player player0("Phoebe");
+  Player player1("Monica", player0);
 
-  player0.choise(map, 2, 2);
-  player0.choise(map, 2, 3);
-  player0.choise(map, 2, 4);
-  player0.choise(map, 2, 5);
-  player0.choise(map, 2, 6);
-
-  player0.choise(map, 4, 2);
-  player0.choise(map, 4, 3);
-  player0.choise(map, 4, 4);
-  player0.choise(map, 4, 5);
-  player0.choise(map, 4, 6);
+  player1.choise(map, 4, 7);
+  player1.choise(map, 4, 8);
+  player1.choise(map, 4, 9);
+  player1.choise(map, 4, 10);
+  
+  player1.choise(map, 4, 14);
+  player1.choise(map, 4, 15);
+  player1.choise(map, 4, 1);
+  player1.choise(map, 4, 17);
+  player1.choise(map, 4, 18);
 
   Scan scan;
   scan.vertical(map);
-  //CHECK(scan.vertical(map));
+  std::cout << scan.get_win_case().first << std::endl;
+  std::cout << scan.get_win_case().second << std::endl;
+  std::cout << scan.get_win_player_num() << std::endl;
+  CHECK(scan.vertical(map));
   print_map_vector(map);
 }
 

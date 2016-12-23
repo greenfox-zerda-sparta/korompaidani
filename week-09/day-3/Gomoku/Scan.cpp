@@ -23,32 +23,31 @@ bool Scan::horizontal(Map& map) {
       }
     }
   }
-  if (!exit_if_false) {
-    return false;
-  }
-  else {
-    exit_if_false = false;
-    win_player_num = 2;
-    horizontal(map);
-  }
   return false;
 }
 
 bool Scan::vertical(Map& map) {
   int counter = 0;
   int lines;
-  for (int j = 0; j < map.get_map()[2].size(); j++) {
-    lines = 2 + 1;
-    if (map.get_map()[2][j] != 0) {
-      counter++;
-      while (19 - 2 - lines > 4) {
-        if (map.get_map()[lines][j] != 0) {
-          counter++;
-          std::cout << "the counter is: " << counter << std::endl;
+  for (int i = 0; i < map.get_map().size(); i++) {
+    for (int j = 0; j < map.get_map()[i].size(); j++) {
+      lines = i + 1;
+      if (map.get_map()[i][j] != 0) {
+        counter++;
+        while (19 - i - lines > 4) {
+          if (map.get_map()[lines][j] != 0) {
+            counter++;
+            std::cout << "the counter is: " << counter << std::endl;          
+          }
+          lines++;
         }
-        lines++;
+        if (counter == 5) {
+          this->win_case.first = 'v';
+          this->win_case.second = i + 4;
+          this->win_player_num = map.get_map()[i][j];
+          return true;
+        }
       }
-      counter = 0;
     }
   }
   return false;
