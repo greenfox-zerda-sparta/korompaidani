@@ -53,6 +53,21 @@ bool Scan::vertical(Map& map) {
   return false;
 }
 
+void Scan::round_scan(Map& map) {
+  /*
+  int counter = 0;
+  for (int i = map->get_click_coordinates().second - 5; i < map->get_click_coordinates().second + 5; i++) {
+    if (map->get_map()[i][map->get_click_coordinates().second] != 0) {
+      counter++;
+    }
+    else {
+      counter = 0;
+    }
+  }
+  std::cout << "click_coord x= " << map->get_click_coordinates().first << "click_coord y= " << map->get_click_coordinates().second << "counter= " << counter << std::endl;
+  */
+}
+
 std::pair<char, int> Scan::get_win_case() {
   return this->win_case;
 }

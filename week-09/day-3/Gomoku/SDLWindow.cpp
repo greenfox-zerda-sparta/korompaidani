@@ -1,6 +1,4 @@
 #include "SDLWindow.hpp"
-#include <iostream>
-#include "ERROR_CODES.hpp"
 
 SDL_Window::SDL_Window(int width, int height, int tile_size) {
   this->width = width;
@@ -19,9 +17,11 @@ void SDL_Window::create_window() {
   drawbackground();
 }
 
-void SDL_Window::run(Map& map, Player& player) {
+void SDL_Window::run(Map& map, Player& player_1, Player& player_2) {
+  bool temp;
   create_window();
   fill_image_by_tile(map_size);
+  int player_switcher = 1;
   bool running = true;
   while (running) {    
     if (SDL_PollEvent(&event) != 0) {
@@ -30,34 +30,49 @@ void SDL_Window::run(Map& map, Player& player) {
         break;
       }
     }
-    game_logic(map, player);
+    if (player_switcher == 1) {
+      temp = game_logic(map, player_1);
+      if (temp == true) {
+        player_switcher = 2;
+        std::cout << "player_switcher= " << player_switcher << std::endl;
+      }
+    }
+    else if (player_switcher == 2) {
+      temp = game_logic(map, player_2);
+      if (temp == true) {
+        player_switcher = 1;
+        std::cout << "player_switcher= " << player_switcher << std::endl;
+      }
+    }
   }
 }
 
-void SDL_Window::game_logic(Map& map, Player& player) {
+bool SDL_Window::game_logic(Map& map, Player& player_1) {
   if (event.type == SDL_MOUSEBUTTONDOWN) {
-    if (map.set_map_value_by_coordinates(event.button.x / tile_size, event.button.y / tile_size, player.get_player_num()) != ERR_CODE_8) {
-      cout << "x= " << (event.button.x / tile_size) << " y= " << (event.button.y / tile_size) << endl;
-      drawimage(event.button.x, event.button.y, player.get_player_num());
+    if (map.set_map_value_by_coordinates(event.button.x / tile_size, event.button.y / tile_size, player_1.get_player_num()) != ERR_CODE_8) {
+      click_coordinates.first = event.button.x / tile_size;
+      click_coordinates.second = event.button.y / tile_size;
+      cout << "x= " << get_click_coordinates().first << " y= " << get_click_coordinates().second << endl;
+      drawimage(event.button.x, event.button.y, player_1.get_player_num());
       event.type = NULL;
+      return true;
     }
     else {
       cout << "fail" << endl;
+      event.type = NULL;
+      return false;
     }
   }
 }
 
-pair <int, int> SDL_Window::click_coordinates(int x, int y) {
-  pair <int, int> coordinates;
-  coordinates.first = x;
-  coordinates.second = y;
-  return coordinates;
+pair <int, int> SDL_Window::get_click_coordinates() {
+  return click_coordinates;
 }
 
 void SDL_Window::drawbackground() {
   renderer = SDL_CreateRenderer(window, -1, 0);
   SDL_Rect dstrect = { tile_size, tile_size, tile_size, tile_size };
-  SDL_SetRenderDrawColor(renderer, 0, 100, 200, 255);
+  SDL_SetRenderDrawColor(renderer, 239, 228, 176, 255);
   texture = SDL_CreateTextureFromSurface(renderer, image);
   SDL_RenderCopy(renderer, texture, NULL, &dstrect);
   SDL_RenderClear(renderer);

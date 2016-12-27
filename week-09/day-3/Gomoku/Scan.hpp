@@ -3,6 +3,7 @@
 #include "Map.hpp"
 #include "Player.hpp"
 #include <utility>
+#include <iostream>
 
 class Scan {
 private:
@@ -12,6 +13,7 @@ public:
   Scan();
   bool horizontal(Map&);
   bool vertical(Map&);
+  void round_scan(Map&);
   std::pair<char, int> get_win_case();
   unsigned short int get_win_player_num();
 };

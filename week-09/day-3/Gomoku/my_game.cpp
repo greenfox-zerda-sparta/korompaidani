@@ -19,11 +19,10 @@ my_game::~my_game() {
 }
 
 void my_game::game_handler() {
-  sdl_window->game_logic(*my_map, *player_1);
 }
 
 void my_game::launch() {
-  sdl_window->run(*my_map, *player_1);
+  sdl_window->run(*my_map, *player_1, *player_2);
   print_map_vector();
 }
 

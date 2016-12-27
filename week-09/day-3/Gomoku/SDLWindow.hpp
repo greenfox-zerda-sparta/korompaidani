@@ -1,11 +1,13 @@
 #ifndef SDLWINDOW_H_
 #define SDLWINDOW_H_
 
+#include <iostream>
 #include <utility>
 #include <vector>
-#include "SDL.h"
 #include <map>
+#include "SDL.h"
 #include "player.hpp"
+#include "ERROR_CODES.hpp"
 
 using namespace std;
 
@@ -20,7 +22,7 @@ private:
   char* x_image;
   char* x_win_image;
   char* o_win_image;
-
+  pair <int, int> click_coordinates;
   SDL_Window* window;
   SDL_Renderer* renderer;
   SDL_Surface* image;
@@ -31,9 +33,9 @@ private:
 public:
   SDL_Window(int, int, int);
   void create_window();
-  void run(Map&, Player&);
-  void game_logic(Map&, Player&);
-  pair <int, int> click_coordinates(int, int);
+  void run(Map&, Player&, Player&);
+  bool game_logic(Map&, Player&);
+  pair <int, int> get_click_coordinates();
   void drawbackground();
   void drawimage(int&, int&, int);
   void fill_image_by_tile(int);
