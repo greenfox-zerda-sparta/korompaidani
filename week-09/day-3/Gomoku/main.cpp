@@ -20,6 +20,7 @@ int main(int argc, char* argv[]) {
   */
   my_game mygame("Rachel", "Ross", 570, 19);
   mygame.launch();
+  mygame.~my_game();
 
   return 0;
 }

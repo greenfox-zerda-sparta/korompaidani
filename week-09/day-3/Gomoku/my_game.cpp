@@ -1,10 +1,5 @@
 #include "my_game.hpp"
 
-//Map my_map(19);
-//Player player_1("a");
-//Player player_2("b", player_1);
-//SDL_Window sdl_window(570, 570, 30);
-
 my_game::my_game(std::string player_1_name, std::string player_2_name, unsigned short int screen_size, unsigned short int map_size) {
   this->my_map = new Map(map_size);
   this->player_1 = new Player(player_1_name);
@@ -17,6 +12,10 @@ my_game::my_game(std::string player_1_name, std::string player_2_name, unsigned 
 }
 
 my_game::~my_game() {
+  delete my_map;
+  delete player_1;
+  delete player_2;
+  delete sdl_window;
 }
 
 void my_game::game_handler() {
