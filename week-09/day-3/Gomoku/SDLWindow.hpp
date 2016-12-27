@@ -5,27 +5,40 @@
 #include <vector>
 #include "SDL.h"
 #include <map>
+#include "player.hpp"
 
 using namespace std;
 
 class SDL_Window {
 private:
-  int x;
-  int y;
-  SDL_Window *window;
+  int width;
+  int height;
+  int tile_size;
+  int map_size;
+  char* board_image;
+  char* o_image;
+  char* x_image;
+  char* x_win_image;
+  char* o_win_image;
+
+  SDL_Window* window;
   SDL_Renderer* renderer;
-  SDL_Surface * image;
-  SDL_Texture * texture;
+  SDL_Surface* image;
+  SDL_Texture* texture;
   SDL_Event event;
   std::map<std::string, SDL_Texture*> sprites;
   SDL_Window* screen;
 public:
-  SDL_Window(int, int);
-  void run();
-  pair <int, int> create_click_coordinates(int x, int y);
+  SDL_Window(int, int, int);
+  void create_window();
+  void run(Map&, Player&);
+  void game_logic(Map&, Player&);
+  pair <int, int> click_coordinates(int, int);
   void drawbackground();
-  void drawimage(int & x, int& y);
+  void drawimage(int&, int&, int);
+  void fill_image_by_tile(int);
+  void draw_full_size_image(int);
   ~SDL_Window();
 };
 
-#endif /* SDLWINDOW_H_ */
+#endif

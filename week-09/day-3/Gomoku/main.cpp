@@ -4,16 +4,35 @@
 #include "Map.hpp"
 #include "Player.hpp"
 #include "Scan.hpp"
-//#include "Game_engine.hpp"
 #include "SDLWindow.hpp"
+#include "my_game.hpp"
 
 #ifdef CATCH_CONFIG_MAIN
+void print_map_vector2(Map&);
 
 int main(int argc, char* argv[]) {
-  SDL_Window sdl_window(570, 570);
-  sdl_window.run();
+  /*
+  Map map(19);
+  Player player_1("Rachel");
+  Player player_2("Ross", player_1);
+  SDL_Window sdl_window(570, 570, 30);
+  sdl_window.run(map, player_2);
+  */
+  my_game mygame("Rachel", "Ross", 570, 19);
+  mygame.launch();
+
   return 0;
 }
+
+void print_map_vector2(Map& m_map) {
+  for (int i = 0; i < m_map.get_map().size(); i++) {
+    for (int j = 0; j < m_map.get_map()[i].size(); j++) {
+      std::cout << m_map.get_map()[i][j] << ' ';
+    }
+    std::cout << std::endl;
+  }
+}
+
 #endif
 
 #ifndef CATCH_CONFIG_MAIN
