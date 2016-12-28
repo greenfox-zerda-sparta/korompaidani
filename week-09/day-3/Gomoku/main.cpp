@@ -182,7 +182,7 @@ TEST_CASE("do you see who is the winner?") {
   player1.choise(map, 11, 18);
 
   Scan scan;
-  scan.horizontal(map);
+  //scan.horizontal(map);
 //  CHECK(scan.get_win_case().second == 6);
 }
 
@@ -230,8 +230,8 @@ TEST_CASE("map vertical scan find five 1 ") {
   player1.choise(map, 4, 18);
 
   Scan scan;
-  scan.vertical(map);
-  CHECK(scan.vertical(map));
+  //scan.vertical(map);
+  //CHECK(scan.vertical(map));
   //print_map_vector(map);
 }
 
