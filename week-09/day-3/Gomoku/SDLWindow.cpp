@@ -5,9 +5,9 @@ SDL_Window::SDL_Window(int width, int height, int tile_size) {
   this->height = height;
   this->tile_size = tile_size;
   this->map_size = width / tile_size;
-  this->o_image = "o.bmp";
-  this->x_image = "x.bmp";
-  this->board_image = "board.bmp";
+  this->o_image = "pics/o.bmp";
+  this->x_image = "pics/x.bmp";
+  this->board_image = "pics/board.bmp";
 }
 
 void SDL_Window::create_window() {
@@ -27,7 +27,7 @@ void SDL_Window::run(Map& map, Player& player_1, Player& player_2) {
     if (SDL_PollEvent(&event) != 0) {
       if (event.type == SDL_QUIT) {
         running = false;
-        break;
+        return;
       }
     }
     if (player_switcher == 1) {
@@ -49,10 +49,10 @@ void SDL_Window::run(Map& map, Player& player_1, Player& player_2) {
 
 bool SDL_Window::game_logic(Map& map, Player& player_1) {
   if (event.type == SDL_MOUSEBUTTONDOWN) {
-    if (map.set_map_value_by_coordinates(event.button.x / tile_size, event.button.y / tile_size, player_1.get_player_num()) != ERR_CODE_8) {
-      click_coordinates.first = event.button.x / tile_size;
-      click_coordinates.second = event.button.y / tile_size;
-      cout << "x= " << get_click_coordinates().first << " y= " << get_click_coordinates().second << endl;
+    player_1.set_last_click_coordinates(event.button.x / tile_size, event.button.y / tile_size);
+    if (player_1.choise(map, event.button.x / tile_size, event.button.y / tile_size)) {
+      player_1.choise(map, event.button.x / tile_size, event.button.y / tile_size);
+      cout << "x= " << player_1.get_last_click_coordinates().first << " y= " << player_1.get_last_click_coordinates().second << endl;
       drawimage(event.button.x, event.button.y, player_1.get_player_num());
       event.type = NULL;
       return true;
@@ -63,10 +63,6 @@ bool SDL_Window::game_logic(Map& map, Player& player_1) {
       return false;
     }
   }
-}
-
-pair <int, int> SDL_Window::get_click_coordinates() {
-  return click_coordinates;
 }
 
 void SDL_Window::drawbackground() {

@@ -31,3 +31,12 @@ bool Player::choise(Map& map, unsigned short int x, unsigned short int y) {
   return false;
 }
 
+void Player::set_last_click_coordinates(int x, int y) {
+  last_click_coordinates.first = x;
+  last_click_coordinates.second = y;
+}
+
+std::pair <int, int> Player::get_last_click_coordinates() {
+  return last_click_coordinates;
+}
+

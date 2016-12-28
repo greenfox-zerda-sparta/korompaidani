@@ -7,6 +7,10 @@ Map::Map(unsigned short int size) : MAP_SIZE(size) {
   }
 }
 
+unsigned short int Map::get_map_size() {
+  return MAP_SIZE;
+}
+
 unsigned short int Map::get_map_value_by_coordinates(unsigned short int x, unsigned short int y) {
   if (x < MAP_SIZE && y < MAP_SIZE && x >= 0 && y >= 0) {
     return map[y][x];

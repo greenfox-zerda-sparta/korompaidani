@@ -53,20 +53,85 @@ bool Scan::vertical(Map& map) {
   return false;
 }
 
-void Scan::round_scan(Map& map) {
-  /*
-  int counter = 0;
-  for (int i = map->get_click_coordinates().second - 5; i < map->get_click_coordinates().second + 5; i++) {
-    if (map->get_map()[i][map->get_click_coordinates().second] != 0) {
-      counter++;
-    }
-    else {
-      counter = 0;
-    }
+void Scan::round_scan(Map& map, std::pair<int, int> coord) {
+  int right = 0;
+  int left = 0;
+  int top = 0;
+  int bottom = 0;
+
+  if (coord.second - 5 < 0) {
+    top = 0 - (coord.second - 5);
   }
-  std::cout << "click_coord x= " << map->get_click_coordinates().first << "click_coord y= " << map->get_click_coordinates().second << "counter= " << counter << std::endl;
-  */
+  if (coord.second + 5 > map.get_map_size() - 1) {
+    bottom = (coord.second + 5) - (map.get_map_size() - 1);
+  }
+
+  for (int i = coord.second - 5 + top; i < coord.second + 5 - bottom; i++) {
+    std::cout << map.get_map()[i][coord.first] << std::endl;
+  }
+  
+  top = bottom = 0;
+
+  if (coord.first - 5 < 0) {
+    left = 0 - (coord.first - 5);
+  }
+  if (coord.first + 5 > map.get_map_size() - 1) {
+    right = (coord.first + 5) - (map.get_map_size() - 1);
+  }
+  
+  std::cout << std::endl;
+  for (int i = coord.first - 5 + left; i < coord.first + 5 - right; i++) {
+    std::cout << map.get_map()[coord.second][i] << " ";
+  }
+
+  left = right = 0;
+  
+  if (coord.second - 5 < 0) {
+    right = 0 - (coord.second - 5);
+  }
+  if (coord.first - 5 < 0) {
+    bottom = 0 - (coord.first - 5);
+  }
+  if (coord.second + 5 > map.get_map_size() - 1) {
+    left = (coord.second + 5) - (map.get_map_size() - 1);
+  }
+  if (coord.first + 5 > map.get_map_size() - 1) {
+    top = (coord.first + 5) - (map.get_map_size() - 1);
+  }
+
+  std::cout << std::endl << std::endl;
+  for (int i = -5 + (right) + (bottom); i < 6 - (left) - (top); i++) {
+    std::cout << map.get_map()[coord.second + i][coord.first + i] << std::endl;
+  }
+
+  right = left = top = bottom = 0;
+  
+  if (coord.first + 5 > map.get_map_size() - 1) {
+  right = (coord.first + 5) - (map.get_map_size() - 1);
+  }
+  if (coord.second + 5 > map.get_map_size() - 1) {
+  bottom = (coord.second + 5) - (map.get_map_size() - 1);
+  }
+  if (coord.first - 5 < 0) {
+  left = 0 - (coord.first - 5);
+  }
+  if (coord.second - 5 < 0) {
+    top = 0 - (coord.second - 5);
+  }
+  std::cout << std::endl << std::endl;
+  for (int i = -5 + (right) + (top); i < 6 - (bottom) - (left); i++) {
+    std::cout << map.get_map()[coord.second + i][coord.first - i] << std::endl;
+  } 
+  
 }
+
+/*
+int temp2 = -5;
+for (int i = 0; i < 10; i++) {
+std::cout << map.get_map()[coord.second + temp2 + right - bottom - left + top][coord.first - temp2 - right + bottom + left - top] << std::endl;
+temp2++;
+}
+*/
 
 std::pair<char, int> Scan::get_win_case() {
   return this->win_case;

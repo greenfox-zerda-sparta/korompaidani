@@ -22,7 +22,6 @@ private:
   char* x_image;
   char* x_win_image;
   char* o_win_image;
-  pair <int, int> click_coordinates;
   SDL_Window* window;
   SDL_Renderer* renderer;
   SDL_Surface* image;
@@ -35,7 +34,6 @@ public:
   void create_window();
   void run(Map&, Player&, Player&);
   bool game_logic(Map&, Player&);
-  pair <int, int> get_click_coordinates();
   void drawbackground();
   void drawimage(int&, int&, int);
   void fill_image_by_tile(int);

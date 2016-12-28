@@ -13,7 +13,7 @@ public:
   Scan();
   bool horizontal(Map&);
   bool vertical(Map&);
-  void round_scan(Map&);
+  void round_scan(Map&, std::pair<int, int>);
   std::pair<char, int> get_win_case();
   unsigned short int get_win_player_num();
 };
