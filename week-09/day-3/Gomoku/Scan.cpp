@@ -1,7 +1,7 @@
 #include "Scan.hpp"
 
 Scan::Scan() {
-  this->win_player_num = 1;
+  this->win_player_num = 0;
 }
 
 bool Scan::horizontal(Map& map) {
@@ -53,13 +53,15 @@ bool Scan::vertical(Map& map) {
   return false;
 }
 
-void Scan::round_scan(Map& map, std::pair<int, int> coord) {
+void Scan::round_scan(Map& map, std::pair<int, int> coord, int player_num) {
+  int counter = 0;
   int right = 0;
   int left = 0;
   int top = 0;
   int bottom = 0;
-
-  if (coord.second - 5 < 0) {
+  /* I */
+  std::cout << "vertical\n";
+  if (coord.second - 5 < 0) {  
     top = 0 - (coord.second - 5);
   }
   if (coord.second + 5 > map.get_map_size() - 1) {
@@ -68,10 +70,22 @@ void Scan::round_scan(Map& map, std::pair<int, int> coord) {
 
   for (int i = coord.second - 5 + top; i < coord.second + 5 - bottom; i++) {
     std::cout << map.get_map()[i][coord.first] << std::endl;
+    if (map.get_map()[i][coord.first] == player_num) {
+      counter++;
+    }
+    else {
+      counter = 0;
+    }
+    if (counter == 5) {
+      win_player_num = player_num;
+      ///return;
+    }
   }
   
   top = bottom = 0;
-
+  
+  /* _ */
+  std::cout << "horizontal\n";
   if (coord.first - 5 < 0) {
     left = 0 - (coord.first - 5);
   }
@@ -86,6 +100,8 @@ void Scan::round_scan(Map& map, std::pair<int, int> coord) {
 
   left = right = 0;
   
+  /* \ to down*/
+  std::cout << std::endl << " \\ to down\n";
   if (coord.second - 5 < 0) {
     right = 0 - (coord.second - 5);
   }
@@ -105,7 +121,25 @@ void Scan::round_scan(Map& map, std::pair<int, int> coord) {
   }
 
   right = left = top = bottom = 0;
+///
+  /* \ to up*/
+  std::cout << " \\ to up\n";
+  if (coord.first - 5 < 0) {
+    left = 0 - (coord.first - 5);
+  }
+  if (coord.second - 5 < 0) {
+    top = 0 - (coord.second - 5);
+  }
+
+  std::cout << std::endl << std::endl;
+  for (int i = 0; i < 6 - (left) - (top); i++) {
+    std::cout << map.get_map()[coord.second - i][coord.first - i] << std::endl;
+  }
+
+  right = left = top = bottom = 0;
   
+  /* / to down */
+  std::cout << " / to down\n";
   if (coord.first + 5 > map.get_map_size() - 1) {
   right = (coord.first + 5) - (map.get_map_size() - 1);
   }
@@ -121,7 +155,26 @@ void Scan::round_scan(Map& map, std::pair<int, int> coord) {
   std::cout << std::endl << std::endl;
   for (int i = -5 + (right) + (top); i < 6 - (bottom) - (left); i++) {
     std::cout << map.get_map()[coord.second + i][coord.first - i] << std::endl;
-  } 
+  }
+///
+  /* / to up */
+  std::cout << " / to up\n";
+  if (coord.first + 5 > map.get_map_size() - 1) {
+    right = (coord.first + 5) - (map.get_map_size() - 1);
+  }
+  if (coord.second + 5 > map.get_map_size() - 1) {
+    bottom = (coord.second + 5) - (map.get_map_size() - 1);
+  }
+  if (coord.first - 5 < 0) {
+    left = 0 - (coord.first - 5);
+  }
+  if (coord.second - 5 < 0) {
+    top = 0 - (coord.second - 5);
+  }
+  std::cout << std::endl << std::endl;
+  for (int i = 0; i < 6 - (right) - (top); i++) {
+    std::cout << map.get_map()[coord.second - i][coord.first + i] << std::endl;
+  }
   
 }
 

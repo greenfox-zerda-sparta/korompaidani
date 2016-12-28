@@ -239,7 +239,7 @@ TEST_CASE("scanner test 1") {
   Map map(19);
   Player player1("Phoebe");
   Scan scan;
-  /*
+  
   player1.choise(map, 5, 3);
   player1.choise(map, 5, 4);
   player1.choise(map, 5, 5);
@@ -249,7 +249,7 @@ TEST_CASE("scanner test 1") {
   player1.choise(map, 5, 9);
   player1.choise(map, 5, 10);
   player1.choise(map, 5, 11);
-  */
+  
   /*
   player1.choise(map, 7, 8);
   player1.choise(map, 8, 9);
@@ -344,11 +344,23 @@ TEST_CASE("scanner test 1") {
   player1.choise(map, 14, 13);
   player1.choise(map, 13, 12);
 
+  player1.choise(map, 11, 10);
+  player1.choise(map, 10, 9);
+  player1.choise(map, 9, 8);
+  player1.choise(map, 8, 7);
+  player1.choise(map, 7, 6);
+  player1.choise(map, 6, 5);
+
+  player1.choise(map, 0, 18);
+
   pair <int, int> coord;
-  coord.first = 18;
-  coord.second = 17;
+  //coord.first = 18;
+  //coord.second = 17;
+  coord.first = 0;
+  coord.second = 10;
   print_map_vector(map);
-  scan.round_scan(map, coord);
+  scan.round_scan(map, coord, 1);
+  std::cout << "player_num is= " << scan.get_win_player_num();
 }
 
 #endif
