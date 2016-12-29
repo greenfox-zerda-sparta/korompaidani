@@ -8,7 +8,7 @@
 #include "SDLWindow.hpp"
 #include "my_game.hpp"
 
-#ifndef CATCH_CONFIG_MAIN
+#ifdef CATCH_CONFIG_MAIN
 void print_map_vector2(Map&);
 
 int main(int argc, char* argv[]) {
@@ -28,7 +28,7 @@ void print_map_vector2(Map& m_map) {
 
 #endif
 
-#ifdef CATCH_CONFIG_MAIN
+#ifndef CATCH_CONFIG_MAIN
 #include "C:\Users\korom\OneDrive\Programming\TEST\catch.hpp"
 
 void print_map_vector(Map&);
@@ -356,8 +356,8 @@ TEST_CASE("scanner test 1") {
   pair <int, int> coord;
   //coord.first = 18;
   //coord.second = 17;
-  coord.first = 0;
-  coord.second = 10;
+  coord.first = 5;
+  coord.second = 7;
   print_map_vector(map);
   scan.round_scan(map, coord, 1);
   std::cout << "player_num is= " << scan.get_win_player_num();

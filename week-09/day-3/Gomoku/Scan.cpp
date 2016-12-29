@@ -3,27 +3,20 @@
 Scan::Scan() {
   this->win_player_num = 0;
 }
-/*
-bool Scan::vertical(Map& map, std::pair<int, int> coord, int player_num) {
 
-}
-*/
-void Scan::round_scan(Map& map, std::pair<int, int> coord, int player_num) {
+bool Scan::vertical(Map& map, std::pair<int, int> coord, int player_num) {
   int counter = 0;
-  int right = 0;
-  int left = 0;
-  int top = 0;
-  int bottom = 0;
-  /* I */
+  borders b;
   std::cout << "vertical\n";
-  if (coord.second - 5 < 0) {  
-    top = 0 - (coord.second - 5);
+  
+  if (coord.second - 5 < 0) {
+    b.top = 0 - (coord.second - 5);
   }
   if (coord.second + 5 > map.get_map_size() - 1) {
-    bottom = (coord.second + 5) - (map.get_map_size() - 1);
+    b.bottom = (coord.second + 5) - (map.get_map_size() - 1);
   }
 
-  for (int i = coord.second - 5 + top; i < coord.second + 5 - bottom; i++) {
+  for (int i = coord.second - 5 + (b.top); i < coord.second + 6 - (b.bottom); i++) {
     std::cout << map.get_map()[i][coord.first] << std::endl;
     if (map.get_map()[i][coord.first] == player_num) {
       counter++;
@@ -33,113 +26,180 @@ void Scan::round_scan(Map& map, std::pair<int, int> coord, int player_num) {
     }
     if (counter == 5) {
       win_player_num = player_num;
-      ///return;
+      return true;
     }
   }
-  
-  top = bottom = 0;
-  
-  /* _ */
+  return false;
+}
+
+bool Scan::horizontal(Map& map, std::pair<int, int> coord, int player_num) {
+  int counter = 0;
+  borders b;
+
   std::cout << "horizontal\n";
   if (coord.first - 5 < 0) {
-    left = 0 - (coord.first - 5);
+    b.left = 0 - (coord.first - 5);
   }
   if (coord.first + 5 > map.get_map_size() - 1) {
-    right = (coord.first + 5) - (map.get_map_size() - 1);
-  }
-  
-  std::cout << std::endl;
-  for (int i = coord.first - 5 + left; i < coord.first + 5 - right; i++) {
-    std::cout << map.get_map()[coord.second][i] << " ";
+    b.right = (coord.first + 5) - (map.get_map_size() - 1);
   }
 
-  left = right = 0;
-  
-  /* \ to down*/
+  std::cout << std::endl;
+  for (int i = coord.first - 5 + (b.left); i < coord.first + 6 - (b.right); i++) {
+    std::cout << map.get_map()[coord.second][i] << " ";
+    if (map.get_map()[coord.second][i] == player_num) {
+      counter++;
+    }
+    else {
+      counter = 0;
+    }
+    if (counter == 5) {
+      win_player_num = player_num;
+      return true;
+    }
+  }
+  return false;
+}
+
+bool Scan::diagonal_se(Map& map, std::pair<int, int> coord, int player_num) {
+  int counter = 0;
+  borders b;
   std::cout << std::endl << " \\ to down\n";
   if (coord.second - 5 < 0) {
-    right = 0 - (coord.second - 5);
+    b.right = 0 - (coord.second - 5);
   }
   if (coord.first - 5 < 0) {
-    bottom = 0 - (coord.first - 5);
+    b.bottom = 0 - (coord.first - 5);
   }
   if (coord.second + 5 > map.get_map_size() - 1) {
-    left = (coord.second + 5) - (map.get_map_size() - 1);
+    b.left = (coord.second + 5) - (map.get_map_size() - 1);
   }
   if (coord.first + 5 > map.get_map_size() - 1) {
-    top = (coord.first + 5) - (map.get_map_size() - 1);
+    b.top = (coord.first + 5) - (map.get_map_size() - 1);
   }
 
   std::cout << std::endl << std::endl;
-  for (int i = -5 + (right) + (bottom); i < 6 - (left) - (top); i++) {
+  for (int i = -5 + (b.right) + (b.bottom); i < 6 - (b.left) - (b.top); i++) {
     std::cout << map.get_map()[coord.second + i][coord.first + i] << std::endl;
+    if (map.get_map()[coord.second + i][coord.first + i] == player_num) {
+      counter++;
+    }
+    else {
+      counter = 0;
+    }
+    if (counter == 5) {
+      win_player_num = player_num;
+      return true;
+    }
   }
+  return false;
+}
 
-  right = left = top = bottom = 0;
-///
-  /* \ to up*/
+bool Scan::diagonal_nw(Map& map, std::pair<int, int> coord, int player_num) {
+  int counter = 0;
+  borders b;
+
   std::cout << " \\ to up\n";
   if (coord.first - 5 < 0) {
-    left = 0 - (coord.first - 5);
+    b.left = 0 - (coord.first - 5);
   }
   if (coord.second - 5 < 0) {
-    top = 0 - (coord.second - 5);
+    b.top = 0 - (coord.second - 5);
   }
 
   std::cout << std::endl << std::endl;
-  for (int i = 0; i < 6 - (left) - (top); i++) {
+  for (int i = 0; i < 6 - (b.left) - (b.top); i++) {
     std::cout << map.get_map()[coord.second - i][coord.first - i] << std::endl;
+    if (map.get_map()[coord.second - i][coord.first - i] == player_num) {
+      counter++;
+    }
+    else {
+      counter = 0;
+    }
+    if (counter == 5) {
+      win_player_num = player_num;
+      return true;
+    }
   }
+  return false;
+}
 
-  right = left = top = bottom = 0;
-  
-  /* / to down */
+bool Scan::diagonal_sw(Map& map, std::pair<int, int> coord, int player_num) {
+  int counter = 0;
+  borders b;
+
   std::cout << " / to down\n";
   if (coord.first + 5 > map.get_map_size() - 1) {
-  right = (coord.first + 5) - (map.get_map_size() - 1);
+    b.right = (coord.first + 5) - (map.get_map_size() - 1);
   }
   if (coord.second + 5 > map.get_map_size() - 1) {
-  bottom = (coord.second + 5) - (map.get_map_size() - 1);
+    b.bottom = (coord.second + 5) - (map.get_map_size() - 1);
   }
   if (coord.first - 5 < 0) {
-  left = 0 - (coord.first - 5);
+    b.left = 0 - (coord.first - 5);
   }
   if (coord.second - 5 < 0) {
-    top = 0 - (coord.second - 5);
+    b.top = 0 - (coord.second - 5);
   }
   std::cout << std::endl << std::endl;
-  for (int i = -5 + (right) + (top); i < 6 - (bottom) - (left); i++) {
+  for (int i = -5 + (b.right) + (b.top); i < 6 - (b.bottom) - (b.left); i++) {
     std::cout << map.get_map()[coord.second + i][coord.first - i] << std::endl;
+    if (map.get_map()[coord.second + i][coord.first - i] == player_num) {
+      counter++;
+    }
+    else {
+      counter = 0;
+    }
+    if (counter == 5) {
+      win_player_num = player_num;
+      return true;
+    }
   }
-///
-  /* / to up */
-  std::cout << " / to up\n";
-  if (coord.first + 5 > map.get_map_size() - 1) {
-    right = (coord.first + 5) - (map.get_map_size() - 1);
-  }
-  if (coord.second + 5 > map.get_map_size() - 1) {
-    bottom = (coord.second + 5) - (map.get_map_size() - 1);
-  }
-  if (coord.first - 5 < 0) {
-    left = 0 - (coord.first - 5);
-  }
-  if (coord.second - 5 < 0) {
-    top = 0 - (coord.second - 5);
-  }
-  std::cout << std::endl << std::endl;
-  for (int i = 0; i < 6 - (right) - (top); i++) {
-    std::cout << map.get_map()[coord.second - i][coord.first + i] << std::endl;
-  }
-  
+  return false;
 }
 
-/*
-int temp2 = -5;
-for (int i = 0; i < 10; i++) {
-std::cout << map.get_map()[coord.second + temp2 + right - bottom - left + top][coord.first - temp2 - right + bottom + left - top] << std::endl;
-temp2++;
+bool Scan::diagonal_ne(Map& map, std::pair<int, int> coord, int player_num) {
+  int counter = 0;
+  borders b;
+
+  std::cout << " / to up\n";
+  if (coord.first + 5 > map.get_map_size() - 1) {
+    b.right = (coord.first + 5) - (map.get_map_size() - 1);
+  }
+  if (coord.second + 5 > map.get_map_size() - 1) {
+    b.bottom = (coord.second + 5) - (map.get_map_size() - 1);
+  }
+  if (coord.first - 5 < 0) {
+    b.left = 0 - (coord.first - 5);
+  }
+  if (coord.second - 5 < 0) {
+    b.top = 0 - (coord.second - 5);
+  }
+  std::cout << std::endl << std::endl;
+  for (int i = 0; i < 6 - (b.right) - (b.top); i++) {
+    std::cout << map.get_map()[coord.second - i][coord.first + i] << std::endl;
+    if (map.get_map()[coord.second - i][coord.first + i] == player_num) {
+      counter++;
+    }
+    else {
+      counter = 0;
+    }
+    if (counter == 5) {
+      win_player_num = player_num;
+      return true;
+    }
+  }
+  return false;
 }
-*/
+
+void Scan::round_scan(Map& map, std::pair<int, int> coord, int player_num) {
+  vertical(map, coord, player_num);
+  horizontal(map, coord, player_num);
+  diagonal_se(map, coord, player_num);
+  diagonal_nw(map, coord, player_num);
+  diagonal_sw(map, coord, player_num);
+  diagonal_ne(map, coord, player_num);
+}
 
 std::pair<char, int> Scan::get_win_case() {
   return this->win_case;

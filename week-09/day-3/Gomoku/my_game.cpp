@@ -4,6 +4,7 @@ my_game::my_game(std::string player_1_name, std::string player_2_name, unsigned 
   this->my_map = new Map(map_size);
   this->player_1 = new Player(player_1_name);
   this->player_2 = new Player(player_2_name, *player_1);
+  this->scan = new Scan;
   this->sdl_window = new SDL_Window(screen_size, screen_size, screen_size / map_size);
   this->player_1_name = player_1_name;
   this->player_2_name = player_2_name;
@@ -15,6 +16,7 @@ my_game::~my_game() {
   delete my_map;
   delete player_1;
   delete player_2;
+  delete scan;
   delete sdl_window;
 }
 
@@ -22,7 +24,7 @@ void my_game::game_handler() {
 }
 
 void my_game::launch() {
-  sdl_window->run(*my_map, *player_1, *player_2);
+  sdl_window->run(*my_map, *player_1, *player_2, *scan);
   print_map_vector();
 }
 

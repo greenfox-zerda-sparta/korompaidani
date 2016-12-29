@@ -6,7 +6,8 @@
 #include <vector>
 #include <map>
 #include "SDL.h"
-#include "player.hpp"
+#include "Player.hpp"
+#include "Scan.hpp"
 #include "ERROR_CODES.hpp"
 
 using namespace std;
@@ -32,8 +33,8 @@ private:
 public:
   SDL_Window(int, int, int);
   void create_window();
-  void run(Map&, Player&, Player&);
-  bool game_logic(Map&, Player&);
+  void run(Map&, Player&, Player&, Scan&);
+  bool game_logic(Map&, Player&, Scan&);
   void drawbackground();
   void drawimage(int&, int&, int);
   void fill_image_by_tile(int);

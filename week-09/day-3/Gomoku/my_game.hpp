@@ -1,15 +1,16 @@
 #pragma once
 
 #include "SDLWindow.hpp"
-#include "player.hpp"
-#include "scan.hpp"
-#include "map.hpp"
+#include "Player.hpp"
+#include "Scan.hpp"
+#include "Map.hpp"
 
 class my_game {
 private:
   Map* my_map;
   Player* player_1;
   Player* player_2;
+  Scan* scan;
   SDL_Window* sdl_window;
   std::string player_1_name;
   std::string player_2_name;
