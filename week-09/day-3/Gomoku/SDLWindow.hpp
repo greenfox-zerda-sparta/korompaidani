@@ -33,6 +33,7 @@ private:
 public:
   SDL_Window(int, int, int);
   void create_window();
+  void create_win_window();
   void run(Map&, Player&, Player&, Scan&);
   bool game_logic(Map&, Player&, Scan&);
   void drawbackground();

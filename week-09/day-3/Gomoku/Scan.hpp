@@ -14,7 +14,6 @@ struct borders {
 
 class Scan {
 private:
-  std::pair<char, int> win_case;
   unsigned short int win_player_num;
 public:
   Scan();
@@ -25,7 +24,6 @@ public:
   bool diagonal_sw(Map&, std::pair<int, int>, int);
   bool diagonal_ne(Map&, std::pair<int, int>, int);
   void round_scan(Map&, std::pair<int, int>, int);
-  std::pair<char, int> get_win_case();
   unsigned short int get_win_player_num();
 };
 

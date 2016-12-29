@@ -201,10 +201,6 @@ void Scan::round_scan(Map& map, std::pair<int, int> coord, int player_num) {
   diagonal_ne(map, coord, player_num);
 }
 
-std::pair<char, int> Scan::get_win_case() {
-  return this->win_case;
-}
-
 unsigned short int Scan::get_win_player_num() {
   return this->win_player_num;
 }

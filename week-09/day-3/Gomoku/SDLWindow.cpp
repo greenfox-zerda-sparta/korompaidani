@@ -8,6 +8,7 @@ SDL_Window::SDL_Window(int width, int height, int tile_size) {
   this->o_image = "pics/o.bmp";
   this->x_image = "pics/x.bmp";
   this->board_image = "pics/board.bmp";
+  this->x_win_image = "pics/x_win.bmp";
 }
 
 void SDL_Window::create_window() {
@@ -15,6 +16,13 @@ void SDL_Window::create_window() {
   window = SDL_CreateWindow("Gomoku", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
   //draw_full_size_image(1);
   drawbackground();
+}
+
+void SDL_Window::create_win_window() {
+  SDL_Init(SDL_INIT_VIDEO);
+  window = SDL_CreateWindow("win", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 500, 500, SDL_WINDOW_OPENGL);
+  draw_full_size_image(1);
+  //drawbackground();
 }
 
 void SDL_Window::run(Map& map, Player& player_1, Player& player_2, Scan& scan) {
@@ -57,6 +65,7 @@ bool SDL_Window::game_logic(Map& map, Player& player_1, Scan& scan) {
       scan.round_scan(map, player_1.get_last_click_coordinates(), player_1.get_player_num());
       if (scan.get_win_player_num() == player_1.get_player_num()) {
         std::cout << "You have won!" << std::endl;
+        create_win_window();
       }
       event.type = NULL;
       return true;
@@ -108,7 +117,7 @@ void SDL_Window::fill_image_by_tile(int map_size) {
 
 void SDL_Window::draw_full_size_image(int image_size) {
   renderer = SDL_CreateRenderer(window, -1, 0);
-  image = SDL_LoadBMP(board_image);
+  image = SDL_LoadBMP(x_win_image);
   texture = SDL_CreateTextureFromSurface(renderer, image);
   SDL_RenderCopy(renderer, texture, NULL, NULL);
   SDL_RenderPresent(renderer);
