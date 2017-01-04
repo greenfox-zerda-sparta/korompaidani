@@ -1,18 +1,20 @@
 #include <iostream>
 #include <SDL.h>
 #include <SDL_net.h>
+#include <string>
 
 using namespace std;
 
 bool is_quit(char*);
 
-int main(int argc, char** argv) {
-  cout << "hello, this is the client" << endl;
+int main_n(int argc, char** argv) {
+  ///cout << "hello, this is the client" << endl;
   SDL_Init(SDL_INIT_EVERYTHING);
   SDLNet_Init();
   IPaddress ip;
-  SDLNet_ResolveHost(&ip, "10.27.6.221", 1234); //Mate10.27.6.60 local127.0.0.1 fruzsi10.27.6.38 kinga10.27.6.61 dani10.27.6.221
+  SDLNet_ResolveHost(&ip, "127.0.0.1", 1234); //Mate10.27.6.60 local127.0.0.1 fruzsi10.27.6.38 kinga10.27.6.61 dani10.27.6.221
   TCPsocket client = SDLNet_TCP_Open(&ip);
+  string client_text = "client_mess"; ///
   char text[100];
   while (1) {
     SDLNet_TCP_Recv(client, text, 100);

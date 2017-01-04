@@ -6,8 +6,8 @@
 
 using namespace std;
 
-int main(int argc, char** argv) {
-  cout << "hi, this is the server" << endl;
+int main_n(int argc, char** argv) {
+  ///cout << "hi, this is the server" << endl;
   SDL_Init(SDL_INIT_EVERYTHING);
   SDLNet_Init();
   IPaddress ip;
@@ -15,6 +15,7 @@ int main(int argc, char** argv) {
   TCPsocket server = SDLNet_TCP_Open(&ip);
   TCPsocket client;
   string text;
+  char rec_text[100]; ///
   while (1) {
     client = SDLNet_TCP_Accept(server);
     if (client) {
