@@ -7,8 +7,7 @@ const string ServerSocket::SERVER_FULL = "FULL";
 const string ServerSocket::SHUTDOWN_SIGNAL = "/shutdown";
 
 // ServerSocket constructor
-ServerSocket::ServerSocket(unsigned int thePort, unsigned int theBufferSize, unsigned int theMaxSockets)
-{
+ServerSocket::ServerSocket(unsigned int thePort, unsigned int theBufferSize, unsigned int theMaxSockets) {
   debug = true; // Flag to control whether to output debug info
   shutdownServer = false; // Flag to control whether it's time to shut down the server
 

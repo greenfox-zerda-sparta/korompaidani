@@ -9,6 +9,7 @@
 #include "Player.hpp"
 #include "Scan.hpp"
 #include "ERROR_CODES.hpp"
+#include "Client_cl.hpp"
 
 using namespace std;
 
@@ -34,8 +35,8 @@ public:
   SDL_Window(int, int, int);
   void create_window();
   void create_win_window();
-  void run(Map&, Player&, Player&, Scan&);
-  bool game_logic(Map&, Player&, Scan&);
+  void run(Map&, Player&, Player&, Scan&, Client_cl&);
+  bool game_logic(Map&, Player&, Scan&, bool&, Client_cl&);
   void drawbackground();
   void drawimage(int&, int&, int);
   void fill_image_by_tile(int);

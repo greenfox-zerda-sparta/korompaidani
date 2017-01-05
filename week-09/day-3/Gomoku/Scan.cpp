@@ -115,6 +115,7 @@ bool Scan::diagonal_nw(Map& map, std::pair<int, int> coord, int player_num) {
     }
     else {
       counter = 0;
+      std::cout << "counter is: " << counter << std::endl;
     }
     if (counter == 5) {
       win_player_num = player_num;
@@ -203,4 +204,8 @@ void Scan::round_scan(Map& map, std::pair<int, int> coord, int player_num) {
 
 unsigned short int Scan::get_win_player_num() {
   return this->win_player_num;
+}
+
+void Scan::reset_win_player_num() {
+  this->win_player_num = 0;
 }

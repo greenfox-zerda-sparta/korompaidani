@@ -9,7 +9,7 @@
 
 #include "ClientSocket.h"
 
-int main(int argc, char *argv[])
+int main_n(int argc, char *argv[])
 {
   // Initialise SDL_net (Note: We don't initialise or use normal SDL at all - only the SDL_net library!)
   if (SDLNet_Init() == -1)

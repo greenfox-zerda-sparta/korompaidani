@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int main_n(int argc, char** argv) {
+int main_k(int argc, char** argv) {
   ///cout << "hi, this is the server" << endl;
   SDL_Init(SDL_INIT_EVERYTHING);
   SDLNet_Init();
@@ -26,6 +26,8 @@ int main_n(int argc, char** argv) {
         }
         else {
           SDLNet_TCP_Send(client, text.c_str(), text.length() + 1);
+          SDLNet_TCP_Recv(client, rec_text, 100);
+          cout << rec_text;
         }
       }
       SDLNet_TCP_Close(client);

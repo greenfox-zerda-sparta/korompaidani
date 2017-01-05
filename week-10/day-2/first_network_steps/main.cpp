@@ -7,7 +7,7 @@
 #include "SDL_net.h"
 #include "ServerSocket.h"
 
-int main(int argc, char *argv[])
+int main_p(int argc, char *argv[])
 {
 
   // Initialise SDL_net

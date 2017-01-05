@@ -25,5 +25,6 @@ public:
   bool diagonal_ne(Map&, std::pair<int, int>, int);
   void round_scan(Map&, std::pair<int, int>, int);
   unsigned short int get_win_player_num();
+  void reset_win_player_num();
 };
 

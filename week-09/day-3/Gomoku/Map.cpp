@@ -29,3 +29,11 @@ unsigned short int Map::set_map_value_by_coordinates(unsigned short int x, unsig
 std::vector<std::vector <unsigned short int> > Map::get_map() {
   return map;
 }
+
+void Map::reset_map() {
+  for (int i = 0; i < map.size(); i++) {
+    for (int j = 0; j < map[i].size(); j++) {
+      map[i][j] = 0;
+    }
+  }
+}

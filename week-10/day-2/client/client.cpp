@@ -7,7 +7,7 @@ using namespace std;
 
 bool is_quit(char*);
 
-int main_n(int argc, char** argv) {
+int main_m(int argc, char** argv) {
   ///cout << "hello, this is the client" << endl;
   SDL_Init(SDL_INIT_EVERYTHING);
   SDLNet_Init();

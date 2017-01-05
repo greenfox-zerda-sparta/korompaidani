@@ -4,6 +4,8 @@
 #include "Player.hpp"
 #include "Scan.hpp"
 #include "Map.hpp"
+#include "Client_cl.hpp"
+#include "Server_sr.hpp"
 
 class my_game {
 private:
@@ -14,10 +16,11 @@ private:
   SDL_Window* sdl_window;
   std::string player_1_name;
   std::string player_2_name;
+  Client_cl my_client;
   unsigned short int screen_size;
   unsigned short int map_size;
 public:
-  my_game(std::string, std::string, unsigned short int, unsigned short int);
+  my_game(std::string, std::string, unsigned short int, unsigned short int, Client_cl&);
   ~my_game();
   void game_handler();
   void launch();

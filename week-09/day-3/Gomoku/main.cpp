@@ -7,12 +7,20 @@
 #include "Scan.hpp"
 #include "SDLWindow.hpp"
 #include "my_game.hpp"
+#include "Client_cl.hpp"
+#include "Server_sr.hpp"
 
 #ifdef CATCH_CONFIG_MAIN
 void print_map_vector2(Map&);
 
 int main(int argc, char* argv[]) {
-  my_game mygame("Rachel", "Ross", 665, 19);
+  //Server_sr srv;
+  //srv.server_run();
+
+  Client_cl cli;
+  //cli.client_run();
+
+  my_game mygame("Rachel", "Ross", 665, 19, cli);
   mygame.launch();
   return 0;
 }

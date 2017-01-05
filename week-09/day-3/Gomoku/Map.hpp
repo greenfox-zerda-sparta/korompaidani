@@ -12,4 +12,5 @@ public:
   unsigned short int get_map_value_by_coordinates(unsigned short int, unsigned short int);
   unsigned short int set_map_value_by_coordinates(unsigned short int, unsigned short int, unsigned short int);
   std::vector<std::vector <unsigned short int> > get_map();
+  void reset_map();
 };
