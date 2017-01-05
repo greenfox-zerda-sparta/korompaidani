@@ -14,13 +14,13 @@
 void print_map_vector2(Map&);
 
 int main(int argc, char* argv[]) {
-  //Server_sr srv;
+  Server_sr srv;
   //srv.server_run();
 
   Client_cl cli;
   //cli.client_run();
 
-  my_game mygame("Rachel", "Ross", 665, 19, cli);
+  my_game mygame("Rachel", "Ross", 665, 19, cli, srv);
   mygame.launch();
   return 0;
 }

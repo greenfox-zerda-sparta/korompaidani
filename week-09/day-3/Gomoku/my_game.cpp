@@ -1,6 +1,6 @@
 #include "my_game.hpp"
 
-my_game::my_game(std::string player_1_name, std::string player_2_name, unsigned short int screen_size, unsigned short int map_size, Client_cl& cli) {
+my_game::my_game(std::string player_1_name, std::string player_2_name, unsigned short int screen_size, unsigned short int map_size, Client_cl& cli, Server_sr& srv) {
   this->my_map = new Map(map_size);
   this->player_1 = new Player(player_1_name);
   this->player_2 = new Player(player_2_name, *player_1);
@@ -11,6 +11,7 @@ my_game::my_game(std::string player_1_name, std::string player_2_name, unsigned 
   this->screen_size = screen_size;
   this->map_size = map_size;
   this->my_client = cli;
+  this->my_server = srv;
 }
 
 my_game::~my_game() {
@@ -26,7 +27,7 @@ void my_game::game_handler() {
 
 void my_game::launch() {
   my_client.client_init();
-  sdl_window->run(*my_map, *player_1, *player_2, *scan, my_client); 
+  sdl_window->run(*my_map, *player_1, *player_2, *scan, my_client, my_server); 
   sdl_window->create_win_window();
 }
 

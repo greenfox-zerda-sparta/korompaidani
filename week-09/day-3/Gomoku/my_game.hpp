@@ -17,10 +17,11 @@ private:
   std::string player_1_name;
   std::string player_2_name;
   Client_cl my_client;
+  Server_sr my_server;
   unsigned short int screen_size;
   unsigned short int map_size;
 public:
-  my_game(std::string, std::string, unsigned short int, unsigned short int, Client_cl&);
+  my_game(std::string, std::string, unsigned short int, unsigned short int, Client_cl&, Server_sr&);
   ~my_game();
   void game_handler();
   void launch();

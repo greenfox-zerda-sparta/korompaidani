@@ -35,7 +35,7 @@ void SDL_Window::create_win_window() {
   }
 }
 
-void SDL_Window::run(Map& map, Player& player_1, Player& player_2, Scan& scan, Client_cl& my_client) {
+void SDL_Window::run(Map& map, Player& player_1, Player& player_2, Scan& scan, Client_cl& my_client, Server_sr& my_server) {
   bool temp;
   create_window();
   fill_image_by_tile(map_size);
@@ -49,14 +49,14 @@ void SDL_Window::run(Map& map, Player& player_1, Player& player_2, Scan& scan, C
       }
     }
     if (player_switcher == 1) {
-      temp = game_logic(map, player_1, scan, running, my_client);
+      temp = game_logic_as_client(map, player_1, scan, running, my_client);
       if (temp == true) {
         player_switcher = 2;
         std::cout << "player_switcher= " << player_switcher << std::endl;
       }
     }
     else if (player_switcher == 2) {
-      temp = game_logic(map, player_2, scan, running, my_client);
+      temp = game_logic_as_server(map, player_2, scan, running, my_server);
       if (temp == true) {
         player_switcher = 1;
         std::cout << "player_switcher= " << player_switcher << std::endl;
@@ -66,21 +66,49 @@ void SDL_Window::run(Map& map, Player& player_1, Player& player_2, Scan& scan, C
   my_client.client_close();
 }
 
-bool SDL_Window::game_logic(Map& map, Player& player_1, Scan& scan, bool& running, Client_cl& my_client) {
+bool SDL_Window::game_logic_as_client(Map& map, Player& player, Scan& scan, bool& running, Client_cl& my_client) {
   if (event.type == SDL_MOUSEBUTTONDOWN) {
-    player_1.set_last_click_coordinates(event.button.x / tile_size, event.button.y / tile_size);
-    if (player_1.choise(map, event.button.x / tile_size, event.button.y / tile_size)) {
-      player_1.choise(map, event.button.x / tile_size, event.button.y / tile_size);
-      my_client.client_send(int_to_string(player_1.get_last_click_coordinates().first)+","+int_to_string(player_1.get_last_click_coordinates().second)+"\n");
-      drawimage(event.button.x, event.button.y, player_1.get_player_num());
-      scan.round_scan(map, player_1.get_last_click_coordinates(), player_1.get_player_num());
-      if (scan.get_win_player_num() == player_1.get_player_num()) {
+    player.set_last_click_coordinates(event.button.x / tile_size, event.button.y / tile_size);
+    if (player.choise(map, event.button.x / tile_size, event.button.y / tile_size)) {
+      player.choise(map, event.button.x / tile_size, event.button.y / tile_size);
+      my_client.client_send(int_to_string(player.get_last_click_coordinates().first)+","+int_to_string(player.get_last_click_coordinates().second)+"\n");
+      drawimage(event.button.x, event.button.y, player.get_player_num());
+      scan.round_scan(map, player.get_last_click_coordinates(), player.get_player_num());
+      if (scan.get_win_player_num() == player.get_player_num()) {
         
         scan.reset_win_player_num();
         map.reset_map();
         std::cout << "You have won!" << std::endl;
         fill_image_by_tile(map_size);
         running = false;        
+        event.type = NULL;
+      }
+      event.type = NULL;
+      return true;
+    }
+    else {
+      cout << "fail" << endl;
+      event.type = NULL;
+      return false;
+    }
+  }
+}
+
+bool SDL_Window::game_logic_as_server(Map& map, Player& player, Scan& scan, bool& running, Server_sr& my_server) {
+  if (event.type == SDL_MOUSEBUTTONDOWN) {
+    player.set_last_click_coordinates(event.button.x / tile_size, event.button.y / tile_size);
+    if (player.choise(map, event.button.x / tile_size, event.button.y / tile_size)) {
+      player.choise(map, event.button.x / tile_size, event.button.y / tile_size);
+      ///my_client.client_send(int_to_string(player.get_last_click_coordinates().first) + "," + int_to_string(player.get_last_click_coordinates().second) + "\n");
+      drawimage(event.button.x, event.button.y, player.get_player_num());
+      scan.round_scan(map, player.get_last_click_coordinates(), player.get_player_num());
+      if (scan.get_win_player_num() == player.get_player_num()) {
+
+        scan.reset_win_player_num();
+        map.reset_map();
+        std::cout << "You have won!" << std::endl;
+        fill_image_by_tile(map_size);
+        running = false;
         event.type = NULL;
       }
       event.type = NULL;

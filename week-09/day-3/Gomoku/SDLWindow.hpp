@@ -10,6 +10,7 @@
 #include "Scan.hpp"
 #include "ERROR_CODES.hpp"
 #include "Client_cl.hpp"
+#include "Server_sr.hpp"
 
 using namespace std;
 
@@ -35,8 +36,9 @@ public:
   SDL_Window(int, int, int);
   void create_window();
   void create_win_window();
-  void run(Map&, Player&, Player&, Scan&, Client_cl&);
-  bool game_logic(Map&, Player&, Scan&, bool&, Client_cl&);
+  void run(Map&, Player&, Player&, Scan&, Client_cl&, Server_sr&);
+  bool game_logic_as_client(Map&, Player&, Scan&, bool&, Client_cl&);
+  bool game_logic_as_server(Map&, Player&, Scan&, bool&, Server_sr&);
   void drawbackground();
   void drawimage(int&, int&, int);
   void fill_image_by_tile(int);
