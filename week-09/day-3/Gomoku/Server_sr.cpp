@@ -37,17 +37,22 @@ void Server_sr::server_send(std::string in_server_mess) {
   client = SDLNet_TCP_Accept(server);
   std::cout << std::endl << "Client is connected..." << std::endl;
   if (client) {
-    std::cout << "before send" << std::endl;
+    std::cout << std::endl << "before send" << std::endl;
     SDLNet_TCP_Send(client, in_server_mess.c_str(), in_server_mess.length() + 1);
-    std::cout << "after send" << std::endl;
+    std::cout << std::endl << "after send" << std::endl;
   }
 }
 
+void Server_sr::server_client_open() {
+  client = SDLNet_TCP_Accept(server);
+}
+
 std::string Server_sr::server_receive() {
+  std::cout << std::endl << "before receive" << std::endl;
   SDLNet_TCP_Recv(client, client_text, 100);
+  std::cout << std::endl << "before receive" << std::endl;
   std::string str_temp(client_text);
   return str_temp;
-  return std::string();
 }
 
 void Server_sr::server_client_close() {

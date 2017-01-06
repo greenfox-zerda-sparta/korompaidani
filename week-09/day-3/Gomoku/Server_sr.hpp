@@ -19,6 +19,7 @@ public:
   void server_init();
   void server_contact();
   void server_send(std::string);
+  void server_client_open();
   std::string server_receive();
   void server_client_close();
   void server_close();

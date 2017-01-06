@@ -59,7 +59,7 @@ void SDL_Window::run_as_client(Map& map, Player& player_1, Player& player_2, Sca
       temp = game_logic_as_client(map, player_1, scan, running, my_client);
       if (temp == true) {
         player_switcher = 1;
-        ///std::cout << "player_switcher= " << player_switcher << std::endl;
+        std::cout << "player_switcher= " << player_switcher << std::endl;
       }
     }
   }
@@ -83,14 +83,16 @@ void SDL_Window::run_as_server(Map& map, Player& player_1, Player& player_2, Sca
       temp = game_logic_as_server(map, player_1, scan, running, my_server);
       if (temp == true) {
         player_switcher = 2;
-        ///std::cout << "player_switcher= " << player_switcher << std::endl;
+        std::cout << "player_switcher= " << player_switcher << std::endl;
       }
     }
     else if (player_switcher == 2) {
+      
       temp = enemy_as_server(map, scan, running, my_server);
+      my_server.server_client_close();
       if (temp == true) {
         player_switcher = 1;
-        ///std::cout << "player_switcher= " << player_switcher << std::endl;
+        std::cout << "player_switcher= " << player_switcher << std::endl;
       }
     }
   }
@@ -98,12 +100,17 @@ void SDL_Window::run_as_server(Map& map, Player& player_1, Player& player_2, Sca
 }
 
 bool SDL_Window::game_logic_as_client(Map& map, Player& player, Scan& scan, bool& running, Client_cl& my_client) {
+  std::string temp;
   if (event.type == SDL_MOUSEBUTTONDOWN) {
     player.set_last_click_coordinates(event.button.x / tile_size, event.button.y / tile_size);
     if (player.choise(map, event.button.x / tile_size, event.button.y / tile_size)) {
       player.choise(map, event.button.x / tile_size, event.button.y / tile_size);
       drawimage(event.button.x, event.button.y, player.get_player_num());
-      my_client.client_send(m_int_to_string(player.get_last_click_coordinates().first) + "," + m_int_to_string(player.get_last_click_coordinates().second) + "\n");
+      
+      temp = m_int_to_string(player.get_last_click_coordinates().first) + "," + m_int_to_string(player.get_last_click_coordinates().second) + "\n";
+      my_client.client_send(temp);
+      std::cout << "the sent client message was: " << temp << std::endl;
+     
       scan.round_scan(map, player.get_last_click_coordinates(), player.get_player_num());
       if (scan.get_win_player_num() == player.get_player_num()) {
         
@@ -134,7 +141,7 @@ bool SDL_Window::game_logic_as_server(Map& map, Player& player, Scan& scan, bool
       drawimage(event.button.x, event.button.y, player.get_player_num());
       temp = m_int_to_string(player.get_last_click_coordinates().first) + "," + m_int_to_string(player.get_last_click_coordinates().second) + "\n";
       my_server.server_send(temp);
-      std::cout << "the message was: " << temp << std::endl;
+      std::cout << "the sent server message was: " << temp << std::endl;
       scan.round_scan(map, player.get_last_click_coordinates(), player.get_player_num());
       if (scan.get_win_player_num() == player.get_player_num()) {
 
@@ -164,8 +171,8 @@ bool SDL_Window::enemy_as_client(Map& map, Scan& scan, bool& running, Client_cl&
       std::pair<int, int> tempair = m_string_to_int_pair(my_client.client_receive());
       x = tempair.first * tile_size;
       y = tempair.second * tile_size;
-      std::cout << "x= " << x << std::endl;
-      std::cout << "y= " << y << std::endl;
+      std::cout << "x= " << x / tile_size << std::endl;
+      std::cout << "y= " << y / tile_size << std::endl;
       map.set_map_value_by_coordinates(tempair.first, tempair.second, 2);
       drawimage(x, y, 2);
       break;
@@ -175,17 +182,20 @@ bool SDL_Window::enemy_as_client(Map& map, Scan& scan, bool& running, Client_cl&
 }
 
 bool SDL_Window::enemy_as_server(Map& map, Scan& scan, bool& running, Server_sr& my_server) {
+  //std::string tr = "1,7";
   int x, y;
   while (1) {
-    if (my_server.server_receive().length() > 2) {
-      //std::string tr = my_client.client_receive();
-      std::pair<int, int> tempair = m_string_to_int_pair(my_server.server_receive());
-      x = tempair.first * tile_size;
-      y = tempair.second * tile_size;
-      map.set_map_value_by_coordinates(tempair.first, tempair.second, 2);
-      drawimage(x, y, 1);
-      break;
-    }
+    ///if (my_client.client_receive().length() > 2) {
+    //std::string tr = my_client.client_receive();
+    std::pair<int, int> tempair = m_string_to_int_pair(my_server.server_receive());
+    x = tempair.first * tile_size;
+    y = tempair.second * tile_size;
+    std::cout << "x= " << x / tile_size << std::endl;
+    std::cout << "y= " << y / tile_size << std::endl;
+    map.set_map_value_by_coordinates(tempair.first, tempair.second, 2);
+    drawimage(x, y, 2);
+    break;
+    ///}
   }
   return true;
 }
