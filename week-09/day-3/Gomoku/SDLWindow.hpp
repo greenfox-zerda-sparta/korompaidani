@@ -1,5 +1,4 @@
-#ifndef SDLWINDOW_H_
-#define SDLWINDOW_H_
+#pragma once
 
 #include <iostream>
 #include <utility>
@@ -39,11 +38,11 @@ public:
   void run(Map&, Player&, Player&, Scan&, Client_cl&, Server_sr&);
   bool game_logic_as_client(Map&, Player&, Scan&, bool&, Client_cl&);
   bool game_logic_as_server(Map&, Player&, Scan&, bool&, Server_sr&);
+  bool enemy_as_client(Map&, Scan&, bool&, Client_cl&);
+  bool enemy_as_server(Map&, Scan&, bool&, Server_sr&);
   void drawbackground();
   void drawimage(int&, int&, int);
   void fill_image_by_tile(int);
   void draw_full_size_image(int);
   ~SDL_Window();
 };
-
-#endif

@@ -52,14 +52,14 @@ void SDL_Window::run(Map& map, Player& player_1, Player& player_2, Scan& scan, C
       temp = game_logic_as_client(map, player_1, scan, running, my_client);
       if (temp == true) {
         player_switcher = 2;
-        std::cout << "player_switcher= " << player_switcher << std::endl;
+        ///std::cout << "player_switcher= " << player_switcher << std::endl;
       }
     }
     else if (player_switcher == 2) {
-      temp = game_logic_as_server(map, player_2, scan, running, my_server);
+      temp = enemy_as_client(map, scan, running, my_client);
       if (temp == true) {
         player_switcher = 1;
-        std::cout << "player_switcher= " << player_switcher << std::endl;
+        ///std::cout << "player_switcher= " << player_switcher << std::endl;
       }
     }
   }
@@ -71,14 +71,14 @@ bool SDL_Window::game_logic_as_client(Map& map, Player& player, Scan& scan, bool
     player.set_last_click_coordinates(event.button.x / tile_size, event.button.y / tile_size);
     if (player.choise(map, event.button.x / tile_size, event.button.y / tile_size)) {
       player.choise(map, event.button.x / tile_size, event.button.y / tile_size);
-      my_client.client_send(int_to_string(player.get_last_click_coordinates().first)+","+int_to_string(player.get_last_click_coordinates().second)+"\n");
+      my_client.client_send(m_int_to_string(player.get_last_click_coordinates().first)+","+m_int_to_string(player.get_last_click_coordinates().second)+"\n");
       drawimage(event.button.x, event.button.y, player.get_player_num());
       scan.round_scan(map, player.get_last_click_coordinates(), player.get_player_num());
       if (scan.get_win_player_num() == player.get_player_num()) {
         
         scan.reset_win_player_num();
         map.reset_map();
-        std::cout << "You have won!" << std::endl;
+        ///std::cout << "You have won!" << std::endl;
         fill_image_by_tile(map_size);
         running = false;        
         event.type = NULL;
@@ -87,7 +87,6 @@ bool SDL_Window::game_logic_as_client(Map& map, Player& player, Scan& scan, bool
       return true;
     }
     else {
-      cout << "fail" << endl;
       event.type = NULL;
       return false;
     }
@@ -99,14 +98,14 @@ bool SDL_Window::game_logic_as_server(Map& map, Player& player, Scan& scan, bool
     player.set_last_click_coordinates(event.button.x / tile_size, event.button.y / tile_size);
     if (player.choise(map, event.button.x / tile_size, event.button.y / tile_size)) {
       player.choise(map, event.button.x / tile_size, event.button.y / tile_size);
-      ///my_client.client_send(int_to_string(player.get_last_click_coordinates().first) + "," + int_to_string(player.get_last_click_coordinates().second) + "\n");
+      ///my_client.client_send(m_int_to_string(player.get_last_click_coordinates().first) + "," + m_int_to_string(player.get_last_click_coordinates().second) + "\n");
       drawimage(event.button.x, event.button.y, player.get_player_num());
       scan.round_scan(map, player.get_last_click_coordinates(), player.get_player_num());
       if (scan.get_win_player_num() == player.get_player_num()) {
 
         scan.reset_win_player_num();
         map.reset_map();
-        std::cout << "You have won!" << std::endl;
+        ///std::cout << "You have won!" << std::endl;
         fill_image_by_tile(map_size);
         running = false;
         event.type = NULL;
@@ -115,11 +114,29 @@ bool SDL_Window::game_logic_as_server(Map& map, Player& player, Scan& scan, bool
       return true;
     }
     else {
-      cout << "fail" << endl;
+      ///cout << "fail" << endl;
       event.type = NULL;
       return false;
     }
   }
+}
+
+bool SDL_Window::enemy_as_client(Map& map, Scan& scan, bool& running, Client_cl& my_client) {
+  //if (my_client.client_receive.length() > 2) {
+  std::string tr = "1,7";
+  int x, y;
+  if (tr.length() > 2) {
+    std::pair<int, int> tempair = m_string_to_int_pair(tr);
+    x = tempair.first * tile_size;
+    y = tempair.second * tile_size;
+    map.set_map_value_by_coordinates(tempair.first, tempair.second, 2);
+    drawimage(x, y, 2);
+    return true;
+  }
+}
+
+bool SDL_Window::enemy_as_server(Map& map, Scan& scan, bool& running, Server_sr& my_server) {
+  return false;
 }
 
 void SDL_Window::drawbackground() {

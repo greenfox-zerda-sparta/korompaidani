@@ -9,18 +9,37 @@
 #include "my_game.hpp"
 #include "Client_cl.hpp"
 #include "Server_sr.hpp"
+#include <string>
 
 #ifdef CATCH_CONFIG_MAIN
 void print_map_vector2(Map&);
 
+using std::cin;
+using std::cout;
+using std::string;
+using std::endl;
+
 int main(int argc, char* argv[]) {
   Server_sr srv;
-  //srv.server_run();
-
   Client_cl cli;
-  //cli.client_run();
 
-  my_game mygame("Rachel", "Ross", 665, 19, cli, srv);
+  string player_1_name = "Default";
+  string player_2_name = "Default";
+  char user_choise;
+  cout << "If you are the server please press 's' or press any key: " << endl;
+  cin >> user_choise;
+  if (user_choise == 's') {
+    cout << "Give me your name: " << endl;
+    cin >> player_1_name;
+    cout << endl << player_1_name << " you are the server!" << endl;
+  }
+  else {
+    cout << "Give me your name: " << endl;
+    cin >> player_2_name;
+    cout << endl << player_2_name << " you are the client!" << endl;
+  }
+
+  my_game mygame(player_1_name, player_2_name, 665, 19, cli, srv);
   mygame.launch();
   return 0;
 }

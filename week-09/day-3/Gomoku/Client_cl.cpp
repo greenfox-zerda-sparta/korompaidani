@@ -26,9 +26,10 @@ void Client_cl::client_send(std::string client_mess) {
   SDLNet_TCP_Send(client, client_mess.c_str(), client_mess.length() + 1);
 }
 
-char* Client_cl::client_receive() {
+std::string Client_cl::client_receive() {
   SDLNet_TCP_Recv(client, text, 100);
-  return text;
+  std::string str_temp(text);
+  return str_temp;
 }
 
 void Client_cl::client_close() {

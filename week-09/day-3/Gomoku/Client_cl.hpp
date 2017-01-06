@@ -17,7 +17,7 @@ public:
   void client_init();
   void client_contact();
   void client_send(std::string);
-  char* client_receive();
+  std::string client_receive();
   void client_close();
   void client_run();
   ~Client_cl();
