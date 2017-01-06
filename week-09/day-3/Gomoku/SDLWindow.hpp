@@ -35,7 +35,8 @@ public:
   SDL_Window(int, int, int);
   void create_window();
   void create_win_window();
-  void run(Map&, Player&, Player&, Scan&, Client_cl&, Server_sr&);
+  void run_as_client(Map&, Player&, Player&, Scan&, Client_cl&, Server_sr&);
+  void run_as_server(Map&, Player&, Player&, Scan&, Client_cl&, Server_sr&);
   bool game_logic_as_client(Map&, Player&, Scan&, bool&, Client_cl&);
   bool game_logic_as_server(Map&, Player&, Scan&, bool&, Server_sr&);
   bool enemy_as_client(Map&, Scan&, bool&, Client_cl&);

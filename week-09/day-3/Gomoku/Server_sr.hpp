@@ -18,6 +18,9 @@ public:
   Server_sr();
   void server_init();
   void server_contact();
+  void server_send(std::string);
+  std::string server_receive();
+  void server_client_close();
   void server_close();
   void server_run();
   ~Server_sr();

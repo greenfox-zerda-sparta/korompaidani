@@ -27,7 +27,9 @@ void Client_cl::client_send(std::string client_mess) {
 }
 
 std::string Client_cl::client_receive() {
+  std::cout << std::endl << "before receive" << std::endl;
   SDLNet_TCP_Recv(client, text, 100);
+  std::cout << "after receive" << std::endl;
   std::string str_temp(text);
   return str_temp;
 }
