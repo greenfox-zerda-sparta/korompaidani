@@ -32,6 +32,7 @@ void my_game::launch() {
     sdl_window->run_as_server(*my_map, *player_1, *player_2, *scan, my_client, my_server);
   }
   else {
+    //my_client.client_run();
     my_client.client_init();
     std::cout << "there was client init";
     sdl_window->run_as_client(*my_map, *player_1, *player_2, *scan, my_client, my_server);

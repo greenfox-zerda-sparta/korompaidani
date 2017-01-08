@@ -31,7 +31,6 @@ void SDL_Window::create_win_window() {
       }
     }
     draw_full_size_image(1);
-    //running = false;
   }
 }
 

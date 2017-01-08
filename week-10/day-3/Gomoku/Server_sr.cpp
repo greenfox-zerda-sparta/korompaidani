@@ -13,8 +13,32 @@ void Server_sr::server_init() {
   SDLNet_ResolveHost(&ip, NULL, 1234);
   TCPsocket server = SDLNet_TCP_Open(&ip);
   SDLNet_TCP_AddSocket(set, server);
+  this->client = SDLNet_TCP_Accept(server);
+  while (1) {
+    if (client) {
+      SDLNet_TCP_AddSocket(set, client);
+      break;
+    }
+    else {
+      client = SDLNet_TCP_Accept(server);
+    }
+  }
+}
 
-  client = SDLNet_TCP_Accept(server);
+void Server_sr::server_accept() {
+  this->client = SDLNet_TCP_Accept(server);
+  while (1) {
+    if (client) {
+      SDLNet_TCP_AddSocket(set, client);
+      std::cout << "if client" << std::endl;
+      break;
+    }
+    else {
+      this->client = SDLNet_TCP_Accept(server);
+      std::cout << "NOT" << std::endl;
+    }
+  }
+  return;
 }
 
 void Server_sr::server_contact() {
@@ -55,24 +79,27 @@ void Server_sr::server_contact() {
 void Server_sr::server_send(std::string in_server_mess) {
   //while (1) {
   //  client = SDLNet_TCP_Accept(server);
-    if (client) {
-      SDLNet_TCP_AddSocket(set, client);
+  
+  //if (client) {
+    //  SDLNet_TCP_AddSocket(set, client);
+      
       while (1) {
         
-        if (_kbhit() != 0) {
+        //if (_kbhit() != 0) {
           std::cout << std::endl << "before send" << std::endl;
           server_chars = in_server_mess.c_str();
           SDLNet_TCP_Send(client, server_chars, in_server_mess.length() + 1);
+          std::cout << server_chars << std::endl;
           /*if (server_mess == "exit" || server_mess == "quit") {
             break;
           }*/
           break;
-        }
+        //}
         
       }
       //this->server_close();
       //break;
-    }
+    //}
     
     /*if (server_mess == "exit" || server_mess == "quit") {
       break;

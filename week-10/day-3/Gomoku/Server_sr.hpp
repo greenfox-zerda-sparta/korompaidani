@@ -5,6 +5,7 @@
 #include <conio.h>
 #include <string>
 #include <cstring>
+#include <WindowsX.h>
 
 class Server_sr {
 private:
@@ -20,6 +21,7 @@ private:
 public:
   Server_sr();
   void server_init();
+  void server_accept();
   void server_contact();
   void server_send(std::string);
   void server_client_open();

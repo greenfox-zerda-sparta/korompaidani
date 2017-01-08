@@ -9,8 +9,10 @@ void Client_cl::client_init() {
   SDLNet_Init();
   set = SDLNet_AllocSocketSet(2);
   SDLNet_ResolveHost(&ip, "127.0.0.1", 1234);
-  TCPsocket client = SDLNet_TCP_Open(&ip);
+  this->client = SDLNet_TCP_Open(&ip);
   SDLNet_TCP_AddSocket(set, client);
+  this->activeSockets = SDLNet_CheckSockets(set, 10);
+  std::cout << "my activeSockets number is: " << this->activeSockets << std::endl;
 }
 
 void Client_cl::client_contact() {
@@ -45,42 +47,17 @@ void Client_cl::client_send(std::string client_mess) {
 }
 
 std::string Client_cl::client_receive() {
-  
-  
   while (1) {
-    
-    //server_mess = server_chars;
-    int activeSockets = SDLNet_CheckSockets(set, 10);
-    
-    if (activeSockets != 0) {
-      std::cout << std::endl << "before receive" << std::endl;
-      int gotMessage = SDLNet_SocketReady(client);
-      if (gotMessage != 0) {
-        
-
+    this->activeSockets = SDLNet_CheckSockets(set, 10);
+    if (this->activeSockets != 0) {
+      gotMessage = SDLNet_SocketReady(client);
+      if (gotMessage != 0) {  
         SDLNet_TCP_Recv(client, server_chars, 100);
-        //if (server_mess == "exit" || server_mess == "quit") {
-          break;
-        //}
-          server_mess = server_chars;
-        std::cout << server_mess << std::endl;
-      }
-    }
-    
-    /*if (_kbhit() != 0) {
-      getline(std::cin, client_mess);
-      client_chars = client_mess.c_str();
-      SDLNet_TCP_Send(client, client_chars, client_mess.length() + 1);
-      if (client_mess == "exit" || client_mess == "quit") {
+        server_mess = server_chars;
         break;
       }
-    }*/
+    }
   }
-
-
- /* SDLNet_TCP_Recv(client, server_chars, 100);
-  std::cout << std::endl << "after receive" << std::endl;
-  std::string str_temp(server_chars);*/
   return server_mess;
 }
 
