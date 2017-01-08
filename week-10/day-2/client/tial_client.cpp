@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main_i(int argc, char *argv[]) {
+int main_1(int argc, char *argv[]) {
   SDL_Init(SDL_INIT_EVERYTHING);
   SDLNet_Init();
   IPaddress ip;
@@ -16,12 +16,12 @@ int main_i(int argc, char *argv[]) {
   std::string client_mess;
   std::string server_mess;
   while (1) {
-    //std::cin >> client_mess;
-    //SDLNet_TCP_Send(client, client_mess.c_str(), client_mess.length() + 1);
+    std::cin >> client_mess;
+    SDLNet_TCP_Send(client, client_mess.c_str(), client_mess.length() + 1);
     SDLNet_TCP_Recv(client, text, 100);
     server_mess = text;
     std::cout << server_mess << std::endl;
-  } 
+  }
   SDLNet_TCP_Close(client);
   SDL_Quit();
   return 0;
