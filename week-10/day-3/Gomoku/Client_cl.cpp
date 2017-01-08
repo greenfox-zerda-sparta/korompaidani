@@ -12,10 +12,9 @@ void Client_cl::client_init() {
   this->client = SDLNet_TCP_Open(&ip);
   SDLNet_TCP_AddSocket(set, client);
   this->activeSockets = SDLNet_CheckSockets(set, 10);
-  std::cout << "my activeSockets number is: " << this->activeSockets << std::endl;
 }
 
-void Client_cl::client_contact() {
+void Client_cl::client_chat() {
   while (1) {
     server_mess = server_chars;
     int activeSockets = SDLNet_CheckSockets(set, 10);
@@ -41,9 +40,11 @@ void Client_cl::client_contact() {
 }
 
 void Client_cl::client_send(std::string client_mess) {
-  std::cout << std::endl << "before send" << std::endl;
-  SDLNet_TCP_Send(client, client_mess.c_str(), client_mess.length() + 1);
-  std::cout << std::endl << "before send" << std::endl;
+  while (1) {
+    client_chars = client_mess.c_str();
+    SDLNet_TCP_Send(client, client_chars, client_mess.length() + 1);
+    break;
+  }
 }
 
 std::string Client_cl::client_receive() {
@@ -69,7 +70,7 @@ void Client_cl::client_close() {
 
 void Client_cl::client_run() {
   this->client_init();
-  this->client_contact();
+  this->client_chat();
   this->client_close();
 }
 

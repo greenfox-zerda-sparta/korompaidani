@@ -157,31 +157,29 @@ bool SDL_Window::game_logic_at_server(Map& map, Player& player, Scan& scan, bool
 
 bool SDL_Window::enemy_at_client(Map& map, Scan& scan, bool& running, Client_cl& my_client) {
   int x, y;
-  ///while (1) {
-      std::pair<int, int> tempair = m_string_to_int_pair(my_client.client_receive()); ///
-      x = tempair.first * tile_size;
-      y = tempair.second * tile_size;
-      std::cout << "x= " << x / tile_size << std::endl;
-      std::cout << "y= " << y / tile_size << std::endl;
-      map.set_map_value_by_coordinates(tempair.first, tempair.second, 2);
-      drawimage(x, y, 2);
-      ///break;
-  ///}
+  if (event.type != SDL_MOUSEBUTTONDOWN) {
+    std::pair<int, int> tempair = m_string_to_int_pair(my_client.client_receive()); ///
+    x = tempair.first * tile_size;
+    y = tempair.second * tile_size;
+    std::cout << std::endl << "x= " << x / tile_size << std::endl;
+    std::cout << "y= " << y / tile_size << std::endl;
+    map.set_map_value_by_coordinates(tempair.first, tempair.second, 2);
+    drawimage(x, y, 2);
+  }
   return true;
 }
 
 bool SDL_Window::enemy_at_server(Map& map, Scan& scan, bool& running, Server_sr& my_server) {
   int x, y;
-  ///while (1) {
+  if (event.type != SDL_MOUSEBUTTONDOWN) {
     std::pair<int, int> tempair = m_string_to_int_pair(my_server.server_receive()); ///
     x = tempair.first * tile_size;
     y = tempair.second * tile_size;
-    std::cout << "x= " << x / tile_size << std::endl;
+    std::cout << std::endl << "x= " << x / tile_size << std::endl;
     std::cout << "y= " << y / tile_size << std::endl;
     map.set_map_value_by_coordinates(tempair.first, tempair.second, 2);
     drawimage(x, y, 2);
-    ///break;
-  ///}
+  }
   return true;
 }
 

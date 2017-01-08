@@ -13,6 +13,9 @@ private:
   TCPsocket server;
   TCPsocket client;
   SDLNet_SocketSet set;
+  int activeSockets;
+  int gotMessage;
+
   bool set_stat;
   char client_chars[100];
   const char* server_chars;
@@ -22,7 +25,7 @@ public:
   Server_sr();
   void server_init();
   void server_accept();
-  void server_contact();
+  void server_chat();
   void server_send(std::string);
   void server_client_open();
   std::string server_receive();

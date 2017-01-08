@@ -21,7 +21,7 @@ private:
 public:
   Client_cl();
   void client_init();
-  void client_contact();
+  void client_chat();
   void client_send(std::string);
   std::string client_receive();
   void client_close();
