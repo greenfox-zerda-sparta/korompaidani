@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1479130649 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\main.cpp
+1479135713 source:c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\main.cpp
 	<iostream>
 	"Song.hpp"
 	"Rock.hpp"
 	"Jukebox.hpp"
+	<cstdlib>
 
 1479121449 c:\users\korom\onedrive\dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-04\day-6\jukebox\song.hpp
 	<iostream>

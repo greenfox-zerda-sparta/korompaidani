@@ -24,5 +24,6 @@ public:
   ~my_game();
   void init(GameContext&);
   void render(GameContext&);
+  void render_welcome(GameContext&);
   void test_to_command_line();
 };

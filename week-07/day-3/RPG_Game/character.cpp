@@ -1,9 +1,10 @@
 #include "character.hpp"
 
 character::character() {
-  this->location.resize(10);  ///ha mukodik akkor a getmapsize kell majd ide
+  this->map_size = 10;
+  this->location.resize(map_size);
   for (int i = 0; i < location.size(); i++) {
-    this->location[i].resize(10, 0);
+    this->location[i].resize(map_size, 0);
   }
   this->character_pic_down_path = "pics/hero-down.bmp";
   this->character_pic_up_path = "pics/hero-up.bmp";
@@ -39,7 +40,7 @@ int character::get_actual_pos() {
 }
 
 void character::character_walk(GameContext &context, level_builder &level) {
-  if (context.was_key_pressed(ARROW_DOWN) == true && coord_y < 9) {
+  if (context.was_key_pressed(ARROW_DOWN) == true && coord_y < map_size -  1) {
     if ((level.get_map(coord_y + 1, coord_x)) != 0) {
       coord_y++;
       location[coord_y][coord_x] = 1;
@@ -60,7 +61,7 @@ void character::character_walk(GameContext &context, level_builder &level) {
       choosen_direction = 'l';
     }
   }
-  else if (context.was_key_pressed(ARROW_RIGHT) == true && coord_x < 9) { ///instead of 9 u have to use variable
+  else if (context.was_key_pressed(ARROW_RIGHT) == true && coord_x < map_size - 1) {
     if ((level.get_map(coord_y, coord_x + 1)) != 0) {
       coord_x++;
       location[coord_y][coord_x] = 1;
@@ -80,3 +81,6 @@ int character::character_fight(GameContext &context) {
   }
 }
 
+void character::set_map_size(int in_map_size) {
+  this->map_size = in_map_size;
+}

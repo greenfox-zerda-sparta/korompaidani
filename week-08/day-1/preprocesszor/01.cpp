@@ -1,8 +1,8 @@
 #include <iostream>
 
-#define INTEGER 3
-#define FLOAT 5.5678f
-#define STRING "alma"
+#define INTEGER 5
+#define FLOAT 3.14
+#define STRING "Star Wars"
 
 using namespace std;
 

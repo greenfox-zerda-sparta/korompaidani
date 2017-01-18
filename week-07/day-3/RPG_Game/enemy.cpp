@@ -4,9 +4,10 @@ char dir[4] = { 'd', 'u', 'l', 'r' };
 int dir_index = rand() % 4;
 
 enemy::enemy() : MOVING_SPEED(40) {
-  this->location.resize(10);  ///ha mukodik akkor a getmapsize kell majd ide
+  this->map_size = 10;
+  this->location.resize(map_size);
   for (int i = 0; i < location.size(); i++) {
-    this->location[i].resize(10, 0);
+    this->location[i].resize(map_size, 0);
   }
   this->enemy_pic_path = "pics/skeleton.bmp";
   this->enemy_pic_down_path = "pics/molaram-down.bmp";
@@ -51,15 +52,15 @@ int enemy::get_death_counter() {
 
 void enemy::enemy_appear(GameContext &context, level_builder &in_level) {
   if (enemy_hp_counter == 0) {
-    coord_y = rand() % 10;
-    coord_x = rand() % 10;
+    coord_y = rand() % map_size;
+    coord_x = rand() % map_size;
     if (in_level.get_map(coord_y, coord_x) != 0) {
       location[coord_y][coord_x] = 1;
       enemy_hp_counter = 1;
     }
   }
   enemy_walk(context, in_level);
-  actual_pos = (coord_x * 10) + coord_y;
+  actual_pos = (coord_x * map_size) + coord_y;
   context.draw_sprite(get_enemy_pic_path(choosen_direction), 72 * coord_x, 72 * coord_y);
 }
 
@@ -67,7 +68,7 @@ void enemy::enemy_walk(GameContext &context, level_builder &in_level) {
   if (increase_pulse() == MOVING_SPEED) {
     switch (dir[dir_index]) {
     case 'd':
-      if (coord_y < 9) {
+      if (coord_y < map_size - 1) {
         if (in_level.get_map(coord_y + 1, coord_x) != 0) {
           choosen_direction = 'd';
           coord_y++;
@@ -112,7 +113,7 @@ void enemy::enemy_walk(GameContext &context, level_builder &in_level) {
       }
       break;
     case 'r':
-      if (coord_x < 9) {
+      if (coord_x < map_size - 1) {
         if (in_level.get_map(coord_y, coord_x + 1) != 0) {
           choosen_direction = 'r';
           coord_x++;
@@ -133,7 +134,7 @@ void enemy::enemy_walk(GameContext &context, level_builder &in_level) {
 }
 
 void enemy::enemy_death(int fight_result, int hero_pos) {
-  if (hero_pos == actual_pos && fight_result == 9) {
+  if (hero_pos == actual_pos && fight_result == map_size - 1) {
     enemy_hp_counter = 0;
     death_counter++;
   }
@@ -172,4 +173,14 @@ void enemy::set_enemy_picture(char enemy_type) {
     this->enemy_pic_left_path = "pics/molaram-left.bmp";
     this->enemy_pic_right_path = "pics/molaram-right.bmp";
   }
+  else if (enemy_type == 's') {
+    this->enemy_pic_down_path = "pics/soldier-down.bmp";
+    this->enemy_pic_up_path = "pics/soldier-up.bmp";
+    this->enemy_pic_left_path = "pics/soldier-left.bmp";
+    this->enemy_pic_right_path = "pics/soldier-right.bmp";
+  }
+}
+
+void enemy::set_map_size(int in_map_size) {
+  this->map_size = in_map_size;
 }

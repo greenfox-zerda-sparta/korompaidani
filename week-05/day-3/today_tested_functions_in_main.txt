@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+#include "List.hpp"
+#include "FunctionTools.hpp"
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+  string filename = "todo.txt";
+
+ // cout << file_to_string_entire(filename);
+ // cout << file_line_counter(filename);
+ // cout << file_to_string_to(filename, file_line_counter(filename), 3);
+  cout << file_to_string_from_to(filename, file_line_counter(filename), -9, 9);
+  cout << file_to_string_entire("description.txt");
+ // cout << string_to_file(filename, file_to_string_entire("description.txt"));
+
+  char* arr_char[2];
+  arr_char[0] = "-a";
+  arr_char[1] = "banana";
+  string* str = char_star_array_to_string_array(arr_char, 2);
+  cout << str[0] << endl;
+  cout << str[1] << endl;
+
+  is_it_valid_typing(str[0]) == true ? cout << "true\n" : cout << "false\n";
+  cout << one_letter_from_string(str[0]) << endl;
+
+  return 0;
+}
+
+
+void List::lists_all_the_tasks() {
+  if (my_argc > 0) {
+    if (one_letter_from_string(*my_argv) != '!') {
+      if (is_command_valid(*my_argv[0]) == true) {
+        cout << file_to_string_entire(filename);
+      }
+      else {
+        cout << "Please type a valid command!";  
+      }
+    }
+    else {
+      cout << "Please type the first tag in correct format <-l>";
+    }
+  }
+}

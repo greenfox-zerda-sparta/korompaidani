@@ -4,61 +4,65 @@ my_draw::~my_draw() {
 }
 
 int my_draw::rectangle(SDL_Renderer *& renderer, int width, int height, int shift_w, int shift_h) {
-  MoveTo(shift_w, shift_h);
-  DrawTo(renderer, (width - (width * (double)1)) + shift_w, (height - (height * (double)2 / 3)) + shift_h);
-  DrawTo(renderer, (width - (width * (double)2 / 3)) + shift_w, (height - (height * (double)2 / 3)) + shift_h);
-  DrawTo(renderer, (width - (width * (double)2 / 3)) + shift_w, (height - (height * (double)1)) + shift_h);
-  DrawTo(renderer, (width - (width * (double)1)) + shift_w, (height - (height * (double)1)) + shift_h);
-  width /= 3;
-  height /= 3;
-  if (width < 1) {
-    return 0;
+  int step = (width - shift_w) / 3;
+  MoveTo(shift_w + step, shift_h);
+  DrawTo(renderer, shift_w + step, height);
+  MoveTo(width - step, shift_h);
+  DrawTo(renderer, width - step, height);
+  MoveTo(shift_w, shift_h + step);
+  DrawTo(renderer, width, shift_h + step);
+  MoveTo(shift_w, height - step);
+  DrawTo(renderer, width, height - step);
+  if (step > 6) {
+    rectangle(renderer, width - step, shift_h + step, shift_w + step, shift_h);
+    rectangle(renderer, shift_w + step, height - step, shift_w, shift_h + step);
+    rectangle(renderer, width, height - step, width - step, shift_h + step);
+    rectangle(renderer, width - step, height, shift_w + step, height - step);
   }
-  else {
-   rectangle(renderer, width, height, width * (double)1, height * (double)2 / 3);
-   rectangle(renderer, width, height, width * (double)2 / 3, height * (double)2 / 3);
-   rectangle(renderer, width, height, width * (double)2 / 3, height * (double)1);
-   rectangle(renderer, width, height, width * (double)1, height * (double)1);
-  }
+  return 0;
 }
 
-int my_draw::plus_operator(SDL_Renderer *& renderer, int width, int height, double p_shift_w, double p_shift_h) {
-  if (width < 1) {
-    return 0;
+int my_draw::triangle(SDL_Renderer *& renderer, int width, int height, int shift_w, int shift_h) {
+  int step = (width - shift_w) / 2;
+
+  MoveTo(width / 2, height);
+  DrawTo(renderer, width + shift_w, height - height + shift_h);
+  MoveTo(width / 2, height);
+  DrawTo(renderer, width - width + shift_w, height - height + shift_h);
+  //DrawTo(renderer, width - width + shift_w, height - height + shift_h);
+  //DrawTo(renderer, width / 2 + shift_w, height + shift_h);
+  if (step > 6) {
+    width /= 2;
+    height /= 2;
+    triangle(renderer, width, height, shift_w, shift_h);
+    triangle(renderer, width, height, shift_w, shift_h);
   }
-  else {
-    rectangle(renderer, width, height, width * (double)2 / 3 + p_shift_w, height * (double)1 / 3 + p_shift_h);
-    rectangle(renderer, width, height, width * (double)1 / 3 + p_shift_w, height * (double)2 / 3 + p_shift_h);
-    rectangle(renderer, width, height, width * (double)1 / 3 + p_shift_w, height * (double)0 + p_shift_h);
-    rectangle(renderer, width, height, width * (double)0 + p_shift_w, height * (double)1 / 3 + p_shift_h);
-    return plus_operator(renderer, (double)width / 3, (double)height / 3, width * (double)2 / 3, height * (double)2 / 3);
-  }
+  return 0;
 }
 
-void my_draw::recursive(SDL_Renderer *& renderer, int width, int height, double p_shift_w, double p_shift_h) {
-  for (int i = 0; i < 4; i++) {
-    if (i == 0) {
-      plus_shift_w = ((double)2 / 3) / 3;
-      plus_shift_h = ((double)1 / 3) / 3;
-    }
-    else if (i == 1) {
-      plus_shift_w = ((double)1 / 3) / 3;
-      plus_shift_h = ((double)2 / 3) / 3;
-    }
-    else if (i == 2) {
-      plus_shift_w = ((double)1 / 3) / 3;
-      plus_shift_h = 0;
-    }
-    else if (i == 3) {
-      plus_shift_w = 0;
-      plus_shift_h = ((double)1 / 3) / 3;
-    }
-    plus_operator(renderer, width / 3, height / 3, width * plus_shift_w, height * plus_shift_h);
+int my_draw::triangle2(SDL_Renderer *& renderer, int length, int start_w, int start_h) {
+  MoveTo(start_w + length / 2, start_h);
+  TurnBy(60);
+  DrawBy(renderer, length);
+  TurnBy(60);
+  DrawBy(renderer, length);
+  TurnBy(300);
+  DrawBy(renderer, length);
+
+  /*
+  MoveTo(a_w, a_h);
+  DrawTo(renderer, b_w, b_h);
+  DrawTo(renderer, c_w, c_h);
+  DrawTo(renderer, a_w, a_h);
+  */
+  if (length > 3) {
+    triangle2(renderer, length / 2, start_w, start_h);
   }
+  return 0;
 }
 
 void my_draw::my_drawer(SDL_Renderer* &renderer, int width, int height) {
- // recursive(renderer, width, height, 0, 0);
- // plus_operator(renderer, width, height, 0, 0);
-  rectangle(renderer, width, height, width / 3, 0);
+  ///rectangle(renderer, width, height, 0, 0);
+  //triangle(renderer, width, height, 0, 0);
+  triangle2(renderer, width, 0, 0);
 }

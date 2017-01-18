@@ -22,6 +22,10 @@ void my_game::init(GameContext& context) {
   context.load_file("pics/molaram-up.bmp");
   context.load_file("pics/molaram-left.bmp");
   context.load_file("pics/molaram-right.bmp");
+  context.load_file("pics/soldier-down.bmp");
+  context.load_file("pics/soldier-up.bmp");
+  context.load_file("pics/soldier-left.bmp");
+  context.load_file("pics/soldier-right.bmp");
   context.load_file(arch.get_treasure_pic_path());
   context.load_file(hero.get_character_pic_path('d'));
   context.load_file(hero.get_character_pic_path('u'));
@@ -37,7 +41,12 @@ void my_game::render(GameContext& context) {
   hero.character_walk(context, *level);
   arch.picked_up(hero.character_fight(context), hero.get_actual_pos());
   context.render();
-};
+}
+void my_game::render_welcome(GameContext& context) {
+  ///welcome.appear(context);
+  render(context);
+
+}
 
 void my_game::test_to_command_line() {
   std::cout << my_score.get_score_content() << std::endl;

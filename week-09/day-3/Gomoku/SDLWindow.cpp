@@ -89,7 +89,7 @@ void SDL_Window::run_as_server(Map& map, Player& player_1, Player& player_2, Sca
     else if (player_switcher == 2) {
       
       temp = enemy_as_server(map, scan, running, my_server);
-      my_server.server_client_close();
+      ///my_server.server_client_close();
       if (temp == true) {
         player_switcher = 1;
         std::cout << "player_switcher= " << player_switcher << std::endl;

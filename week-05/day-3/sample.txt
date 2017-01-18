@@ -1,0 +1,5 @@
+1 - [ ] Walk the dog
+2 - [ ] Buy milk
+3 - [x] Do homework
+4 - [ ] Feet yourself
+5 - [ ] Buy something just for fun

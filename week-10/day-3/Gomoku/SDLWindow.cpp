@@ -107,7 +107,7 @@ bool SDL_Window::game_logic_at_client(Map& map, Player& player, Scan& scan, bool
       
       temp = m_int_to_string(player.get_last_click_coordinates().first) + "," + m_int_to_string(player.get_last_click_coordinates().second) + "\n";
       my_client.client_send(temp); ///
-      std::cout << "the sent client message was: " << temp << std::endl;
+      std::cout << "client message was: " << temp << std::endl;
      
       scan.round_scan(map, player.get_last_click_coordinates(), player.get_player_num());
       if (scan.get_win_player_num() == player.get_player_num()) {
@@ -136,7 +136,7 @@ bool SDL_Window::game_logic_at_server(Map& map, Player& player, Scan& scan, bool
       drawimage(event.button.x, event.button.y, player.get_player_num());
       temp = m_int_to_string(player.get_last_click_coordinates().first) + "," + m_int_to_string(player.get_last_click_coordinates().second) + "\n";
       my_server.server_send(temp); ///
-      std::cout << "the sent server message was: " << temp << std::endl;
+      std::cout << "server message was: " << temp << std::endl;
       scan.round_scan(map, player.get_last_click_coordinates(), player.get_player_num());
       if (scan.get_win_player_num() == player.get_player_num()) {
         scan.reset_win_player_num();

@@ -32,6 +32,7 @@ int main(int argc, char* argv[]) {
     cout << "Give me your name: " << endl;
     cin >> player_1_name;
     cout << endl << player_1_name << " you are the server!" << endl;
+    std::cout << "the server is waiting for a client..." << std::endl;
   }
   else {
     cout << "Give me your name: " << endl;

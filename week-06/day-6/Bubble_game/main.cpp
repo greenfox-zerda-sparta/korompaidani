@@ -23,6 +23,7 @@ int main() {
   m1.draw_matrix();
   m1.get_bubble_info();
 
+
   for (int i = 0; i < 20; i++) {
     m1.run_on_y(0);
     m1.run_on_y(1);
@@ -37,6 +38,7 @@ int main() {
     m1.draw_matrix();
     m1.get_bubble_info();
   }
+
   return 0;
 
 	//Bubble Game!!!!

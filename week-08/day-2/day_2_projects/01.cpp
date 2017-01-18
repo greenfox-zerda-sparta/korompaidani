@@ -9,7 +9,7 @@ void print_content(int i) {
   cout << i << endl;
 }
 
-int main() {
+int main1() {
   vector<int> v;
   for (int i = 0; i < 10; ++i) {
     v.push_back(i);

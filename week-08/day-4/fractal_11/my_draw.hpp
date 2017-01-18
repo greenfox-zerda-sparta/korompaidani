@@ -11,7 +11,7 @@ private:
 public:
   ~my_draw();
   int rectangle(SDL_Renderer* &renderer, int, int, int, int);
-  int plus_operator(SDL_Renderer* &renderer, int, int, double, double);
-  void recursive(SDL_Renderer* &renderer, int, int, double, double);
+  int triangle(SDL_Renderer* &renderer, int, int, int, int);
+  int triangle2(SDL_Renderer* &renderer, int, int, int);
   void my_drawer(SDL_Renderer* &renderer, int, int);
-};
+  };

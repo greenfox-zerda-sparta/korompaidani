@@ -240,3 +240,10 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+*.exe
+*.o
+*.cbp
+*.depend
+*.layout
+*.EAP
+*.dll

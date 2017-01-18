@@ -5,6 +5,7 @@
 
 class enemy {
 private:
+  int map_size;
   std::vector<std::vector<int>> location;
   std::string enemy_pic_path;
   std::string enemy_pic_down_path;
@@ -23,7 +24,7 @@ private:
 public:
   enemy();
   ~enemy();
-
+  void set_map_size(int);
   std::string get_enemy_pic_path(char);
   int get_actual_pos();
   int get_death_counter();

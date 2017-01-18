@@ -4,6 +4,7 @@
 
 class character {
 private:
+  int map_size;
   std::vector<std::vector<int>> location;
   std::string character_pic_down_path;
   std::string character_pic_up_path;
@@ -17,6 +18,7 @@ public:
   character();
   ~character();
 
+  void set_map_size(int);
   std::string get_character_pic_path(char);
   int get_actual_pos();
   void character_walk(GameContext&, level_builder&);

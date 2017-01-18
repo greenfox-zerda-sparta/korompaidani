@@ -5,14 +5,16 @@
 
 #include <iostream>
 
-#define str(a > b) #a
+#define str(a) #a
 
-int main() {
-  int a = 22;
-  int b = 24;
+int main4() {
+  int a = 24;
+  int b = 21;
   if (a > b) {
-    std::cout << #a << "  a: " << a "  b: " << b << std::endl;
+    std::cout << str(a > b) << "  a: " << a << "  b: " << b << std::endl;
   }
   system("pause");
   return 0;
 }
+
+///csak akkor irodik ki, hogyha a feltetel igaz

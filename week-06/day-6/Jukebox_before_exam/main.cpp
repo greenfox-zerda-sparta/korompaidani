@@ -5,9 +5,15 @@
 #include "Pop.hpp"
 #include "Jukebox.hpp"
 
+enum months_t { january=1, february, march, april,
+                may, june, july, august,
+                september, october, november, december};
+
 using namespace std;
 
 int main() {
+  cout << months_t(may) << endl;
+
   Rock r1("Omega", "Gyongyhaju_lany");
   Rock r2("Omega", "Petroleum_lampa");
 

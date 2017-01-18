@@ -116,6 +116,9 @@ void Matrix::run_on_x(int which_bubble_index) {
 
 void Matrix::run_on_y(int which_bubble_index) {
   round_y++;
+  if (is_coll(which_bubble_index) == true) {
+    bubble_pos_y[which_bubble_index] += bubble_dir[which_bubble_index] * (-1);
+  }
   if (round_y != 1) {
     if (bubble_pos_y[which_bubble_index] == MATRIX_SIZE - 1) {
       bubble_dir[which_bubble_index] = bubble_dir[which_bubble_index] * (-1);
@@ -136,3 +139,42 @@ void Matrix::run_on_y(int which_bubble_index) {
   }
 }
 
+bool Matrix::is_coll_on_x(int which_x_bubble_index) {
+  for (int i = 0; i < my_bubbles.size(); i++) {
+    if (i != which_x_bubble_index) {
+      if (bubble_pos_x[which_x_bubble_index] == bubble_pos_x[i]) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+  }
+}
+
+bool Matrix::is_coll_on_y(int which_y_bubble_index) {
+  for (int i = 0; i < my_bubbles.size(); i++) {
+    if (i != which_y_bubble_index) {
+      if (bubble_pos_y[which_y_bubble_index] == bubble_pos_y[i]) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+  }
+}
+
+bool Matrix::is_coll(int which_bubble_index) {
+  if (is_coll_on_x(which_bubble_index) == true) {
+    if (is_coll_on_y(which_bubble_index) == true) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  else {
+    return false;
+  }
+}

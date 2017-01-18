@@ -8,7 +8,6 @@ square_level::square_level() : level_builder() {
   square_drawer();
 }
 
-
 square_level::~square_level() {
 }
 

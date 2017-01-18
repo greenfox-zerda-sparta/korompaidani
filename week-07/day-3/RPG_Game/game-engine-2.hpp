@@ -74,6 +74,7 @@ class Game {
 public:
   virtual void init(GameContext& context) = 0;
   virtual void render(GameContext& context) = 0;
+  virtual void render_welcome(GameContext& context) = 0;
 };
 
 class GameEngine {
@@ -124,7 +125,8 @@ public:
           break;
         }
       }
-      game->render(*context);
+      game->render_welcome(*context);
+      ///game->render(*context);
     }
   }
 };

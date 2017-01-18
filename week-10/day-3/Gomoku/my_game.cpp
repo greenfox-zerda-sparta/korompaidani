@@ -28,13 +28,13 @@ void my_game::game_handler() {
 void my_game::launch() {
   if (player_1_name != "Default") {
     my_server.server_init();
-    std::cout << "there was server init";
+    std::cout << "there was server init" << std::endl;
     sdl_window->run_as_server(*my_map, *player_1, *player_2, *scan, my_client, my_server);
   }
   else {
     //my_client.client_run();
     my_client.client_init();
-    std::cout << "there was client init";
+    std::cout << "there was client init" << std::endl;
     sdl_window->run_as_client(*my_map, *player_1, *player_2, *scan, my_client, my_server);
   }
   

@@ -2,7 +2,7 @@
 #define MY_CONST 3
 using namespace std;
 
-int mainw() {
+int main_() {
 
   system("pause");
 

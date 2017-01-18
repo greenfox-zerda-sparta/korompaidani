@@ -4,6 +4,7 @@
 
 class treasure {
 private:
+  int map_size;
   std::vector<std::vector<int>> location;
   std::string treasure_pic_path;
   level_builder* level;
@@ -15,7 +16,7 @@ private:
 public:
   treasure();
   ~treasure();
-
+  void set_map_size(int);
   std::string get_treasure_pic_path();
   int get_catch_counter();
   int get_actual_pos();
