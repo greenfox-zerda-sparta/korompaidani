@@ -13,6 +13,8 @@ double ScaleX = 0.1;
 double ScaleY = 0.1;
 double TextPosX = 0.0;
 double TextPosY = 0.0;
+double seq = 1.0 / 6;
+
 
 int main(int argc, char *argv[]) {
   SDL_Init(SDL_INIT_VIDEO);
@@ -67,9 +69,9 @@ int main(int argc, char *argv[]) {
     ellapsed_time = current_time - last_time;
     last_time = current_time;
 
-    /*texture position*/
-    TextPosX += 0.2 * ellapsed_time;
-    TextPosY += 0.2 * ellapsed_time;
+    /*texture position with tick*/
+    TextPosX += seq * ellapsed_time;
+    TextPosY += seq * ellapsed_time;
 
     drawer(screen);
     ellapsed_time = SDL_GetTicks() - start_time;
@@ -96,7 +98,7 @@ void drawer(SDL_Window* screen)
 
   /*INITIALIZATION OF TEXTURE*/
   GLuint texture;
-  SDL_Surface* surf = SDL_LoadBMP("moving_sec.bmp");
+  SDL_Surface* surf = SDL_LoadBMP("cat_seq.bmp");
   if (surf == NULL) { //If failed, say why and don't continue loading the texture
     printf("Error: \"%s\"\n", SDL_GetError()); return;
   }
@@ -121,10 +123,10 @@ void drawer(SDL_Window* screen)
   /*DRAWING STARTS HERE*/
   glBegin(GL_QUADS); 
 
-  glTexCoord2f(1.0f + TextPosX, 1.0f); //All subsequent vertices will have an associated texture coordinate of (1,1)
+  glTexCoord2f(seq + TextPosX, 1.0f); //All subsequent vertices will have an associated texture coordinate of (1,1)
   glVertex3d(ScaleX * 1, ScaleY * 1, 0);
   
-  glTexCoord2f(1.0f + TextPosX, 0.0f); //All subsequent vertices will have an associated texture coordinate of (1,0)
+  glTexCoord2f(seq + TextPosX, 0.0f); //All subsequent vertices will have an associated texture coordinate of (1,0)
   glVertex3d(ScaleX * 1, ScaleY * (-1), 0);
   
   glTexCoord2f(0.0f + TextPosX, 0.0f); //All subsequent vertices will have an associated texture coordinate of (0,0)

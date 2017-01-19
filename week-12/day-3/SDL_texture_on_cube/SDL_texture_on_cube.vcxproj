@@ -121,8 +121,10 @@
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="cat_seq.bmp" />
     <Image Include="moving_sec.bmp" />
     <Image Include="pic.bmp" />
+    <Image Include="walking_seq.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

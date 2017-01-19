@@ -29,5 +29,11 @@
     <Image Include="moving_sec.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="walking_seq.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="cat_seq.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
