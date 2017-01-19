@@ -13,7 +13,7 @@ double ScaleX = 0.1;
 double ScaleY = 0.1;
 double TextPosX = 0.0;
 double TextPosY = 0.0;
-double seq = 1.0 / 6;
+double seq = 1.0 / 5;
 
 
 int main(int argc, char *argv[]) {
@@ -98,7 +98,7 @@ void drawer(SDL_Window* screen)
 
   /*INITIALIZATION OF TEXTURE*/
   GLuint texture;
-  SDL_Surface* surf = SDL_LoadBMP("cat_seq.bmp");
+  SDL_Surface* surf = SDL_LoadBMP("walking_seq.bmp");
   if (surf == NULL) { //If failed, say why and don't continue loading the texture
     printf("Error: \"%s\"\n", SDL_GetError()); return;
   }
