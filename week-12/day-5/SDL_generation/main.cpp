@@ -16,16 +16,18 @@ void coord_generator(int _beg, int repeat, int x, int z, char ax) { //x,z, must 
   switch (ax) {
   case 'x':
     x++;
+    z = 0;
     ax = 'z';
     break;
   case 'z':
     z++;
+    x = 0;
     ax = 'd';
     break;
   case 'd':
-   // x++;
+    x++;
    // z++;
-    //beg++;
+    beg++;
     ax = 'x';
     break;
   }
@@ -34,12 +36,12 @@ void coord_generator(int _beg, int repeat, int x, int z, char ax) { //x,z, must 
     return;
   }
   else {
-    coord_generator(-2, repeat, x, z, ax);
+    coord_generator(beg, repeat, x, z, ax);
   }
 }
 
 int main(int argc, char* argv[]) {
-  coord_generator(-2, 3, 0, 0, 'x');
+  coord_generator(-2, 9, 0, 0, 'x');
   /*int beg = -2;
   int end = beg + 2;
   int x = 0;
