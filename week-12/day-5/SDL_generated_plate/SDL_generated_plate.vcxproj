@@ -131,6 +131,12 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Opengl.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="pic.bmp" />
+    <Image Include="pic1.bmp" />
+    <Image Include="pic2.bmp" />
+    <Image Include="pic3.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

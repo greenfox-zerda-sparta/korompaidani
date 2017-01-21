@@ -48,4 +48,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="pic.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
