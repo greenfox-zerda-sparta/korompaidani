@@ -40,5 +40,8 @@
     <Image Include="pics\tower.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="pics\yoda.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

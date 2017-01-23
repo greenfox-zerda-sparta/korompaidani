@@ -30,6 +30,7 @@
     <Image Include="pics\building.bmp" />
     <Image Include="pics\grass.bmp" />
     <Image Include="pics\tower.bmp" />
+    <Image Include="pics\yoda.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{71dfa0f7-e651-4e79-8553-89fdaa1f76eb}</ProjectGuid>
