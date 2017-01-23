@@ -29,6 +29,15 @@
     <Image Include="wall.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="grass.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="tower.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="academy.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="level_map.hpp">

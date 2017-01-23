@@ -10,7 +10,7 @@ using std::cerr;
 using std::endl;
 
 const int WINDOW_HEIGHT = 640;
-const int WINDOW_WIDTH = 480;
+const int WINDOW_WIDTH = 640;
 /*
 void level_creator() {
   for (int i = 0; i < map.size(); i++) {
@@ -36,8 +36,9 @@ int main(int argc, char* argv[]) {
   window = SDL_CreateWindow("title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
   renderer = SDL_CreateRenderer(window, -1, 0);
 
-  std::string pic1 = "floor.bmp";
-  std::string pic2 = "wall.bmp";
+  std::string pic1 = "grass.bmp";
+  std::string pic2 = "academy.bmp";
+  std::string pic3 = "tower.bmp";
   
   SDL_Surface* result = SDL_LoadBMP(pic1.c_str());
   SDL_SetColorKey(result, SDL_TRUE, SDL_MapRGB(SDL_AllocFormat(SDL_GetWindowPixelFormat(window)), 0xFF, 0, 0xFF));
@@ -49,8 +50,12 @@ int main(int argc, char* argv[]) {
   pictures[pic2] = SDL_CreateTextureFromSurface(renderer, result2);
   SDL_FreeSurface(result2);
 
+  SDL_Surface* result3 = SDL_LoadBMP(pic3.c_str());
+  SDL_SetColorKey(result3, SDL_TRUE, SDL_MapRGB(SDL_AllocFormat(SDL_GetWindowPixelFormat(window)), 0xFF, 0, 0xFF));
+  pictures[pic3] = SDL_CreateTextureFromSurface(renderer, result3);
+  SDL_FreeSurface(result3);
+
   SDL_Rect temp;
-  SDL_Rect temp2;
 
   std::vector<std::vector<int>> my_map;
   my_map.resize(10);
@@ -58,8 +63,13 @@ int main(int argc, char* argv[]) {
     my_map[i].resize(10, 0);
   }
 
-  my_map[8][7] = 1;
-  ///my_map[8][8] = 0;
+  my_map[8][7] = 2;
+  my_map[1][2] = 2;
+  my_map[4][3] = 2;
+  my_map[7][7] = 2;
+  my_map[8][7] = 2;
+  my_map[5][5] = 2;
+  
 
   for (int i = 0; i < my_map.size(); i++) {
     for (int j = 0; j < my_map[i].size(); j++) {
@@ -73,21 +83,33 @@ int main(int argc, char* argv[]) {
     for (int j = 0; j < my_map[i].size(); j++) {
       if (my_map[i][j] == 0) {
 
-        temp.x = i * 32;
-        temp.y = j * 32;
-        temp.w = 32;
-        temp.h = 32;
+        temp.x = i * 64;
+        temp.y = j * 64;
+        temp.w = 64;
+        temp.h = 64;
         SDL_RenderCopy(renderer, pictures[pic1], NULL, &temp);
         SDL_RenderPresent(renderer);
+
       }
       else if (my_map[i][j] == 1) {
         
-        temp2.x = i * 32;
-        temp2.y = j * 32;
-        temp2.w = 32;
-        temp2.h = 32;
-        SDL_RenderCopy(renderer, pictures[pic2], NULL, &temp2);
+        temp.x = i * 64;
+        temp.y = j * 64;
+        temp.w = 64;
+        temp.h = 64;
+        SDL_RenderCopy(renderer, pictures[pic2], NULL, &temp);
         SDL_RenderPresent(renderer);
+
+      }
+      else if (my_map[i][j] == 2) {
+
+        temp.x = i * 64;
+        temp.y = j * 64;
+        temp.w = 64;
+        temp.h = 64;
+        SDL_RenderCopy(renderer, pictures[pic3], NULL, &temp);
+        SDL_RenderPresent(renderer);
+
       }
     }
   }
@@ -105,6 +127,7 @@ int main(int argc, char* argv[]) {
 
   SDL_DestroyTexture(pictures[pic1]);
   SDL_DestroyTexture(pictures[pic2]);
+  SDL_DestroyTexture(pictures[pic3]);
   SDL_DestroyWindow(window);
   
   SDL_QUIT;

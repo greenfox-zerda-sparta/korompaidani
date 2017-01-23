@@ -23,7 +23,10 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="academy.bmp" />
     <Image Include="floor.bmp" />
+    <Image Include="grass.bmp" />
+    <Image Include="tower.bmp" />
     <Image Include="wall.bmp" />
   </ItemGroup>
   <ItemGroup>
