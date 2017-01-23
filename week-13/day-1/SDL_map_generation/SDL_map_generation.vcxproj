@@ -23,14 +23,13 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="academy.bmp" />
-    <Image Include="floor.bmp" />
-    <Image Include="grass.bmp" />
-    <Image Include="tower.bmp" />
-    <Image Include="wall.bmp" />
+    <ClInclude Include="level_map.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="level_map.hpp" />
+    <Image Include="pics\academy.bmp" />
+    <Image Include="pics\building.bmp" />
+    <Image Include="pics\grass.bmp" />
+    <Image Include="pics\tower.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{71dfa0f7-e651-4e79-8553-89fdaa1f76eb}</ProjectGuid>
