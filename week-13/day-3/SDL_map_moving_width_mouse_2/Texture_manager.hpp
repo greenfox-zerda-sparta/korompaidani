@@ -11,12 +11,11 @@ private:
   std::map<std::string, std::pair<int, int>> texture_resolution;
   const int WINDOW_WIDTH;
   const int WINDOW_HEIGHT;
-  
-  SDL_Rect srcrect;
-  SDL_Rect dstrect;
+  SDL_Rect srcrect; //source rect
+  SDL_Rect dstrect; //destination rect
 public:
   Texture_manager();
-  Texture_manager(int height, int width);
+  Texture_manager(int width, int height);
   bool load(std::string file_name, std::string id, int image_width, int image_height, SDL_Renderer* renderer);
   void draw(std::string id, int x, int y, int width, int height, SDL_Renderer* renderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
   void draw_frame(std::string id, int x, int y, int width, int height, int change_x, int change_y, SDL_Renderer* renderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
