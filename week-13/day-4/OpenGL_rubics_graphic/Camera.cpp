@@ -15,4 +15,3 @@ void Camera::rotate_camera(double angle_x, double angle_z) {
   glRotated(angle_x, 1, 0, 0);
   glRotated(angle_z, 0, 0, 1);
 }
-#endif

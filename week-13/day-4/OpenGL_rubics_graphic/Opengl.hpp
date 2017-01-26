@@ -12,7 +12,3 @@ public:
   void opengl_sreenbuilder();
   void opengl_display(SDL_Window* screen);
 };
-
-
-
-#endif

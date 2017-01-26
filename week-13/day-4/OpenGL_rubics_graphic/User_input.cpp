@@ -108,5 +108,3 @@ void User_input::set_step(int _value) {
 
 User_input::~User_input() {
 }
-
-#endif

@@ -23,4 +23,3 @@ public:
   void draw_flattened_cube(std::vector<int> &colors);
   void draw_real_cube(std::vector<int> &colors);
 };
-#endif

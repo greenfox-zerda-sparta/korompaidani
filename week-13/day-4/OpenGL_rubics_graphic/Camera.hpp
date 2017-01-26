@@ -11,5 +11,3 @@ public:
   void place_camera();
   void rotate_camera(double, double);
 };
-
-#endif

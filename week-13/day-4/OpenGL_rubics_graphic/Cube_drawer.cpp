@@ -90,6 +90,3 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
     }
   }
 }
-
-
-#endif

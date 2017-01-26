@@ -30,5 +30,3 @@ public:
   void set_step(int _value);
   ~User_input();
 };
-
-#endif
