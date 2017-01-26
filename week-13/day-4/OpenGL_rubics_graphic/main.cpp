@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
     cam.place_camera();
     cam.rotate_camera(ui.get_angle_x(), ui.get_angle_z());
     primitive.draw_flattened_cube(my_cube.get_vector_for_Lego());
-    ///primitive.draw_real_cube(colors);
+    //primitive.draw_real_cube(my_cube.get_vector_for_Lego());
 
     opgl.opengl_display(screen);
   }

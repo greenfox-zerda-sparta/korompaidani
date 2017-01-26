@@ -62,12 +62,11 @@ void Cube_drawer::draw_flattened_cube(std::vector<int> &colors) {
     }
   }
 }
-
+/*
 void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
   int size = 3;
   int shift = size / 2;
   int index = 0;
-  int y = 0;
   for (int i = 0; i < 6; i++) {
     for (int x = 0 - shift - script[i].first; x < size - shift - script[i].first; x++) {
       for (int z = 0 - shift - script[i].second; z < size - shift - script[i].second; z++) {
@@ -75,18 +74,172 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
         glBegin(GL_POLYGON);
 
         glTexCoord2i(0, 0);
-        glVertex3f(float(x), y, float(z));
+        glVertex3f(float(x), 0, float(z));
         glTexCoord2i(1, 0);
-        glVertex3f((float(x) + 1), y, float(z));
+        glVertex3f((float(x) + 1), 0, float(z));
         glTexCoord2i(1, 1);
-        glVertex3f((float(x) + 1), y, (float(z) + 1));
+        glVertex3f((float(x) + 1), 0, (float(z) + 1));
         glTexCoord2i(0, 1);
-        glVertex3f(float(x), y, (float(z) + 1));
+        glVertex3f(float(x), 0, (float(z) + 1));
 
         glEnd();
         texture_disable();
         index++;
       }
     }
+    if (i == 1) {
+      glRotatef(90.0, 0.0, 0.0, 1.0);
+    }
   }
+}
+*/
+void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
+  int size = 3;
+
+  int index = 0;
+  int i = 0;
+
+  int shift_x = 0;
+  int shift_z = 0;
+  int shift_y = 0;
+    for (int x = 0 - shift_x; x < size - shift_x; x++) {
+      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+        texture_blind_and_enable(textures[colors[index]]);
+        glBegin(GL_POLYGON);
+
+        glTexCoord2i(0, 0);
+        glVertex3f(float(x), 0 + shift_y, float(z));
+        glTexCoord2i(1, 0);
+        glVertex3f((float(x) + 1), 0 + shift_y, float(z));
+        glTexCoord2i(1, 1);
+        glVertex3f((float(x) + 1), 0 + shift_y, (float(z) + 1));
+        glTexCoord2i(0, 1);
+        glVertex3f(float(x), 0 + shift_y, (float(z) + 1));
+
+        glEnd();
+        texture_disable();
+        index++;
+      }
+    }
+   
+    glRotatef(90.0, 0.0, 0.0, 1.0);
+    shift_x = 0;
+    shift_z = 0;
+    shift_y = 0;
+    for (int x = 0 - shift_x; x < size - shift_x; x++) {
+      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+        texture_blind_and_enable(textures[colors[index]]);
+        glBegin(GL_POLYGON);
+
+        glTexCoord2i(0, 0);
+        glVertex3f(float(x), 0 + shift_y, float(z));
+        glTexCoord2i(1, 0);
+        glVertex3f((float(x) + 1), 0 + shift_y, float(z));
+        glTexCoord2i(1, 1);
+        glVertex3f((float(x) + 1), 0 + shift_y, (float(z) + 1));
+        glTexCoord2i(0, 1);
+        glVertex3f(float(x), 0 + shift_y, (float(z) + 1));
+
+        glEnd();
+        texture_disable();
+        index++;
+      }
+    }
+    
+    glRotatef(90.0, 0.0, 0.0, 1.0);
+    shift_x = 3;
+    shift_y = -3;
+    shift_z = 0;
+    for (int x = 0 - shift_x; x < size - shift_x; x++) {
+      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+        texture_blind_and_enable(textures[colors[index]]);
+        glBegin(GL_POLYGON);
+
+        glTexCoord2i(0, 0);
+        glVertex3f(float(x), 0 + shift_y, float(z));
+        glTexCoord2i(1, 0);
+        glVertex3f((float(x) + 1), 0 + shift_y, float(z));
+        glTexCoord2i(1, 1);
+        glVertex3f((float(x) + 1), 0 + shift_y, (float(z) + 1));
+        glTexCoord2i(0, 1);
+        glVertex3f(float(x), 0 + shift_y, (float(z) + 1));
+
+        glEnd();
+        texture_disable();
+        index++;
+      }
+    }
+
+    glRotatef(90.0, 0.0, 0.0, 1.0);
+    shift_x = 3;
+    shift_y = 3;
+    shift_z = 0;
+    for (int x = 0 - shift_x; x < size - shift_x; x++) {
+      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+        texture_blind_and_enable(textures[colors[index]]);
+        glBegin(GL_POLYGON);
+
+        glTexCoord2i(0, 0);
+        glVertex3f(float(x), 0 + shift_y, float(z));
+        glTexCoord2i(1, 0);
+        glVertex3f((float(x) + 1), 0 + shift_y, float(z));
+        glTexCoord2i(1, 1);
+        glVertex3f((float(x) + 1), 0 + shift_y, (float(z) + 1));
+        glTexCoord2i(0, 1);
+        glVertex3f(float(x), 0 + shift_y, (float(z) + 1));
+
+        glEnd();
+        texture_disable();
+        index++;
+      }
+    }
+
+    glRotatef(90.0, 1.0, 0.0, 0.0);
+    shift_x = 3;
+    shift_y = 0;
+    shift_z = 3;
+    for (int x = 0 - shift_x; x < size - shift_x; x++) {
+      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+        texture_blind_and_enable(textures[colors[index]]);
+        glBegin(GL_POLYGON);
+
+        glTexCoord2i(0, 0);
+        glVertex3f(float(x), 0 + shift_y, float(z));
+        glTexCoord2i(1, 0);
+        glVertex3f((float(x) + 1), 0 + shift_y, float(z));
+        glTexCoord2i(1, 1);
+        glVertex3f((float(x) + 1), 0 + shift_y, (float(z) + 1));
+        glTexCoord2i(0, 1);
+        glVertex3f(float(x), 0 + shift_y, (float(z) + 1));
+
+        glEnd();
+        texture_disable();
+        index++;
+      }
+    }
+
+    glRotatef(180.0, 1.0, 0.0, 0.0);
+    shift_x = 3;
+    shift_y = -3;
+    shift_z = 0;
+    for (int x = 0 - shift_x; x < size - shift_x; x++) {
+      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+        texture_blind_and_enable(textures[colors[index]]);
+        glBegin(GL_POLYGON);
+
+        glTexCoord2i(0, 0);
+        glVertex3f(float(x), 0 + shift_y, float(z));
+        glTexCoord2i(1, 0);
+        glVertex3f((float(x) + 1), 0 + shift_y, float(z));
+        glTexCoord2i(1, 1);
+        glVertex3f((float(x) + 1), 0 + shift_y, (float(z) + 1));
+        glTexCoord2i(0, 1);
+        glVertex3f(float(x), 0 + shift_y, (float(z) + 1));
+
+        glEnd();
+        texture_disable();
+        index++;
+      }
+    }
+
 }
