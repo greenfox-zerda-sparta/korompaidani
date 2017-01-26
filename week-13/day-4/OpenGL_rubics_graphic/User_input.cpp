@@ -67,8 +67,8 @@ void User_input::input_handler(bool& running, Cube& _cube) {
       }
       break;
     case SDL_MOUSEMOTION:
-      this->angle_z = event.motion.x + WINDOW_WIDTH / 2;
-      this->angle_x = WINDOW_HEIGHT / 2 + event.motion.y;
+      this->angle_z = event.motion.x + WINDOW_WIDTH * 0.5;
+      this->angle_x = event.motion.y + WINDOW_HEIGHT * 0.5;
       break;
     }
   }

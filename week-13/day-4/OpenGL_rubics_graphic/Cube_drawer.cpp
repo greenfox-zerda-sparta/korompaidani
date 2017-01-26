@@ -2,12 +2,12 @@
 #include "texture_functions.hpp"
 
 Cube_drawer::Cube_drawer() {
-  script.push_back(std::make_pair(3, 0)); // green
+  script.push_back(std::make_pair(0, 3)); // green
   script.push_back(std::make_pair(0, 0)); // red
-  script.push_back(std::make_pair(-3, 0)); // blue
-  script.push_back(std::make_pair(-6, 0)); //orange
+  script.push_back(std::make_pair(0, -3)); // blue
+  script.push_back(std::make_pair(0, -6)); //orange
   script.push_back(std::make_pair(3, 3)); // white
-  script.push_back(std::make_pair(3, -3)); // yellow
+  script.push_back(std::make_pair(-3, 3)); // yellow
 
   this->scale_x = 1;
   this->scale_y = 1;
@@ -36,13 +36,13 @@ void Cube_drawer::draw_square() {
   glEnd();
 }
 
-void Cube_drawer::draw_flattened_cube(std::vector<int> &colors) {
-  int size = 3;
-  int shift = size / 2;
+void Cube_drawer::draw_flattened_cube(std::vector<int> &colors, int rubic_size) {
+  int i = 0;
+  int shift = 0;
   int index = 0;
   for (int i = 0; i < 6; i++) {
-    for (int x = 0 - shift - script[i].first; x < size - shift - script[i].first; x++) {
-      for (int z = 0 - shift - script[i].second; z < size - shift - script[i].second; z++) {
+    for (int z = 0 - shift - script[i].first; z < rubic_size - shift - script[i].first; z++) {
+      for (int x = 0 - shift - script[i].second; x < rubic_size - shift - script[i].second; x++) {
         texture_blind_and_enable(textures[colors[index]]);
         glBegin(GL_POLYGON);
 
@@ -59,51 +59,22 @@ void Cube_drawer::draw_flattened_cube(std::vector<int> &colors) {
         texture_disable();
         index++;
       }
+
     }
   }
 }
-/*
-void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
-  int size = 3;
-  int shift = size / 2;
-  int index = 0;
-  for (int i = 0; i < 6; i++) {
-    for (int x = 0 - shift - script[i].first; x < size - shift - script[i].first; x++) {
-      for (int z = 0 - shift - script[i].second; z < size - shift - script[i].second; z++) {
-        texture_blind_and_enable(textures[colors[index]]);
-        glBegin(GL_POLYGON);
 
-        glTexCoord2i(0, 0);
-        glVertex3f(float(x), 0, float(z));
-        glTexCoord2i(1, 0);
-        glVertex3f((float(x) + 1), 0, float(z));
-        glTexCoord2i(1, 1);
-        glVertex3f((float(x) + 1), 0, (float(z) + 1));
-        glTexCoord2i(0, 1);
-        glVertex3f(float(x), 0, (float(z) + 1));
-
-        glEnd();
-        texture_disable();
-        index++;
-      }
-    }
-    if (i == 1) {
-      glRotatef(90.0, 0.0, 0.0, 1.0);
-    }
-  }
-}
-*/
-void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
-  int size = 3;
-
+void Cube_drawer::draw_real_cube(std::vector<int>& colors, int rubic_size) {
+  rubic_size = 3;
   int index = 0;
   int i = 0;
+  int middle_point = rubic_size / 2;
 
-  int shift_x = 0;
-  int shift_z = 0;
-  int shift_y = 0;
-    for (int x = 0 - shift_x; x < size - shift_x; x++) {
-      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+  int shift_x = middle_point * 0;
+  int shift_z = middle_point * 0;
+  int shift_y = middle_point * 0;
+    for (int z = 0 - shift_z - middle_point; z < rubic_size - shift_z - middle_point; z++) {
+      for (int x = 0 - shift_x - middle_point; x < rubic_size - shift_x - middle_point; x++) {
         texture_blind_and_enable(textures[colors[index]]);
         glBegin(GL_POLYGON);
 
@@ -123,11 +94,11 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
     }
    
     glRotatef(90.0, 0.0, 0.0, 1.0);
-    shift_x = 0;
-    shift_z = 0;
-    shift_y = 0;
-    for (int x = 0 - shift_x; x < size - shift_x; x++) {
-      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+    shift_x = middle_point * -1;
+    shift_z = middle_point * 0;
+    shift_y = middle_point * 1;
+    for (int z = 0 - shift_z - middle_point; z < rubic_size - shift_z - middle_point; z++) {
+      for (int x = 0 - shift_x - middle_point; x < rubic_size - shift_x - middle_point; x++) {
         texture_blind_and_enable(textures[colors[index]]);
         glBegin(GL_POLYGON);
 
@@ -147,11 +118,11 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
     }
     
     glRotatef(90.0, 0.0, 0.0, 1.0);
-    shift_x = 3;
-    shift_y = -3;
-    shift_z = 0;
-    for (int x = 0 - shift_x; x < size - shift_x; x++) {
-      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+    shift_x = middle_point * 1;
+    shift_y = middle_point * -3;
+    shift_z = middle_point * 0;
+    for (int z = 0 - shift_z - middle_point; z < rubic_size - shift_z - middle_point; z++) {
+      for (int x = 0 - shift_x - middle_point; x < rubic_size - shift_x - middle_point; x++) {
         texture_blind_and_enable(textures[colors[index]]);
         glBegin(GL_POLYGON);
 
@@ -169,13 +140,13 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
         index++;
       }
     }
-
+    
     glRotatef(90.0, 0.0, 0.0, 1.0);
-    shift_x = 3;
-    shift_y = 3;
-    shift_z = 0;
-    for (int x = 0 - shift_x; x < size - shift_x; x++) {
-      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+    shift_x = middle_point * 2;
+    shift_y = middle_point * 2;
+    shift_z = middle_point * 0;
+    for (int z = 0 - shift_z - middle_point; z < rubic_size - shift_z - middle_point; z++) {
+      for (int x = 0 - shift_x - middle_point; x < rubic_size - shift_x - middle_point; x++) {
         texture_blind_and_enable(textures[colors[index]]);
         glBegin(GL_POLYGON);
 
@@ -195,11 +166,13 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
     }
 
     glRotatef(90.0, 1.0, 0.0, 0.0);
-    shift_x = 3;
-    shift_y = 0;
-    shift_z = 3;
-    for (int x = 0 - shift_x; x < size - shift_x; x++) {
-      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+    glRotatef(90.0, 0.0, 1.0, 0.0);
+
+    shift_x = middle_point * 0;
+    shift_y = middle_point * -1;
+    shift_z = middle_point * 2;
+    for (int z = 0 - shift_z - middle_point; z < rubic_size - shift_z - middle_point; z++) {
+      for (int x = 0 - shift_x - middle_point; x < rubic_size - shift_x - middle_point; x++) {
         texture_blind_and_enable(textures[colors[index]]);
         glBegin(GL_POLYGON);
 
@@ -217,13 +190,14 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
         index++;
       }
     }
-
+    
     glRotatef(180.0, 1.0, 0.0, 0.0);
-    shift_x = 3;
-    shift_y = -3;
-    shift_z = 0;
-    for (int x = 0 - shift_x; x < size - shift_x; x++) {
-      for (int z = 0 - shift_z; z < size - shift_z; z++) {
+
+    shift_x = middle_point * 0;
+    shift_y = middle_point * -2;
+    shift_z = middle_point * -1;
+    for (int z = 0 - shift_z - middle_point; z < rubic_size - shift_z - middle_point; z++) {
+      for (int x = 0 - shift_x - middle_point; x < rubic_size - shift_x - middle_point; x++) {
         texture_blind_and_enable(textures[colors[index]]);
         glBegin(GL_POLYGON);
 
@@ -241,5 +215,5 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors) {
         index++;
       }
     }
-
+    
 }

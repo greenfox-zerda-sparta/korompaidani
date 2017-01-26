@@ -4,8 +4,8 @@
 #include "User_input.hpp"
 #include "cube.h"
 
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH 1920
+#define HEIGHT 1080
 
 int main(int argc, char* argv[]) {
 
@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
 
   SDL_Init(SDL_INIT_VIDEO);
   SDL_Window *screen;
-  screen = SDL_CreateWindow("Rubic's  window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, /*SDL_WINDOW_FULLSCREEN |*/ SDL_WINDOW_OPENGL);
+  screen = SDL_CreateWindow("Rubic's  window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_FULLSCREEN | SDL_WINDOW_OPENGL);
   SDL_GL_CreateContext(screen);
 
   Opengl opgl;
@@ -36,8 +36,8 @@ int main(int argc, char* argv[]) {
     opgl.opengl_sreenbuilder();
     cam.place_camera();
     cam.rotate_camera(ui.get_angle_x(), ui.get_angle_z());
-    primitive.draw_flattened_cube(my_cube.get_vector_for_Lego());
-    //primitive.draw_real_cube(my_cube.get_vector_for_Lego());
+    //primitive.draw_flattened_cube(my_cube.get_vector_for_Lego(), 3);
+    primitive.draw_real_cube(my_cube.get_vector_for_Lego(), 3);
 
     opgl.opengl_display(screen);
   }
