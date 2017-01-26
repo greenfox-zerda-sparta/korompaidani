@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
 
   Texture_manager text_man(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-  text_man.load("pics/wallpaper.jpg", "background", 1920, 1080, win.get_renderer());
+  text_man.load("pics/wallpaper.jpg", "background", 1920, 1920, win.get_renderer());
   text_man.load("pics/64x64.png", "yoda", 64, 64, win.get_renderer());
   text_man.load("pics/building.bmp", "builing", 128, 128, win.get_renderer());
   text_man.load("pics/grass.bmp", "grass", 64, 64, win.get_renderer());
