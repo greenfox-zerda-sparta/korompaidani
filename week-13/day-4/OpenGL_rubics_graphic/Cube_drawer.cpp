@@ -2,6 +2,13 @@
 #include "texture_functions.hpp"
 
 Cube_drawer::Cube_drawer() {
+  cooord.push_back(std::make_pair(std::make_pair(0, 0), 0));
+  cooord.push_back(std::make_pair(std::make_pair(-1, 0), 1));
+  cooord.push_back(std::make_pair(std::make_pair(1, -3), 0));
+  cooord.push_back(std::make_pair(std::make_pair(2, 2), 0));
+  cooord.push_back(std::make_pair(std::make_pair(0, -1), 2));
+  cooord.push_back(std::make_pair(std::make_pair(0, -2), -1));
+
   script.push_back(std::make_pair(0, 3)); // green
   script.push_back(std::make_pair(0, 0)); // red
   script.push_back(std::make_pair(0, -3)); // blue
@@ -65,6 +72,7 @@ void Cube_drawer::draw_flattened_cube(std::vector<int> &colors, int rubic_size) 
 }
 
 void Cube_drawer::draw_real_cube(std::vector<int>& colors, int rubic_size) {
+  int arr_counter = 0;
   rubic_size = 3;
   int index = 0;
   int i = 0;
@@ -73,6 +81,8 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors, int rubic_size) {
   int shift_x = middle_point * 0;
   int shift_z = middle_point * 0;
   int shift_y = middle_point * 0;
+
+  //for (int i = 0; i < 6; i++) {
     for (int z = 0 - shift_z - middle_point; z < rubic_size - shift_z - middle_point; z++) {
       for (int x = 0 - shift_x - middle_point; x < rubic_size - shift_x - middle_point; x++) {
         texture_blind_and_enable(textures[colors[index]]);
@@ -90,9 +100,17 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors, int rubic_size) {
         glEnd();
         texture_disable();
         index++;
+
       }
     }
-   
+    /*arr_counter += 8;
+    std::cout << arr_counter << std::endl;
+    glRotatef(four_coord[arr_counter - 8], four_coord[arr_counter - 7], four_coord[arr_counter - 6], four_coord[arr_counter - 5]);
+    glRotatef(four_coord[arr_counter - 4], four_coord[arr_counter - 3], four_coord[arr_counter - 2], four_coord[arr_counter - 1]);
+    shift_x = middle_point * cooord[i].first.first;
+    shift_z = middle_point * cooord[i].first.second;
+    shift_y = middle_point * cooord[i].second;*/
+  
     glRotatef(90.0, 0.0, 0.0, 1.0);
     shift_x = middle_point * -1;
     shift_z = middle_point * 0;
@@ -216,4 +234,7 @@ void Cube_drawer::draw_real_cube(std::vector<int>& colors, int rubic_size) {
       }
     }
     
+}
+
+void Cube_drawer::draw_background() {
 }

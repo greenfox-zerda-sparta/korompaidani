@@ -11,6 +11,9 @@ private:
   GLuint texture;
   std::vector<GLuint> textures;
   std::vector<std::pair<int, int>> script;
+  std::vector <std::pair<std::pair<int, int>, int>> cooord;
+  
+  float four_coord[40] = { 90.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 90.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 90.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 90.0, 1.0, 0.0, 0.0, 90.0, 0.0, 1.0, 0.0, 180.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 
   double scale_x;
   double scale_y;
@@ -22,4 +25,5 @@ public:
   void draw_square();
   void draw_flattened_cube(std::vector<int> &colors, int rubic_size);
   void draw_real_cube(std::vector<int> &colors, int rubic_size);
+  void draw_background();
 };

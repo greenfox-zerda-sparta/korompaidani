@@ -2,10 +2,11 @@
 
 Cube::Cube() {
   srand(time(NULL));
+  tr_back = false;
 }
 
 void Cube::random_shuffle() {
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 20; i++) {
     int which_rotation = rand() % 6;
     switch (which_rotation) {
     case 0:
@@ -24,7 +25,7 @@ void Cube::random_shuffle() {
       rotate_down();
       cout << ",D ";
       break;
-    case 4 :
+    case 4:
       rotate_left();
       cout << ",L ";
       break;
@@ -42,11 +43,12 @@ void Cube::fill_faces_to_cube() {
   faces_of_cube.push_back(right);
   faces_of_cube.push_back(back);
   faces_of_cube.push_back(left);
-  faces_of_cube.push_back(up);  
-  faces_of_cube.push_back(down);  
+  faces_of_cube.push_back(up);
+  faces_of_cube.push_back(down);
 }
 
 void Cube::rotate_front() {
+  if (!tr_back) trackback.push_back('F');
   int temp = front[0];
   front[0] = front[6];
   front[6] = front[8];
@@ -76,6 +78,7 @@ void Cube::rotate_front() {
 }
 
 void Cube::rotate_up() {
+  if (!tr_back) trackback.push_back('U');
   int temp = up[0];
   up[0] = up[6];
   up[6] = up[8];
@@ -105,6 +108,7 @@ void Cube::rotate_up() {
 }
 
 void Cube::rotate_back() {
+  if (!tr_back) trackback.push_back('B');
   int temp = back[0];
   back[0] = back[6];
   back[6] = back[8];
@@ -134,6 +138,7 @@ void Cube::rotate_back() {
 }
 
 void Cube::rotate_down() {
+  if (!tr_back) trackback.push_back('D');
   int temp = down[0];
   down[0] = down[6];
   down[6] = down[8];
@@ -163,6 +168,7 @@ void Cube::rotate_down() {
 }
 
 void Cube::rotate_right() {
+  if (!tr_back) trackback.push_back('R');
   int temp = right[0];
   right[0] = right[6];
   right[6] = right[8];
@@ -192,6 +198,7 @@ void Cube::rotate_right() {
 }
 
 void Cube::rotate_left() {
+  if (!tr_back) trackback.push_back('L');
   int temp = left[0];
   left[0] = left[6];
   left[6] = left[8];
@@ -235,8 +242,8 @@ void Cube::draw_cube() {
 
 bool Cube::is_ready() {
   fill_faces_to_cube();
-  for (int j = 0; j < faces_of_cube.size(); j++) {
-    for (int i = 0; i < faces_of_cube[j].size(); i++) {
+  for (unsigned int j = 0; j < faces_of_cube.size(); j++) {
+    for (unsigned int i = 0; i < faces_of_cube[j].size(); i++) {
       if (faces_of_cube[j][i] != faces_of_cube[j][4]) {
         return false;
       }
@@ -258,4 +265,46 @@ vector<int> Cube::get_vector_for_Lego() {
 
 Cube::~Cube() {
 }
-  
+
+void Cube::undo_last_step()
+{
+  tr_back = true;
+  if (!trackback.empty()) {
+    char last_step = trackback[trackback.size() - 1];
+    switch (last_step) {
+    case 'U':
+      rotate_up();
+      rotate_up();
+      rotate_up();
+      break;
+    case 'D':
+      rotate_down();
+      rotate_down();
+      rotate_down();
+      break;
+    case 'F':
+      rotate_front();
+      rotate_front();
+      rotate_front();
+      break;
+    case 'B':
+      rotate_back();
+      rotate_back();
+      rotate_back();
+      break;
+    case 'L':
+      rotate_left();
+      rotate_left();
+      rotate_left();
+      break;
+    case 'R':
+      rotate_right();
+      rotate_right();
+      rotate_right();
+      break;
+    }
+    trackback.pop_back();
+  }
+  tr_back = false;
+}
+

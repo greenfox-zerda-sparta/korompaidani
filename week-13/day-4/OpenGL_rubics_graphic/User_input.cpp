@@ -52,14 +52,25 @@ void User_input::input_handler(bool& running, Cube& _cube) {
       case SDLK_d:
         _cube.rotate_down();
         break;
-      case SDLK_r:
+      case SDLK_l:
         _cube.rotate_right();
         break;
-      case SDLK_l:
+      case SDLK_r:
         _cube.rotate_left();
         break;
       case SDLK_SPACE:
         _cube.random_shuffle();
+        break;
+      case SDLK_s:
+        while (true) {
+          _cube.undo_last_step();
+          if (_cube.trackback.empty()) {
+            break;
+          }
+        }
+        break;
+      case SDLK_BACKSPACE:
+        _cube.undo_last_step();
         break;
       case SDLK_ESCAPE:
         running = false;
