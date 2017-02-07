@@ -1,0 +1,2 @@
+#TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
+TEST|Win32|C:\Users\korom\OneDrive\Dokumentumok\tanulmányok\greenfox\workdir\korompaidani\week-15\day-2\Multithreading\Multithreading_first_proj\|
