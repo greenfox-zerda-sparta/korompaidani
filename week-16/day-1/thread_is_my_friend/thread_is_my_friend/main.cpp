@@ -5,22 +5,29 @@
 
 std::mutex mtx;           // mutex for critical section
 
-void print_block(int n, char c) {
+ void print_block(int n, char c) {
   // critical section (exclusive access to std::cout signaled by locking mtx):
-  //mtx.lock();
+  mtx.lock();
   for (int i = 0; i<n; ++i) {
     std::cout << c;
   }
   std::cout << '\n';
-  //mtx.unlock();
+  mtx.unlock();
 }
 
 int main() {
   std::thread th1(print_block, 50, '*');
   std::thread th2(print_block, 50, '$');
 
+  
+
   th1.join();
   th2.join();
+
+  for (int i = 32; i < 255; i++) {
+//    std::cout << i << ". is = " << char(i) << std::endl;
+    std::cout << char(176) << char(177) << char(178);
+  }
 
   return 0;
 }
