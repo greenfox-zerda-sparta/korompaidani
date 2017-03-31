@@ -32,10 +32,27 @@ class B : public A {
 		}
 };
 
+#include <map>
+#include <vector>
+#include <string>
+
 int main() {
+
+  map<string, int> my_map;
+  vector<int> my_vector;
+
+  my_vector.push_back(4);
+  cout << my_vector[0];
+
+  my_map["nulladik eleme"] = 4;
+
+  cout << my_map["nulladik eleme"] << endl;
+
+
 
 	B b(1,2);
 	A* a = &b;
+ 
 	cout << a->csinalj() << "  " << b.csinalj() << "  "<< a->mastcsinalj() << "  " << b.mastcsinalj() << endl;
 	
 	return 0;
@@ -51,12 +68,18 @@ union ptr {
 
 int main() {
 
-  int arr[2] = { 12, 19 };
+  int arr[4] = { 12, 23, 33, 76 };
   int* pointer = arr;
 
   cout << pointer << " : " << *pointer << endl;
-  pointer += 1;
+  pointer += 3;
   cout << pointer << " : " << *pointer << endl;
+
+
+
+  char num = 'a';
+  char* pt = &num;
+
 
   char* a = new char[256];
   char* b = a;

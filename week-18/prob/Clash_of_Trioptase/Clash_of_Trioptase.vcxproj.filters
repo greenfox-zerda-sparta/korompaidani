@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{ca579e44-2d37-4f42-a6eb-82b83f914ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Draw">
+      <UniqueIdentifier>{e2e5b04f-b191-4df2-804d-e545e24beaa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="User_input">
+      <UniqueIdentifier>{da1aaed2-8a4e-47fe-af8b-385d26697073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pictures">
+      <UniqueIdentifier>{d6c4d443-4ca8-496d-afce-a0302a6cf66e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic">
+      <UniqueIdentifier>{ae3bc62b-0ab2-43e4-8f50-8064cb7f4ad4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Networking">
+      <UniqueIdentifier>{f0247a95-b2bc-436e-85cd-42b19739bfe9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_handler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Building.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Game_entity.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Game_logic.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\MapNode.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Map.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Troop.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw\Texture_manager.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw\Window.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="User_input\User_input.cpp">
+      <Filter>User_input</Filter>
+    </ClCompile>
+    <ClCompile Include="Logic\Node.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Logic\Path_finder.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Networking\Broadcast.cpp">
+      <Filter>Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="Networking\Client.cpp">
+      <Filter>Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="Networking\Network.cpp">
+      <Filter>Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="Networking\Server.cpp">
+      <Filter>Networking</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game_handler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Building.hpp">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Game_entity.hpp">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Game_logic.hpp">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\json.hpp">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\JSON_Serial.hpp">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Map.hpp">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\MapNode.hpp">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Troop.hpp">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Draw\Texture_manager.hpp">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Draw\Window.hpp">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="User_input\User_input.hpp">
+      <Filter>User_input</Filter>
+    </ClInclude>
+    <ClInclude Include="Logic\Node.hpp">
+      <Filter>Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Logic\Path_finder.hpp">
+      <Filter>Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Networking\Broadcast.h">
+      <Filter>Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="Networking\Client.h">
+      <Filter>Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="Networking\Network.h">
+      <Filter>Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="Networking\Server.h">
+      <Filter>Networking</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="pictures\building.png">
+      <Filter>pictures</Filter>
+    </Image>
+    <Image Include="pictures\panel.png">
+      <Filter>pictures</Filter>
+    </Image>
+    <Image Include="pictures\wallpaper.jpg">
+      <Filter>pictures</Filter>
+    </Image>
+    <Image Include="pictures\smoke.png">
+      <Filter>pictures</Filter>
+    </Image>
+    <Image Include="pictures\panel_grid.png">
+      <Filter>pictures</Filter>
+    </Image>
+    <Image Include="pictures\building_selected.png">
+      <Filter>pictures</Filter>
+    </Image>
+    <Image Include="pictures\troop.png">
+      <Filter>pictures</Filter>
+    </Image>
+    <Image Include="pictures\troop_selected.png">
+      <Filter>pictures</Filter>
+    </Image>
+    <Image Include="pictures\button_selected.png">
+      <Filter>pictures</Filter>
+    </Image>
+    <Image Include="pictures\wallpaper_enemy.jpg">
+      <Filter>pictures</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
